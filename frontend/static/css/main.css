@@ -1,0 +1,17 @@
+body{
+    background: url(../img/logo.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+#introduccion{
+background: -webkit-linear-gradient(90deg, #ff0084 10%, #33001b 90%); /* Chrome 10+, Saf5.1+ */
+  background:    -moz-linear-gradient(90deg, #ff0084 10%, #33001b 90%); /* FF3.6+ */
+  background:     -ms-linear-gradient(90deg, #ff0084 10%, #33001b 90%); /* IE10 */
+  background:      -o-linear-gradient(90deg, #ff0084 10%, #33001b 90%); /* Opera 11.10+ */
+  background:         linear-gradient(90deg, #ff0084 10%, #33001b 90%);
+color: white; /* W3C */
+}
+#introduccion h5,
+#introduccion p{
+    color:white;
+}
