@@ -1,6 +1,23 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
 body{
-    background: url(../img/logo.jpg) no-repeat center center;
-    background-size: cover;
+    
+    font-family: "Open Sans", "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+h1, h2, h3, h4, h5, p{
+    font-family: "Open Sans", "Helvetica Neue",Helvetica,Arial,sans-serif;
+
+}
+#bg_login{
+ background: url(../img/orgullosamente.jpg) center center;
+background-size: cover;   
+}
+#login{
+padding-top: 7em;
+padding-bottom: 7em;
+
+}
+.paddingtop{
+    padding-top: 2.5em;
 }
 
 #introduccion{
@@ -14,4 +31,8 @@ color: white; /* W3C */
 #introduccion h5,
 #introduccion p{
     color:white;
+}
+#foo p{
+
+    margin-bottom: 0px;
 }

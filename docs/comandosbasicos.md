@@ -10,6 +10,8 @@ nota: suponiendo que los entornos virtuales estan en /home/user/venv
 
 ### Entrar ala carpeta del proyecto y correrlo
 
-nota: suponiendo que los entornos virtuales estan en /home/user/proyectos/Egresados
-1. (django1.8)user@pc:~$ cd proyectos/Egresados/
-2. $ python manage.py runserver
+nota: suponiendo que los entornos virtuales estan en /home/user/proyectos/backend
+1.-(django1.8)luisangel19@ubuntu:~/proyectos/egresados$ cd backend
+2.-(django1.8)luisangel19@ubuntu:~/proyectos/egresados/backend$ 
+3.-python manage.py runserver
+
