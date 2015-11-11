@@ -1,19 +1,65 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 body{
-    
+
+  background: #646464 url(../img/LOGOTEC3.png)no-repeat;
+
+background-position: center 12em;
+background-size: 70%;    
     font-family: "Open Sans", "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 h1, h2, h3, h4, h5, p{
     font-family: "Open Sans", "Helvetica Neue",Helvetica,Arial,sans-serif;
 
 }
+
+::-webkit-input-placeholder {
+  color: rgba(0,0,0,.90); }
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: rgba(0,0,0,.90); }
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: rgba(0,0,0,.90); }
+
+:-ms-input-placeholder {
+  color: rgba(0,0,0,.90); }
+
+#h_home{
+background: rgba(30, 37, 110, 0.9) url("../img/LOGOTEC5.PNG") no-repeat 1.5em center;
+background-size: 8.5%;
+box-shadow: 2px 8px 7px rgb(150, 150, 150);
+height: 7em;
+margin-bottom: 1em;
+
+}
+#h_home h3{color:white;
+font-size: 2.5em;}
 #bg_login{
- background: url(../img/orgullosamente.jpg) center center;
-background-size: cover;   
+ 
+ background: url(../img/mural.jpg) center center;
+ background-repeat: no-repeat;
+ background-size: cover;
+   
 }
 #login{
-padding-top: 7em;
+padding-top: 3em;
 padding-bottom: 7em;
+
+}
+#login h1{
+    font-weight: bold;
+    color:rgba(250,250,250,.95);
+    text-shadow: 0px 0px 7px rgba(150, 150, 150, 1),
+                 0px 0px 7px rgba(150, 150, 150, 1) ;
+}
+#login a{
+    color:rgba(255,255,255,.9);
+    text-shadow: 0px 0px 7px rgba(150, 150, 150, 1),
+                 0px 0px 7px rgba(150, 150, 150, 1) ;
+}
+#login input[type="text"]::-webkit-input-placeholder {
 
 }
 .paddingtop{
