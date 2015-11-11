@@ -12,21 +12,68 @@
   <section class="top-bar-section">
     <!-- Right Nav Section -->
     <ul class="right">
-      <li class="active"><a href="/info">INFORMACIÓN</a></li>
-      <li class="has-dropdown">
-        <a href="#">USUARIO</a>
-        <ul class="dropdown">
-          <li><a href="#">BUSQUEDA</a></li>
-          <li><a href="#">ADMIN</a></li>
-          <li class="active"><a href="#">CERRAR SESIÓN</a></li>
-          
-        </ul>
+    {% if not user.is_anonymous  %}
+      <li class="has-form">
+        <div class="row collapse">
+          <div class="large-8 small-9 columns">
+            <select id="carreraid">
+            <option>CARRERA</option>
+              
+              <option value= "1">Ing.Bioquimica</option>
+              <option value= "2">Ing.Civil</option>
+              <option value= "3">Ing. Electronica</option>
+              <option value= "4">Ing. Industrial</option>
+              <option value= "5">Ing.Mecatronica</option>
+              <option value= "6">Ing. Sist. Computacionales</option>
+              <option value= "7">Lic. Administración</option>
+              <option value= "8">Contaduría Pública</option>
+              <option value= "9">Ing. Electromecánica</option>
+              <option value= "10">Ing. Gestión Empresarial</option>
+              <option value= "11">Ing. Logistica</option>
+            </select>
+          </div>
+          <div class="large-4 small-3 columns">
+            <a href="#" class="alert button expand">Filtrar</a>
+          </div>
+        </div>
       </li>
+    {% endif %}
+    {% if not user.is_anonymous  %}
+      <li class="has-form">
+        <div class="row collapse">
+          <div class="large-8 small-9 columns">
+            <input type="text" placeholder="Num Control">
+          </div>
+          <div class="large-4 small-3 columns">
+            <a href="#" class="alert button expand">Buscar</a>
+          </div>
+        </div>
+      </li>
+    {% endif %}
+      
+      <li class="active"><a href="/info">INFORMACIÓN</a></li>
+      {% if not user.is_anonymous %}
+        <li class="has-dropdown {{c_login}}">
+          <a href="#">HOLA <span style="color:rgb(213, 165, 245);margin-right:6px;">{{user.username|upper}}</span><span style="color:rgb(213, 165, 245);" class="icon-smile"></span></a>
+          <ul class="dropdown">
+            {% if user.is_staff %}
+              <li><a href="/admin"><span class="icon-cog"></span>Administración del Sistema</a></li>
+            {% endif %}
+            <li><a href="/graficas">Graficas</a></li>
+            <li><a href="/ayuda"><span class="icon-lifebuoy"></span>Ayuda, Comó Crear tu Acceso Directo</a></li>
+            <li><a href="/logout"><span class="icon-switch"></span>Cerrar Sesión</a></li>
+          </ul>
+        </li>
+      {% else %}
+
+         <li class="{{c_login}}"><a href="/login"><span class="icon-user"></span>INICIAR SESION</a></li>
+      {% endif %}
+    
     </ul>
 
     <!-- Left Nav Section -->
     <ul class="left">
-      <li><a href="#">CONTACTO</a></li>
+      <li><a href="http://www.ittehuacan.edu.mx/">ITTehuacán</a></li>
     </ul>
   </section>
 </nav>    

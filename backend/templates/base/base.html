@@ -22,8 +22,13 @@
 {%block footer%}{%endblock footer%}
  <script src="{% static "js/vendor/jquery.js" %}"></script>
   <script src="{% static "js/foundation.min.js" %}"></script>
+  {% block chartjs %}    
+  {% endblock chartjs %}
   <script>
     $(document).foundation();
-  </script>   
+  </script> 
+  {% block graficajs %}
+      
+    {% endblock graficajs %}  
 </body>
 </html>
