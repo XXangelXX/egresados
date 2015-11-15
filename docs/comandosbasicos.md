@@ -20,4 +20,5 @@ nota: suponiendo que los entornos virtuales estan en /home/user/proyectos/backen
     1.- $ mysqldump --user=angel --password myproject >bd.sql
     nota: donde angel es el nombre del usuario de la base de datos y bd.sql es el nombre del archivo.
 
-###
+### para restaurar  bases de datos
+1.- $ mysql --user=angel --password prueba2 < prueba2.sql

@@ -18,12 +18,12 @@ class EncargadoResource(resources.ModelResource):
 
 class EncargadoAdmin(ImportExportModelAdmin):
     resource_class = EncargadoResource
-    list_display =("nom_encargado","titulo","puesto",)
+    list_display =("id","nom_encargado","titulo","puesto",)
 
 
 class EmpresaAdmin(ImportExportModelAdmin):
     resource_class = EmpresaResource
-    list_display =("tipo","giro_actividad","razon_social","telefono",)
+    list_display =("id","tipo","giro_actividad","razon_social","telefono",)
 
 
 admin.site.register(Encargado, EncargadoAdmin)

@@ -8,7 +8,7 @@ class PerfilEgresadoResource(resources.ModelResource):
 
     class Meta:
         model = PerfilEgresado
-
+        
 class DatosLaboralesResource(resources.ModelResource):
 
     class Meta:

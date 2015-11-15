@@ -98,7 +98,7 @@ class DatosLaborales (models.Model):
     )
     medio_obt_trabajo = models.CharField(max_length=2,
                                       choices=MEDIO_OBT_TRABAJO_OPTIONS,
-                                      default=BOLTRABP,
+                                      default=BOLTRABPLAN,
                                       blank=True)
 
     COMPLAB = '1'
