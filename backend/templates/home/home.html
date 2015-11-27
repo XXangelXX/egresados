@@ -13,4 +13,48 @@
     </header>
 </section>
 </section>
+
+<section>
+    <section class="row">
+    <div class="small-12 columns">
+        <table>
+  <thead>
+    <tr>
+      <th width="150">Numero de control</th>
+      <th width="200">Nombre</th>
+      <th width="150">Carrera</th>
+      <th width="150">Año de Egreso</th>
+      <th width="150">Titulado</th>
+      <th width="150">Laborando</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for egresado in Egresados %}
+       <tr>
+      <td>{{egresado.num_control}}</td>
+      <td>{{egresado.nombre}} {{egresado.a_paterno}} {{egresado.a_materno}} </td>
+      <td>{{egresado.carrera}}</td>
+      <td>{{egresado.mes_anio_egreso}}</td>
+      <td>{{egresado.get_titulado_display}}</td>
+      <td>{{egresado.get_ocupacion_display}}</td>
+       </tr>
+    {% endfor %}
+    {% if egresado_numcontrol %}
+    <tr>
+      <td>{{egresado_numcontrol.num_control}}</td>
+      <td>{{egresado_numcontrol.nombre}} {{egresado_numcontrol.a_paterno}} {{egresado_numcontrol.a_materno}} </td>
+      <td>{{egresado_numcontrol.carrera}}</td>
+      <td>{{egresado_numcontrol.mes_anio_egreso}}</td>
+      <td>{{egresado_numcontrol.get_titulado_display}}</td>
+      <td>{{egresado_numcontrol.get_ocupacion_display}}</td>
+       </tr>
+      
+    {% endif %}
+  </tbody>
+</table>
+
+    </div>
+        
+    </section>
+</section>
 {% endblock contenido %}

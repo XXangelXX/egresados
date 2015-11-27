@@ -16,37 +16,41 @@
       <li class="has-form">
         <div class="row collapse">
           <div class="large-8 small-9 columns">
-            <select id="carreraid">
-            <option>CARRERA</option>
+          <form id="f_carrera" name="form" method="post" action=".">{% csrf_token %}
+            <select  name="carrera_f">
+            
               
-              <option value= "1">Ing.Bioquimica</option>
-              <option value= "2">Ing.Civil</option>
-              <option value= "3">Ing. Electronica</option>
-              <option value= "4">Ing. Industrial</option>
-              <option value= "5">Ing.Mecatronica</option>
-              <option value= "6">Ing. Sist. Computacionales</option>
-              <option value= "7">Lic. Administración</option>
-              <option value= "8">Contaduría Pública</option>
-              <option value= "9">Ing. Electromecánica</option>
-              <option value= "10">Ing. Gestión Empresarial</option>
-              <option value= "11">Ing. Logistica</option>
+              <option {% if selectbio %}selected="selected" {% endif %} value= "1">Ing.Bioquimica</option>
+              <option {% if selectciv %}selected="selected" {% endif %} value= "2">Ing.Civil</option>
+              <option {% if selectelec %}selected="selected" {% endif %} value= "3">Ing. Electronica</option>
+              <option {% if selectind %}selected="selected" {% endif %} value= "4">Ing. Industrial</option>
+              <option {% if selectmec %}selected="selected" {% endif %} value= "5">Ing.Mecatronica</option>
+              <option {% if selectsis %}selected="selected" {% endif %} value= "6">Ing. Sist. Computacionales</option>
+              <option {% if selectadm %}selected="selected" {% endif %} value= "7">Lic. Administración</option>
+              <option {% if selectcon %}selected="selected" {% endif %} value= "8">Contaduría Pública</option>
+              <option {% if selectelem %}selected="selected" {% endif %} value= "9">Ing. Electromecánica</option>
+              <option {% if selectges %}selected="selected" {% endif %} value= "10">Ing. Gestión Empresarial</option>
+              <option {% if selectlog %}selected="selected" {% endif %} value= "11">Ing. Logistica</option>
             </select>
           </div>
           <div class="large-4 small-3 columns">
-            <a href="#" class="alert button expand">Filtrar</a>
+            <button href="#" class="alert expand">Filtrar</button>
           </div>
+          </form>
         </div>
       </li>
     {% endif %}
     {% if not user.is_anonymous  %}
       <li class="has-form">
         <div class="row collapse">
+        <form id="f_numcontrol" method="post" action=".">{% csrf_token %}
           <div class="large-8 small-9 columns">
-            <input type="text" placeholder="Num Control">
+            <input type="text" name="numcontrol_f" placeholder="Num Control">
           </div>
           <div class="large-4 small-3 columns">
-            <a href="#" class="alert button expand">Buscar</a>
+            <button href="#" class="alert expand">Buscar</button>
           </div>
+        </form>
         </div>
       </li>
     {% endif %}
@@ -60,6 +64,7 @@
               <li><a href="/admin"><span class="icon-cog"></span>Administración del Sistema</a></li>
             {% endif %}
             <li><a href="/graficas">Graficas</a></li>
+            <li><a href="/graficas/line_chart/">Grafica Lineal</a></li>
             <li><a href="/ayuda"><span class="icon-lifebuoy"></span>Ayuda, Comó Crear tu Acceso Directo</a></li>
             <li><a href="/logout"><span class="icon-switch"></span>Cerrar Sesión</a></li>
           </ul>

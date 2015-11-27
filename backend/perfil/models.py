@@ -18,11 +18,12 @@ class PerfilEgresado(models.Model):
     a_paterno = models.CharField(max_length=30)
     a_materno = models.CharField(max_length=30)
     num_control = models.CharField(max_length=9)
-    f_nacimiento = models.DateTimeField()
+    f_nacimiento = models.DateField(blank=True)
     
     MASCULINO = 'M'
     FEMENINO = 'F'
     SEXO_OPTIONS = (
+
         (MASCULINO , 'Masculino'),
         (FEMENINO, 'Femenino'),
     )
@@ -50,9 +51,9 @@ class PerfilEgresado(models.Model):
     telefono = models.CharField(max_length=15)
     especialidad = models.CharField(max_length=20)
     e_mail = models.EmailField(blank=True)
-    mes_anio_egreso = models.DateTimeField()
+    mes_anio_egreso = models.DateField(blank=True)
     SIT = "1"
-    NOT = "2"
+    NOT = "0"
     TITULADO_OPTIONS = (
         (SIT, 'Si'),
         (NOT, 'No'),
@@ -135,7 +136,7 @@ class DatosLaborales (models.Model):
                                       default=MENOS1,
                                       blank=True)
 
-    anio_ingr_laboral = models.DateTimeField()
+    anio_ingr_laboral = models.DateField(null=True, blank=True )
 
     TEC = '1'
     SUPRV = '2'

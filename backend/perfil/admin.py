@@ -31,7 +31,7 @@ class DatosLaboralesAdmin(ImportExportModelAdmin):
 
 class CarrerasAdmin(ImportExportModelAdmin):
     resource_class = CarrerasResource
-    list_display =("nombre_carrera",)
+    list_display =("id","nombre_carrera",)
     
 # Register your models here.
 admin.site.register(PerfilEgresado, PerfilEgresadoAdmin)

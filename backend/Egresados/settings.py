@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'empresa',
     'perfil',
     'import_export',
+    'chartjs',
 )
 
 MIDDLEWARE_CLASSES = (
