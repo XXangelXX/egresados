@@ -1,30 +1,10 @@
-{% extends "graficas/grafica_base.html" %}
-{% block title %}
-Graficas General    
-{% endblock title %}
-{% block contenido %}
+ejemplo de chatjs
 
-
-<section class ="row paddingtop">
-    <div class="small-12 columns">
-        <!--Codigo de HTML de la grafica -->
-        <div class="panel"> 
-        <canvas id="canvas" width="400" height="400"></canvas>
-        </div>
-        
-
-
-    </div>
-</section>
-
-{% endblock contenido %}
-{% block graficajs %}
- 
 <script>
     var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
 
     var barChartData = {
-        labels : ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio"],
+        labels : ["Enero","February","March","April","May","June","July"],
         datasets : [
             {
                 fillColor : "rgba(220,220,220,0.5)",
@@ -50,5 +30,3 @@ Graficas General
         });
     }
     </script>
-    
-{% endblock graficajs %}

@@ -1,0 +1,31 @@
+{% extends "graficas/grafica_base.html" %}
+{% block title %}
+Graficas Circular    
+{% endblock title %}
+{% block contenido %}
+
+
+<section class ="row paddingtop">
+    <div class="small-12 columns">
+        <!--Codigo de HTML de la grafica -->
+        <div class="panel"> 
+            <canvas id="canvas" width="400" height="400"></canvas>
+        </div>
+
+        
+
+
+    </div>
+</section>
+
+{% endblock contenido %}
+{% block graficajs %}
+ 
+<script type="text/javascript">
+            $.get('{% url "circular_titulado_json" %}', function(data) {
+                var ctx = $("#myChart").get(0).getContext("2d");
+                new Chart(ctx).Pie(data);
+            });
+        </script>
+    
+{% endblock graficajs %}
