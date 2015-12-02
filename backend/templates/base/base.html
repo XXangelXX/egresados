@@ -17,7 +17,10 @@
 <body>
 {%block menu%}{%endblock menu%}
 <div class="fondotec">
+
+  {% block graficaform %}{% endblock graficaform %}
   {%block contenido%}{%endblock contenido%}
+
 </div>
 {%block footer%}{%endblock footer%}
  <script src="{% static "js/vendor/jquery.js" %}"></script>

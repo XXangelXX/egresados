@@ -1,17 +1,26 @@
 {% extends "base/menu.html" %}
-{% block contenido %}
+{% block graficaform %}
 <div class="row">
     <div class="medium-8 medium-centered columns text-center">
-        <h2>Gráfica General</h2>
+        <h2>{% block title %}Graficas{% endblock title %}</h2>
         <form>
             <div class="row">
                 <div class="large-12 columns">
                   <label>Carrera
                     <select>
                           <option value="TODAS">TODAS</option>
-                          <option value="Ing. Sist. Computacionales">Ing. Sist. Computacionales</option>
-                          <option value="Contabilidad">Contabilidad</option>
-                          <option value="Bioquimica">Bioquimica</option>
+                          
+              <option {% if selectbio %}selected="selected" {% endif %} value= "1">Ing.Bioquimica</option>
+              <option {% if selectciv %}selected="selected" {% endif %} value= "2">Ing.Civil</option>
+              <option {% if selectelec %}selected="selected" {% endif %} value= "3">Ing. Electronica</option>
+              <option {% if selectind %}selected="selected" {% endif %} value= "4">Ing. Industrial</option>
+              <option {% if selectmec %}selected="selected" {% endif %} value= "5">Ing.Mecatronica</option>
+              <option {% if selectsis %}selected="selected" {% endif %} value= "6">Ing. Sist. Computacionales</option>
+              <option {% if selectadm %}selected="selected" {% endif %} value= "7">Lic. Administración</option>
+              <option {% if selectcon %}selected="selected" {% endif %} value= "8">Contaduría Pública</option>
+              <option {% if selectelem %}selected="selected" {% endif %} value= "9">Ing. Electromecánica</option>
+              <option {% if selectges %}selected="selected" {% endif %} value= "10">Ing. Gestión Empresarial</option>
+              <option {% if selectlog %}selected="selected" {% endif %} value= "11">Ing. Logistica</option>
                         </select>
                   </label>
                 </div>
@@ -52,7 +61,7 @@
     </div>
 </div>
     
-{% endblock contenido %}
+{% endblock graficaform %}
 
 {% block chartjs %}
     {% load staticfiles %}

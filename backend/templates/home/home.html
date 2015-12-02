@@ -17,7 +17,8 @@
 <section>
     <section class="row">
     <div class="small-12 columns">
-        <table>
+     {% if egresado_numcontrol or Egresados %}
+<table>
   <thead>
     <tr>
       <th width="150">Numero de control</th>
@@ -39,7 +40,7 @@
       <td>{{egresado.get_ocupacion_display}}</td>
        </tr>
     {% endfor %}
-    {% if egresado_numcontrol %}
+   
     <tr>
       <td>{{egresado_numcontrol.num_control}}</td>
       <td>{{egresado_numcontrol.nombre}} {{egresado_numcontrol.a_paterno}} {{egresado_numcontrol.a_materno}} </td>
@@ -49,9 +50,19 @@
       <td>{{egresado_numcontrol.get_ocupacion_display}}</td>
        </tr>
       
-    {% endif %}
+    
   </tbody>
 </table>
+{% else %}
+<div class="row">
+  <div class="medium-8 medium-centered columns text-center">
+  <div class="panel callout">
+    <h3>Seleccione Carrera o Introduzca No. de Control</h3>
+  </div>
+    
+  </div>
+</div>
+{% endif %}
 
     </div>
         

@@ -64,17 +64,22 @@ def index_view(request):
 from perfil.models import PerfilEgresado
 def home(request):
     cxt={}
+    if request.method == 'POST':
+        filtro_numcontrol = request.POST.get('numcontrol_f','')
+        filtro_numcontrol = str(filtro_numcontrol)
+        egresado_numcontrol = PerfilEgresado.objects.get(num_control=filtro_numcontrol)
+        cxt = {'egresado_numcontrol':egresado_numcontrol}
+    return render(request,'home/home.html', cxt)
+
+
+def carrera(request):
+    cxt={}
     if request.method=='POST':
         filtro_carrera=request.POST.get('carrera_f','')
         egresados = PerfilEgresado.objects.filter(carrera=filtro_carrera)
-        filtro_numcontrol = request.POST.get('numcontrol_f','')
-        filtro_numcontrol = str(filtro_numcontrol)
-        print filtro_numcontrol
-        egresado_numcontrol = PerfilEgresado.objects.get(num_control=filtro_numcontrol)
-        #{'Egresados': egresados, valuecarrera(filtro_carrera): True}
+        {'Egresados': egresados, valuecarrera(filtro_carrera): True}
         cxt = {'Egresados': egresados,
-                valuecarrera(filtro_carrera): True,
-                'egresado_numcontrol':egresado_numcontrol}
+                valuecarrera(filtro_carrera): True}
     return render(request,'home/home.html', cxt)
 
 def valuecarrera(carrera):

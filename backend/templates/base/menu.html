@@ -16,10 +16,10 @@
       <li class="has-form">
         <div class="row collapse">
           <div class="large-8 small-9 columns">
-          <form id="f_carrera" name="form" method="post" action=".">{% csrf_token %}
+          <form id="f_carrera" name="form" method="post" action="/carrera/">{% csrf_token %}
             <select  name="carrera_f">
             
-              
+              <option>Carrera</option>
               <option {% if selectbio %}selected="selected" {% endif %} value= "1">Ing.Bioquimica</option>
               <option {% if selectciv %}selected="selected" {% endif %} value= "2">Ing.Civil</option>
               <option {% if selectelec %}selected="selected" {% endif %} value= "3">Ing. Electronica</option>
@@ -43,7 +43,7 @@
     {% if not user.is_anonymous  %}
       <li class="has-form">
         <div class="row collapse">
-        <form id="f_numcontrol" method="post" action=".">{% csrf_token %}
+        <form id="f_numcontrol" method="post" action="/home/">{% csrf_token %}
           <div class="large-8 small-9 columns">
             <input type="text" name="numcontrol_f" placeholder="Num Control">
           </div>
