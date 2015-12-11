@@ -4,8 +4,8 @@ from . import views
 
 
 urlpatterns=patterns('graficas.views',
-   
-    url(r'^', 'graficas', name='graficas'),
+    
+    url(r'^$', 'graficas', name='graficas'),
     url(r'^line_chart/$', views.line_chart,
         name='line_chart'),
     url(r'^line_chart/json/$', views.line_chart_json,

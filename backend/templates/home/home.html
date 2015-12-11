@@ -4,7 +4,7 @@
 {% endblock title %}
 {% block contenido %}
 <section id="h_home">
-    <section  class="row">
+<section  class="row">
     <header  class="small-12 columns text-right">
         <h3>
             !BIENVENIDOS 
@@ -26,7 +26,9 @@
       <th width="150">Carrera</th>
       <th width="150">Año de Egreso</th>
       <th width="150">Titulado</th>
-      <th width="150">Laborando</th>
+      <th width="150">Ocupacion</th>
+      <th width="150">Telefono</th>
+
     </tr>
   </thead>
   <tbody>
@@ -38,6 +40,7 @@
       <td>{{egresado.mes_anio_egreso}}</td>
       <td>{{egresado.get_titulado_display}}</td>
       <td>{{egresado.get_ocupacion_display}}</td>
+      <td>{{egresado.telefono}}</td>
        </tr>
     {% endfor %}
    
@@ -48,11 +51,21 @@
       <td>{{egresado_numcontrol.mes_anio_egreso}}</td>
       <td>{{egresado_numcontrol.get_titulado_display}}</td>
       <td>{{egresado_numcontrol.get_ocupacion_display}}</td>
+      <td>{{egresado_numcontrol.telefono}}</td>
        </tr>
       
     
   </tbody>
 </table>
+{% elif Error %}
+<div class="row">
+  <div class="medium-8 medium-centered columns text-center">
+  <div class="panel callout">
+    <h3>Numero de Control No Existe</h3>
+  </div>
+    
+  </div>
+</div>
 {% else %}
 <div class="row">
   <div class="medium-8 medium-centered columns text-center">

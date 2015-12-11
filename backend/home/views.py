@@ -40,14 +40,22 @@ def index_view(request):
     else:
         return HttpResponseRedirect('/home')
 
+from django.core.exceptions import ObjectDoesNotExist
 from perfil.models import PerfilEgresado
+
 def home(request):
     cxt={}
     if request.method == 'POST':
         filtro_numcontrol = request.POST.get('numcontrol_f','')
         filtro_numcontrol = str(filtro_numcontrol)
-        egresado_numcontrol = PerfilEgresado.objects.get(num_control=filtro_numcontrol)
-        cxt = {'egresado_numcontrol':egresado_numcontrol}
+        try:
+            egresado_numcontrol = PerfilEgresado.objects.get(num_control=filtro_numcontrol)
+            cxt = {'egresado_numcontrol':egresado_numcontrol}
+        except PerfilEgresado.DoesNotExist :
+            msg = "Numero de Control No Encontrado: {0}".format(filtro_numcontrol )
+            print msg
+            cxt = {'Error': msg}
+        
     return render(request,'home/home.html', cxt)
 
 

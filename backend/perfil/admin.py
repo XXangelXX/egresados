@@ -22,7 +22,7 @@ class CarrerasResource(resources.ModelResource):
 class PerfilEgresadoAdmin(ImportExportModelAdmin):
     resource_class = PerfilEgresadoResource
     list_display =("id","nombre","a_paterno","a_materno","num_control","mes_anio_egreso",
-        "especialidad",)
+        "especialidad","telefono",)
 
 class DatosLaboralesAdmin(ImportExportModelAdmin):
     resource_class = DatosLaboralesResource

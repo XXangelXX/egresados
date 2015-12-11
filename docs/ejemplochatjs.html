@@ -1,4 +1,13 @@
-ejemplo de chatjs
+<!doctype html>
+<html>
+<head>
+<title> Bar Chart </title>
+    <script src="js/vendor/Chart.min.js"></script>
+    </head>
+    <body>
+        <div style ="width: 500">
+            <canvas id="canvas" helght="450" width="600"></canvas>
+    </div>
 
 <script>
     var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
@@ -28,5 +37,6 @@ ejemplo de chatjs
         window.myBar = new Chart(ctx).Bar(barChartData, {
             responsive : true
         });
-    }
-    </script>
+</script>
+</body>
+</html>
