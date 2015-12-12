@@ -43,3 +43,7 @@ for anio in range(1985,2015):
     datae_anio = PerfilEgresado.objects.filter(mes_anio_egreso__year=anio).count()
 
 print datae_anio
+
+
+
+

@@ -7,20 +7,22 @@
             <div class="row">
                 <div class="large-12 columns">
                   <label>Carrera
-                    <select>
-                          <option value="TODAS">TODAS</option>
-                          
-              <option {% if selectbio %}selected="selected" {% endif %} value= "1">Ing.Bioquimica</option>
-              <option {% if selectciv %}selected="selected" {% endif %} value= "2">Ing.Civil</option>
-              <option {% if selectelec %}selected="selected" {% endif %} value= "3">Ing. Electronica</option>
-              <option {% if selectind %}selected="selected" {% endif %} value= "4">Ing. Industrial</option>
-              <option {% if selectmec %}selected="selected" {% endif %} value= "5">Ing.Mecatronica</option>
-              <option {% if selectsis %}selected="selected" {% endif %} value= "6">Ing. Sist. Computacionales</option>
-              <option {% if selectadm %}selected="selected" {% endif %} value= "7">Lic. Administración</option>
-              <option {% if selectcon %}selected="selected" {% endif %} value= "8">Contaduría Pública</option>
-              <option {% if selectelem %}selected="selected" {% endif %} value= "9">Ing. Electromecánica</option>
-              <option {% if selectges %}selected="selected" {% endif %} value= "10">Ing. Gestión Empresarial</option>
-              <option {% if selectlog %}selected="selected" {% endif %} value= "11">Ing. Logistica</option>
+                    <select name= "carrerag_f">
+                          <option value="GENERAL">General</option>
+
+                          <option value="TODOS">TODAS</option>
+                      
+              <option  value= "1">Ing.Bioquimica</option>
+              <option  value= "2">Ing.Civil</option>
+              <option  value= "3">Ing. Electronica</option>
+              <option  value= "4">Ing. Industrial</option>
+              <option  value= "5">Ing.Mecatronica</option>
+              <option  value= "6">Ing. Sist. Computacionales</option>
+              <option  value= "7">Lic. Administración</option>
+              <option  value= "8">Contaduría Pública</option>
+              <option  value= "9">Ing. Electromecánica</option>
+              <option  value= "10">Ing. Gestión Empresarial</option>
+              <option  value= "11">Ing. Logistica</option>
                         </select>
                   </label>
                 </div>
@@ -37,11 +39,11 @@
                 </div>
                 <div class="medium-6 columns">
                     <label>Filtro
-                        <select>
-                          <option value="Sin Filtro">Sin Filtro</option>
-                          <option value="Titulado">Titulado</option>
-                          <option value="Sin titulo">Sin titulo</option>
-                          <option value="Laborando">Laborando</option>
+                        <select name="titulado_f">
+                          <option value="TODOS">sin filtro</option>
+                          <option value= "1">Titulado</option>
+                          <option value="0">Sin titulo</option>
+                          <option value="2">Laborando</option>
                           
                         </select>
                       </label>
