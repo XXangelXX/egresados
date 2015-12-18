@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
 from django.template import RequestContext
+from .actions import Paginador
 
 
 # Create your views here.
@@ -58,16 +59,24 @@ def home(request):
         
     return render(request,'home/home.html', cxt)
 
-
+MAXIMO_ITEMS_HOJA = 200
 def carrera(request):
-    cxt={}
+    
+    pagina = request.GET.get("pagina", "")
+    
     if request.method=='POST':
+        cxt={}
         filtro_carrera=request.POST.get('carrera_f','')
-        egresados = PerfilEgresado.objects.filter(carrera=filtro_carrera)
-        {'Egresados': egresados, valuecarrera(filtro_carrera): True}
-        cxt = {'Egresados': egresados,
+        if filtro_carrera == "carrera":
+            return redirect('/home/') 
+        else:
+            egresados = PerfilEgresado.objects.filter(carrera=filtro_carrera)
+            
+            egresados = Paginador(egresados, MAXIMO_ITEMS_HOJA, pagina)
+            cxt = {'Egresados': egresados,
                 valuecarrera(filtro_carrera): True}
-    return render(request,'home/home.html', cxt)
+            return render(request,'home/home.html', cxt)
+
 
 def valuecarrera(carrera):
     carrera  = int(carrera)

@@ -8,3 +8,4 @@ lista_carreras = ["Ing.Bioquimica","Ing.Civil","Ing. Electronica","Ing. Industri
                 "Ing.Mecatronica","Ing. Sist. Computacionales","Lic. Administracion",
                 "Contaduria Publica","Ing. Electromecanica","Ing. Gestion Empresarial",
                 "Ing. Logistica"]
+lista_filtros = {'TODOS':"Sin Filtro",1:"Titulado",0:"No Titulado",2:"Laborando"}

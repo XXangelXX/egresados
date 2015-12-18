@@ -19,7 +19,7 @@
           <form id="f_carrera" name="form" method="post" action="/carrera/">{% csrf_token %}
             <select  name="carrera_f">
             
-              <option>Carrera</option>
+              <option value= "carrera">Carrera</option>
               <option {% if selectbio %}selected="selected" {% endif %} value= "1">Ing.Bioquimica</option>
               <option {% if selectciv %}selected="selected" {% endif %} value= "2">Ing.Civil</option>
               <option {% if selectelec %}selected="selected" {% endif %} value= "3">Ing. Electronica</option>

@@ -4,8 +4,9 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 
 from django.views.generic import TemplateView
+from django.db.models import Q
 
-from .datos_generales import lista_anios, lista_meses, lista_carreras
+from .datos_generales import lista_anios, lista_meses, lista_carreras, lista_filtros
 
 from perfil.models import PerfilEgresado
 
@@ -35,7 +36,8 @@ def graficas(request):
         datae_anio=[]
         for anio in range(1985,2016):
             datae_anio.append(PerfilEgresado.objects.filter(mes_anio_egreso__year=anio).count())
-        cxt= {'lista_anios': lista_anios,'data_labels':lista_anios, 'data_general': datae_anio}
+        cxt= {'lista_anios': lista_anios,'data_labels':lista_anios, 'data_general': datae_anio,
+        'grafica_titulo':"GRAFICA GENERAL", 'grafica_anio': 'Desde 1985 a 2015', 'grafica_filtros': 'Sin Filtros'}
         return render(request, 'graficas/grafica_base.html', cxt)   
 
 
@@ -64,40 +66,73 @@ def titulado(request, q):
             q = q.filter(titulado=1)
             return q
         elif request.POST.get('titulado_f','') =="2":
-            q = q.filter(ocupacion=1)
+            q = q.filter(Q(ocupacion=1) | Q(ocupacion=3))
             return q
 
 def graficacion(q,c,a,t):
     data_cxt = []
     cxt = {}
     if c == "TODOS" and a == "TODOS" and t == "TODOS":
-        for carrera_f in range (1,12):
-            data_cxt.append(q.filter(carrera=carrera_f).count())
-        cxt= {'lista_anios': lista_anios,'data_labels':lista_carreras, 'data_general': data_cxt}
+        data_cxt = filtro_carreras(q)
+        cxt= {'lista_anios': lista_anios,'data_labels':lista_carreras, 'data_general': data_cxt,
+        'grafica_titulo':"Grafica de Egresados de Todas las Carreras", 'grafica_anio': 'Desde 1985 a 2015', 'grafica_filtros': 'Sin Filtros'}
         return cxt
     elif c!="TODOS" and a == "TODOS" and t == "TODOS":
-        for anio in range (1985,2016):
-            data_cxt.append(q.filter(mes_anio_egreso__year=anio).count())
-        cxt= {'lista_anios': lista_anios,'data_labels':lista_anios, 'data_general': data_cxt}
+        data_cxt = filtro_anios(q)
+        titulo_carrera = "Grafica de Egresados de la Carrera: " + lista_carreras[int(c)-1]
+        cxt= {'lista_anios': lista_anios,'data_labels':lista_anios, 'data_general': data_cxt,
+        'grafica_titulo': titulo_carrera, 'grafica_anio': 'Desde 1985 a 2015', 'grafica_filtros': 'Sin Filtros'}
         return cxt
     elif c!="TODOS" and a!="TODOS" and t=="TODOS":
-        for mes in range(1,13):
-            data_cxt.append(q.filter(mes_anio_egreso__month=mes).count())
-        cxt= {'lista_anios': lista_anios,'data_labels':lista_meses, 'data_general': data_cxt}
+        data_cxt = filtro_meses(q)
+        titulo_carrera = "Grafica de Egresados de la Carrera: " + lista_carreras[int(c)-1]
+        anio_titulo = "En el año: " + str(a)
+        cxt= {'lista_anios': lista_anios,'data_labels':lista_meses, 'data_general': data_cxt,
+        'grafica_titulo': titulo_carrera, 'grafica_anio': anio_titulo, 'grafica_filtros': 'Sin Filtros'}
         return cxt
     elif c!="TODOS" and a!="TODOS" and t!="TODOS":
-        for mes in range(1,13):
-            data_cxt.append(q.filter(mes_anio_egreso__month=mes).count())
-        cxt= {'lista_anios': lista_anios,'data_labels':lista_meses, 'data_general': data_cxt}
-        return cxt 
-    elif c!="TODOS" and a=="TODOS" and t!="TODOS":
-        for anio in range (1985,2016):
-            data_cxt.append(q.filter(mes_anio_egreso__year=anio).count())
-        cxt= {'lista_anios': lista_anios,'data_labels':lista_anios, 'data_general': data_cxt}
-        return cxt 
-    elif c=="TODOS" and a=="TODOS" and t!="TODOS":
-        for carrera_f in range (1,12):
-            data_cxt.append(q.filter(carrera=carrera_f).count())
-        cxt= {'lista_anios': lista_anios,'data_labels':lista_carreras, 'data_general': data_cxt}
+        data_cxt = filtro_carreras(q)
+        titulo_carrera = "Grafica de Egresados de la Carrera: " + lista_carreras[int(c)-1]
+        anio_titulo = "En el año: " + str(a)
+        filtro_titulo = "Filtro por: " + lista_filtros.get(int(t))
+        cxt= {'lista_anios': lista_anios,'data_labels':lista_meses, 'data_general': data_cxt,
+        'grafica_titulo': titulo_carrera, 'grafica_anio': anio_titulo, 'grafica_filtros': filtro_titulo}
         return cxt
-        
+    elif c!="TODOS" and a=="TODOS" and t!="TODOS":
+        data_cxt = filtro_anios(q)
+        titulo_carrera = "Grafica de Egresados de la Carrera: " + lista_carreras[int(c)-1]
+        anio_titulo = "Todos los Años: desde 1985 a 2015"
+        filtro_titulo = "Filtro por: " + lista_filtros.get(int(t))
+        cxt= {'lista_anios': lista_anios,'data_labels':lista_anios, 'data_general': data_cxt,
+        'grafica_titulo': titulo_carrera, 'grafica_anio': anio_titulo, 'grafica_filtros': filtro_titulo}
+        return cxt
+    elif c=="TODOS" and a=="TODOS" and t!="TODOS":
+        data_cxt = filtro_carreras(q)
+        titulo_carrera = "Grafica de Egresados de todas las Carreras "
+        anio_titulo = "Todos los Años: desde 1985 a 2015"
+        filtro_titulo = "Filtro por: " + lista_filtros.get(int(t)) 
+        cxt= {'lista_anios': lista_anios,'data_labels':lista_carreras, 'data_general': data_cxt,
+        'grafica_titulo': titulo_carrera, 'grafica_anio': anio_titulo, 'grafica_filtros': filtro_titulo}
+        return cxt
+    
+
+def filtro_meses(q):
+    data_cxt = []
+    for mes in range(1,13):
+        data_cxt.append(q.filter(mes_anio_egreso__month=mes).count())
+    return data_cxt
+
+def filtro_anios(q):
+    data_cxt = []
+    for anio in range (1985,2016):
+        data_cxt.append(q.filter(mes_anio_egreso__year=anio).count())
+    return data_cxt
+
+def filtro_carreras(q):
+    data_cxt = []
+    for carrera_f in range (1,12):
+        data_cxt.append(q.filter(carrera=carrera_f).count())
+    return data_cxt
+
+
+

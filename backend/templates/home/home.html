@@ -80,5 +80,23 @@
     </div>
         
     </section>
+{% if Egresados %}
+  
+  <section class="row">
+      <div class="small-6 columns Keyword">
+        {%if Egresados.has_previous%}
+        <h4><a href="/home/?pagina={{Egresados.previous_page_number}}"><span class="fi-arrow-left large"></span>Anterior</h4></a>
+        {%endif%}
+      </div>
+      <div class="small-6 columns Keyword text-right">
+        {%if Egresados.has_next%}
+        <h4><a href="/home/?pagina={{Egresados.next_page_number}}">Siguiente<span class="fi-arrow-right large"></span></h4></a>
+        {%else%}
+        <h4>Siguiente<span class="fi-arrow-right large"></span></h4>
+        {%endif%}
+      </div>
+    </section>
+    {% endif %}
+
 </section>
 {% endblock contenido %}
