@@ -39,4 +39,20 @@ from empresa.models import Empresa
 - carreras
 - encargado
 - empresa
--
+
+
+### validar un dato entero
+
+from django.core.exceptions import ValidationError
+
+def validate_even(value):
+    if value % 2 != 0:
+        raise ValidationError('%s is not an even number' % value)
+
+You can add this to a model field via the field’s validators argument:
+
+from django.db import models
+
+class MyModel(models.Model):
+    even_field = models.IntegerField(validators=[validate_even])
+

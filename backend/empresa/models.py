@@ -68,6 +68,185 @@ class Empresa(models.Model):
                                       choices=SECTOR_CHOICES, 
                                       blank=True)
 
+    MICREMP = "1"
+    PEQEMP = "2"
+    MEDIEMP = "3"
+    GRANEMP = "4"
+    TAM_EMPRESA_OPTIONS = (
+        (MICREMP, 'Microempresa (1.30)'),
+        (PEQEMP, 'Pequeña  (31-100)'),
+        (MEDIEMP, 'Mediana (101-500)'),
+        (GRANEMP, 'Grande (mas de 500)'),
+    
+    )
+    tam_empresa = models.CharField(max_length=2,
+                                      choices=TAM_EMPRESA_OPTIONS)
+
+    POC = "1"
+    REG = "2"
+    SUF = "3"
+    BAST = "4"
+    MUCH = "5"
+    AREA_ESTUDIO_OPTIONS = (
+        (POC, 'Poco'),
+        (REG, 'Regular'),
+        (SUF, 'Suficiente'),
+        (BAST, 'Bastante'),
+        (MUCH, 'Mucho'),
+    
+    )
+    area_estudio = models.CharField(max_length=2,
+                                      choices=AREA_ESTUDIO_OPTIONS)
+
+    POC = "1"
+    REG = "2"
+    SUF = "3"
+    BAST = "4"
+    MUCH = "5"
+    TITULACION_OPTIONS = (
+        (POC, 'Poco'),
+        (REG, 'Regular'),
+        (SUF, 'Suficiente'),
+        (BAST, 'Bastante'),
+        (MUCH, 'Mucho'),
+    
+    )
+    titulacion = models.CharField(max_length=2,
+                                      choices=TITULACION_OPTIONS)
+
+
+    POC = "1"
+    REG = "2"
+    SUF = "3"
+    BAST = "4"
+    MUCH = "5"
+    EXP_LAB_OPTIONS = (
+        (POC, 'Poco'),
+        (REG, 'Regular'),
+        (SUF, 'Suficiente'),
+        (BAST, 'Bastante'),
+        (MUCH, 'Mucho'),
+    
+    )
+    exp_lab = models.CharField(max_length=2,
+                                      choices=EXP_LAB_OPTIONS)
+
+    POC = "1"
+    REG = "2"
+    SUF = "3"
+    BAST = "4"
+    MUCH = "5"
+    COMP_LAB_OPTIONS = (
+        (POC, 'Poco'),
+        (REG, 'Regular'),
+        (SUF, 'Suficiente'),
+        (BAST, 'Bastante'),
+        (MUCH, 'Mucho'),
+    
+    )
+    comp_lab = models.CharField(max_length=2,
+                                      choices=COMP_LAB_OPTIONS)
+    
+
+    POC = "1"
+    REG = "2"
+    SUF = "3"
+    BAST = "4"
+    MUCH = "5"
+    POSICION_INST_OPTIONS = (
+        (POC, 'Poco'),
+        (REG, 'Regular'),
+        (SUF, 'Suficiente'),
+        (BAST, 'Bastante'),
+        (MUCH, 'Mucho'),
+    
+    )
+    posicion_inst = models.CharField(max_length=2,
+                                      choices=POSICION_INST_OPTIONS)
+
+
+    POC = "1"
+    REG = "2"
+    SUF = "3"
+    BAST = "4"
+    MUCH = "5"
+    CONOCIM_IDIOMAS_OPTIONS = (
+        (POC, 'Poco'),
+        (REG, 'Regular'),
+        (SUF, 'Suficiente'),
+        (BAST, 'Bastante'),
+        (MUCH, 'Mucho'),
+    
+    )
+    conocim_idiomas = models.CharField(max_length=2,
+                                      choices=CONOCIM_IDIOMAS_OPTIONS)
+
+    POC = "1"
+    REG = "2"
+    SUF = "3"
+    BAST = "4"
+    MUCH = "5"
+    RECOMEND_ACTITUD_OPTIONS = (
+        (POC, 'Poco'),
+        (REG, 'Regular'),
+        (SUF, 'Suficiente'),
+        (BAST, 'Bastante'),
+        (MUCH, 'Mucho'),
+    
+    )
+    recomend_actitud = models.CharField(max_length=2,
+                                      choices=RECOMEND_ACTITUD_OPTIONS)
+
+    POC = "1"
+    REG = "2"
+    SUF = "3"
+    BAST = "4"
+    MUCH = "5"
+    PERSONALIDAD_OPTIONS = (
+        (POC, 'Poco'),
+        (REG, 'Regular'),
+        (SUF, 'Suficiente'),
+        (BAST, 'Bastante'),
+        (MUCH, 'Mucho'),
+    
+    )
+    personalidad = models.CharField(max_length=2,
+                                      choices=PERSONALIDAD_OPTIONS)
+
+    POC = "1"
+    REG = "2"
+    SUF = "3"
+    BAST = "4"
+    MUCH = "5"
+    CAP_LIDERAZGO_OPTIONS = (
+        (POC, 'Poco'),
+        (REG, 'Regular'),
+        (SUF, 'Suficiente'),
+        (BAST, 'Bastante'),
+        (MUCH, 'Mucho'),
+    
+    )
+    cap_liderazgo = models.CharField(max_length=2,
+                                      choices=CAP_LIDERAZGO_OPTIONS)
+
+    POC = "1"
+    REG = "2"
+    SUF = "3"
+    BAST = "4"
+    MUCH = "5"
+    OTROS_ASP_OPTIONS = (
+        (POC, 'Poco'),
+        (REG, 'Regular'),
+        (SUF, 'Suficiente'),
+        (BAST, 'Bastante'),
+        (MUCH, 'Mucho'),
+    
+    )
+    otros_asp = models.CharField(max_length=2,
+                                      choices=OTROS_ASP_OPTIONS)
+
+
+
     encargado = models.ForeignKey(Encargado,blank=True)
     
 

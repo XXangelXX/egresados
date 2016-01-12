@@ -1,0 +1,519 @@
+#### Perfil de egresado
+
+dom_ingles = models.IntegerField()
+Paquetes(models.Model):
+
+OFFICE = "Paqueteria Office"
+AUTOC = "Autocad"
+TODOS = "Todas"
+PAQUETES_OPTIONS = (
+    (OFFICE, 'Paqueteria Office'),
+    (AUTOC, 'Autocad'),
+    (TODOS, 'Todas'),
+)
+ paquetes = models.CharField(max_length=2,
+                                  choices=TIPO_OPTIONS)
+
+
+ ### II. PERTINENCIA Y DISPONIBILIDAD DE MEDIOS Y RECURSOS PARA EL APRENDIZAJE
+class CalidadDocentes(models.Model):
+    
+    MBN = "1"
+    BN = "2"
+    RG = "3"
+    ML = "4"
+    TIPO_OPTIONS = (
+        (MBN, 'Muy Buena'),
+        (BN, 'Buena'),
+        (RG, 'Regular'),
+        (ML, 'Mala'),
+    )
+    calidad_docentes = models.CharField(max_length=2,
+                                      choices=TIPO_OPTIONS)
+
+class PlanEstudios(models.Model):
+    
+    MBN = "1"
+    BN = "2"
+    RG = "3"
+    ML = "4"
+    TIPO_OPTIONS = (
+        (MBN, 'Muy Buena'),
+        (BN, 'Buena'),
+        (RG, 'Regular'),
+        (ML, 'Mala'),
+    )
+    tipo = models.CharField(max_length=2,
+                                      choices=TIPO_OPTIONS)
+
+class OportPPID(models.Model):
+    
+    MBN = "1"
+    BN = "2"
+    RG = "3"
+    ML = "4"
+    TIPO_OPTIONS = (
+        (MBN, 'Muy Buena'),
+        (BN, 'Buena'),
+        (RG, 'Regular'),
+        (ML, 'Mala'),
+    )
+    tipo = models.CharField(max_length=2,
+                                      choices=TIPO_OPTIONS)
+
+class Enfasis(models.Model):
+    
+    MBN = "1"
+    BN = "2"
+    RG = "3"
+    ML = "4"
+    TIPO_OPTIONS = (
+        (MBN, 'Muy Buena'),
+        (BN, 'Buena'),
+        (RG, 'Regular'),
+        (ML, 'Mala'),
+    )
+    tipo = models.CharField(max_length=2,
+                                      choices=TIPO_OPTIONS)
+
+class Infracest(models.Model):
+    
+    MBN = "1"
+    BN = "2"
+    RG = "3"
+    ML = "4"
+    TIPO_OPTIONS = (
+        (MBN, 'Muy Buena'),
+        (BN, 'Buena'),
+        (RG, 'Regular'),
+        (ML, 'Mala'),
+    )
+    tipo = models.CharField(max_length=2,
+                                      choices=TIPO_OPTIONS)
+
+class ExpRecProf(models.Model):
+    
+    MBN = "1"
+    BN = "2"
+    RG = "3"
+    ML = "4"
+    TIPO_OPTIONS = (
+        (MBN, 'Muy Buena'),
+        (BN, 'Buena'),
+        (RG, 'Regular'),
+        (ML, 'Mala'),
+    )
+    tipo = models.CharField(max_length=2,
+                                      choices=TIPO_OPTIONS)
+
+
+
+
+ #################      DATOS LABORALES  #####################
+###     III. UBICACIÓN LABORAL DE LOS EGRESADOS
+class EstActual(models.Model):
+    
+    ESPECIALIDAD = "1"
+    MAESTRIA = "2"
+    IDIOMAS = "3"
+    OTROS = "4"
+    TIPO_OPTIONS = (
+        (ESPECIALIDAD, 'Especialidad'),
+        (MAESTRIA, 'Maestria'),
+        (IDIOMAS, 'Idiomas'),
+        (OTROS, 'Otros'),
+    )
+    tipo = models.CharField(max_length=2,
+                                      choices=TIPO_OPTIONS)
+
+esp_intitucion = models.CharField(max_length=50)
+
+class Tiempo_primer_emp(models.Model):
+    
+    ANTEGRE = "1"
+    MENSIES = "2"
+    ENTRESEISYUNO = "3"
+    MASUNO = "4"
+    TIPO_OPTIONS = (
+        (ANTEGRE, 'Antes de Egresar'),
+        (MENSIES, 'Menos de seis meses'),
+        (ENTRESEISYUNO, 'Entre seis meses y un año'),
+        (MASUNO, 'Mas de un año'),
+    )
+    tipo = models.CharField(max_length=2,
+                                      choices=TIPO_OPTIONS)
+
+class ActityHabil(models.Model):
+    
+    PRINVAL = "1"
+    NINGUNOS = "2"
+    OTROS = "3"
+    TIPO_OPTIONS = (
+        (PRINVAL, 'Principios Y Valores'),
+        (NINGUNOS, 'Ningunos'),
+        (OTROS, 'Otros'),
+    
+    )
+    tipo = models.CharField(max_length=2,
+                                      choices=TIPO_OPTIONS)
+
+class IdiomaTrab(models.Model):
+    
+    INGLES = "1"
+    FRANCES = "2"
+    ALEMAN = "3"
+    JAPONES = "4"
+    OTROS = "5"
+    TIPO_OPTIONS = (
+        (INGLES, 'Ingles'),
+        (FRANCES, 'Frances'),
+        (ALEMAN, 'Aleman'),
+        (JAPONES, 'Japones'),
+        (OTROS, 'Otros'),
+    
+    )
+    tipo = models.CharField(max_length=2,
+                                      choices=TIPO_OPTIONS)
+
+class TamEmpresa(models.Model):
+    
+    MICREMP = "1"
+    PEQEMP = "2"
+    MEDIEMP = "3"
+    GRANEMP = "4"
+    TIPO_OPTIONS = (
+        (MICREMP, 'Microempresa (1.30)'),
+        (PEQEMP, 'Pequeña  (31-100)'),
+        (MEDIEMP, 'Mediana (101-500)'),
+        (GRANEMP, 'Grande (mas de 500)'),
+    
+    )
+    tipo = models.CharField(max_length=2,
+                                      choices=TIPO_OPTIONS)
+
+
+
+
+##IV. DESEMPEÑO PROFESIONAL DE LOS EGRESADOS (COHERENCIA ENTRE LA FORMACIÓN Y EL TIPO DE EMPLEO)
+
+class EficienciaLab(models.Model):
+    
+    MUYEFI = "1"
+    EFI = "2"
+    POCEFI = "3"
+    DEFI = "4"
+    TIPO_OPTIONS = (
+        (MUYEFI, 'Muy Eficiente'),
+        (EFI, 'Eficiente'),
+        (POCEFI, 'Poco Eficiente'),
+        (DEFI, 'Deficiente'),
+    
+    )
+    tipo = models.CharField(max_length=2,
+                                      choices=TIPO_OPTIONS)
+
+
+class Cal_Formacion(models.Model):
+    
+    EXCL = "1"
+    BUENO = "2"
+    REG = "3"
+    MLO = "4"
+    PSMO = "5"
+    TIPO_OPTIONS = (
+        (EXCL, 'Excelente'),
+        (BUENO, 'Bueno'),
+        (REG, 'Regular'),
+        (MLO, 'Malo'),
+        (PSMO, 'Pesimo'),
+    
+    )
+    tipo = models.CharField(max_length=2,
+                                      choices=TIPO_OPTIONS)
+
+
+class Util_Residencia(models.Model):
+    
+    EXCL = "1"
+    BUENO = "2"
+    REG = "3"
+    MLO = "4"
+    PSMO = "5"
+    TIPO_OPTIONS = (
+        (EXCL, 'Excelente'),
+        (BUENO, 'Bueno'),
+        (REG, 'Regular'),
+        (MLO, 'Malo'),
+        (PSMO, 'Pesimo'),
+    
+    )
+    tipo = models.CharField(max_length=2,
+                                      choices=TIPO_OPTIONS)
+
+###  IV.4 Aspectos que valora la empresa u organismo para la contratación de egresados:
+
+class Area_Estudio(models.Model)
+    
+    POC = "1"
+    REG = "2"
+    SUF = "3"
+    BAST = "4"
+    MUCH = "5"
+    TIPO_OPTIONS = (
+        (POC, 'Poco'),
+        (REG, 'Regular'),
+        (SUF, 'Suficiente'),
+        (BAST, 'Bastante'),
+        (MUCH, 'Mucho'),
+    
+    )
+    area_estudio = models.CharField(max_length=2,
+                                      choices=TIPO_OPTIONS)
+
+    POC = "1"
+    REG = "2"
+    SUF = "3"
+    BAST = "4"
+    MUCH = "5"
+    TITULACION_OPTIONS = (
+        (POC, 'Poco'),
+        (REG, 'Regular'),
+        (SUF, 'Suficiente'),
+        (BAST, 'Bastante'),
+        (MUCH, 'Mucho'),
+    
+    )
+    titulacion = models.CharField(max_length=2,
+                                      choices=TIPO_OPTIONS)
+
+
+    POC = "1"
+    REG = "2"
+    SUF = "3"
+    BAST = "4"
+    MUCH = "5"
+    EXP_LAB_OPTIONS = (
+        (POC, 'Poco'),
+        (REG, 'Regular'),
+        (SUF, 'Suficiente'),
+        (BAST, 'Bastante'),
+        (MUCH, 'Mucho'),
+    
+    )
+    exp_lab = models.CharField(max_length=2,
+                                      choices=TIPO_OPTIONS)
+
+    POC = "1"
+    REG = "2"
+    SUF = "3"
+    BAST = "4"
+    MUCH = "5"
+    COMP_LAB_OPTIONS = (
+        (POC, 'Poco'),
+        (REG, 'Regular'),
+        (SUF, 'Suficiente'),
+        (BAST, 'Bastante'),
+        (MUCH, 'Mucho'),
+    
+    )
+    comp_lab = models.CharField(max_length=2,
+                                      choices=TIPO_OPTIONS)
+    
+
+    POC = "1"
+    REG = "2"
+    SUF = "3"
+    BAST = "4"
+    MUCH = "5"
+    POSICION_INST_OPTIONS = (
+        (POC, 'Poco'),
+        (REG, 'Regular'),
+        (SUF, 'Suficiente'),
+        (BAST, 'Bastante'),
+        (MUCH, 'Mucho'),
+    
+    )
+    posicion_inst = models.CharField(max_length=2,
+                                      choices=TIPO_OPTIONS)
+
+
+    POC = "1"
+    REG = "2"
+    SUF = "3"
+    BAST = "4"
+    MUCH = "5"
+    CONOCIM_IDIOMAS_OPTIONS = (
+        (POC, 'Poco'),
+        (REG, 'Regular'),
+        (SUF, 'Suficiente'),
+        (BAST, 'Bastante'),
+        (MUCH, 'Mucho'),
+    
+    )
+    conocim_idiomas = models.CharField(max_length=2,
+                                      choices=TIPO_OPTIONS)
+
+    POC = "1"
+    REG = "2"
+    SUF = "3"
+    BAST = "4"
+    MUCH = "5"
+    RECOMEND_ACTITUD_OPTIONS = (
+        (POC, 'Poco'),
+        (REG, 'Regular'),
+        (SUF, 'Suficiente'),
+        (BAST, 'Bastante'),
+        (MUCH, 'Mucho'),
+    
+    )
+    recomend_actitud = models.CharField(max_length=2,
+                                      choices=TIPO_OPTIONS)
+
+    POC = "1"
+    REG = "2"
+    SUF = "3"
+    BAST = "4"
+    MUCH = "5"
+    PERSONALIDAD_OPTIONS = (
+        (POC, 'Poco'),
+        (REG, 'Regular'),
+        (SUF, 'Suficiente'),
+        (BAST, 'Bastante'),
+        (MUCH, 'Mucho'),
+    
+    )
+    personalidad = models.CharField(max_length=2,
+                                      choices=TIPO_OPTIONS)
+
+    POC = "1"
+    REG = "2"
+    SUF = "3"
+    BAST = "4"
+    MUCH = "5"
+    CAP_LIDERAZGO_OPTIONS = (
+        (POC, 'Poco'),
+        (REG, 'Regular'),
+        (SUF, 'Suficiente'),
+        (BAST, 'Bastante'),
+        (MUCH, 'Mucho'),
+    
+    )
+    cap_liderazgo = models.CharField(max_length=2,
+                                      choices=TIPO_OPTIONS)
+
+    POC = "1"
+    REG = "2"
+    SUF = "3"
+    BAST = "4"
+    MUCH = "5"
+    OTROS_ASP_OPTIONS = (
+        (POC, 'Poco'),
+        (REG, 'Regular'),
+        (SUF, 'Suficiente'),
+        (BAST, 'Bastante'),
+        (MUCH, 'Mucho'),
+    
+    )
+    otros_asp = models.CharField(max_length=2,
+                                      choices=TIPO_OPTIONS)
+
+
+
+
+
+
+
+
+
+### V. EXPECTATIVAS DE DESARROLLO, SUPERACIÓN PROFESIONAL Y DE ACTUALIZACIÓN
+
+class Tomar_Curso(models.Model):
+    
+    SI = "1"
+    NO = "2"
+    
+    TIPO_OPTIONS = (
+        (SI, 'Si'),
+        (NO, 'No'),
+    
+    )
+    tipo = models.CharField(max_length=2,
+                                      choices=TIPO_OPTIONS)
+
+
+cuales = models.CharField(max_length=50)
+
+class Tomar_Posgrado(models.Model):
+    
+    SI = "1"
+    NO = "2"
+    
+    TIPO_OPTIONS = (
+        (SI, 'Si'),
+        (NO, 'No'),
+    
+    )
+    tipo = models.CharField(max_length=2,
+                                      choices=TIPO_OPTIONS)
+
+cual = models.CharField(max_length=50)
+
+
+### VI. PARTICIPACIÓN SOCIAL DE LOS EGRESADOS: 
+
+class Org_Social(models.Model):
+    
+    SI = "1"
+    NO = "2"
+    
+    TIPO_OPTIONS = (
+        (SI, 'Si'),
+        (NO, 'No'),
+    
+    )
+    tipo = models.CharField(max_length=2,
+                                      choices=TIPO_OPTIONS)
+
+cuales = models.CharField(max_length=50)
+
+
+class Org_Profesionistas(models.Model):
+    
+    SI = "1"
+    NO = "2"
+    
+    TIPO_OPTIONS = (
+        (SI, 'Si'),
+        (NO, 'No'),
+    
+    )
+    tipo = models.CharField(max_length=2,
+                                      choices=TIPO_OPTIONS)
+
+cuales = models.CharField(max_length=50)
+
+
+class Asoc_Egresados(models.Model):
+    
+    SI = "1"
+    NO = "2"
+    
+    TIPO_OPTIONS = (
+        (SI, 'Si'),
+        (NO, 'No'),
+    
+    )
+    tipo = models.CharField(max_length=2,
+                                      choices=TIPO_OPTIONS)
+
+
+    
+### VIII. COMENTARIOS Y SUGERENCIAS
+
+comentarios = models.CharField(max_length=100)
+
+
+
+
+
+

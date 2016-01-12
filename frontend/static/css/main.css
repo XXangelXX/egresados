@@ -28,7 +28,7 @@ h1, h2, h3, h4, h5, p{
 
 #h_home{
 background: rgba(30, 37, 110, 0.9) url("../img/LOGOTEC5.PNG") no-repeat 1.5em center;
-background-size: 8.5%;
+background-size: 8%;
 box-shadow: 2px 8px 7px rgb(150, 150, 150);
 height: 7em;
 margin-bottom: 1em;
@@ -44,8 +44,8 @@ font-size: 2.5em;}
    
 }
 #login{
-padding-top: 3em;
-padding-bottom: 7em;
+padding-top: 2em;
+padding-bottom: 5em;
 
 }
 #login h1{
