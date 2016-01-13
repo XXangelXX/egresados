@@ -114,6 +114,15 @@ def graficacion(q,c,a,t):
         cxt= {'lista_anios': lista_anios,'data_labels':lista_carreras, 'data_general': data_cxt,
         'grafica_titulo': titulo_carrera, 'grafica_anio': anio_titulo, 'grafica_filtros': filtro_titulo}
         return cxt
+    elif c=="TODOS" and a!="TODOS" and t=="TODOS":
+        data_cxt = filtro_carreras_anio(q,a)
+        titulo_carrera = "Grafica de Egresados de todas las Carreras "
+        anio_titulo = "En el año: " + str(a)
+        filtro_titulo = "Filtro por: Sin Filtro "  
+        cxt= {'lista_anios': lista_anios,'data_labels':lista_carreras, 'data_general': data_cxt,
+        'grafica_titulo': titulo_carrera, 'grafica_anio': anio_titulo, 'grafica_filtros': filtro_titulo}
+        return cxt
+
     
 
 def filtro_meses(q):
@@ -132,6 +141,12 @@ def filtro_carreras(q):
     data_cxt = []
     for carrera_f in range (1,12):
         data_cxt.append(q.filter(carrera=carrera_f).count())
+    return data_cxt
+
+def filtro_carreras_anio(q,a):
+    data_cxt = []
+    for carrera_f in range (1,12):
+        data_cxt.append(q.filter(carrera=carrera_f).filter(mes_anio_egreso__year=int(a)).count())
     return data_cxt
 
 
