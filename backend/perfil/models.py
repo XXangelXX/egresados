@@ -52,6 +52,10 @@ class PerfilEgresado(models.Model):
     especialidad = models.CharField(max_length=20)
     e_mail = models.EmailField(blank=True)
     mes_anio_egreso = models.DateField(blank=True)
+    telefonos = models.CharField(max_length=15)
+    man_paq_comp = models.CharField(max_length=50)
+
+   
     SIT = "1"
     NOT = "0"
     TITULADO_OPTIONS = (
@@ -129,7 +133,7 @@ class PerfilEgresado(models.Model):
         (ML, 'Mala'),
     )
     plan_estudios= models.CharField(max_length=2,
-                                      choices=TIPO_OPTIONS)
+                                      choices=PLAN_ESTUDIOS_OPTIONS)
 
 
     MBN = "1"
@@ -307,7 +311,13 @@ class DatosLaborales (models.Model):
     idioma_trab = models.CharField(max_length=2,
                                       choices=IDIOMA_TRAB_OPTIONS)
 
-    salario_min_diario = models.IntegerField()
+
+    hablar = models.IntegerField()
+    escribir = models.IntegerField()
+    leer = models.IntegerField()
+    escuchar = models.IntegerField()
+
+    salario_min_diario = models.FloatField()
 
 
     MENOS1 = '1'
@@ -348,69 +358,85 @@ class DatosLaborales (models.Model):
                                       default=TEC,
                                       blank=True)
 
+    relac_trab_form = models.IntegerField()
 
-    SI = "1"
-    NO = "2"
+    BAS = "1"
+    EVTL = "2"
+    CONTRA = "3"
+    OTROS = "4"
+    COND_TRAB_OPTIONS = (
+        (BAS, 'Base'),
+        (EVTL, 'Eventual'),
+        (CONTRA, 'Contratado'),
+        (OTROS, 'Otros'),
+    )
+    cond_trab = models.CharField(max_length=2,
+                                      choices=COND_TRAB_OPTIONS)
+
+
+    SI_TC = "1"
+    NO_TC = "2"
     
     TOMAR_CURSO_OPTIONS = (
-        (SI, 'Si'),
-        (NO, 'No'),
+        (SI_TC, 'Si'),
+        (NO_TC, 'No'),
     
     )
     tomar_curso = models.CharField(max_length=2,
-                                      choices=TOMAR_CURSO_OPTIONS)
+                                    default=SI_TC,
+                                    choices=TOMAR_CURSO_OPTIONS)
 
 
-cuales = models.CharField(max_length=50)
+    cuales_tc = models.CharField(max_length=50)
 
-    SI = "1"
-    NO = "2"
+    SI_TP = "1"
+    NO_TP= "2"
     
     TOMAR_POSGRADO_OPTIONS = (
-        (SI, 'Si'),
-        (NO, 'No'),
+        (SI_TP, 'Si'),
+        (NO_TP, 'No'),
     
     )
     tomar_posgrado = models.CharField(max_length=2,
                                       choices=TOMAR_POSGRADO_OPTIONS)
 
-cual = models.CharField(max_length=50)
+    cual_tp = models.CharField(max_length=50)
 
 
 
     
-    SI = "1"
-    NO = "2"
+    SI_OS = "1"
+    NO_OS = "2"
     
     ORG_SOCIAL_OPTIONS = (
-        (SI, 'Si'),
-        (NO, 'No'),
+        (SI_OS, 'Si'),
+        (NO_OS, 'No'),
     
     )
     org_social = models.CharField(max_length=2,
                                       choices=ORG_SOCIAL_OPTIONS)
 
-cuales = models.CharField(max_length=50)
+    cuales_os = models.CharField(max_length=50)
     
-    SI = "1"
-    NO = "2"
+    SI_OP = "1"
+    NO_OP = "2"
     
     ORG_PROF_OPTIONS = (
-        (SI, 'Si'),
-        (NO, 'No'),
+        (SI_OP, 'Si'),
+        (NO_OP, 'No'),
     
     )
     org_prof = models.CharField(max_length=2,
                                       choices=ORG_PROF_OPTIONS)
 
-cuales = models.CharField(max_length=50)
+    cuales_op = models.CharField(max_length=50)
 
-    SI = "1"
-    NO = "2"
+    SI_AE = "1"
+    NO_AE= "2"
     
     ASOC_EGRESADOS_OPTIONS = (
-        (SI, 'Si'),
-        (NO, 'No'),
+        (SI_AE, 'Si'),
+        (NO_AE, 'No'),
     
     )
     asoc_egresados = models.CharField(max_length=2,
@@ -419,6 +445,7 @@ cuales = models.CharField(max_length=50)
 
 
     comentarios = models.CharField(max_length=100)
+    
     def __unicode__(self):
         return self.medio_obt_trabajo
 
