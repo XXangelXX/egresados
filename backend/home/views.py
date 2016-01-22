@@ -38,8 +38,10 @@ def index_view(request):
             return render_to_response('home/index.html',
                           {'c_login':'active'},
                           context_instance=RequestContext(request))
-    else:
+    elif usuario.is_staff():
         return HttpResponseRedirect('/home')
+    else:
+        return HttpResponseRedirect('/actualizar')
 
 from django.core.exceptions import ObjectDoesNotExist
 from perfil.models import PerfilEgresado

@@ -1,18 +1,12 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from perfil.estados import ESTADO_OPTIONS
+from perfil.models import DatosLaborales
 
 # Create your models here.
-class Encargado (models.Model):
-    nom_encargado = models.CharField(max_length=50)
-    titulo = models.CharField(max_length=50,blank=True)
-    puesto = models.CharField(max_length=50,blank=True)
-
-    def __unicode__(self):
-        return self.nom_encargado
-
-
 class Empresa(models.Model):
+
+    datoslaborales = models.ForeignKey(DatosLaborales)
     
     PUBLICO = "1"
     PRIVADO = "2"
@@ -73,7 +67,7 @@ class Empresa(models.Model):
     MEDIEMP = "3"
     GRANEMP = "4"
     TAM_EMPRESA_OPTIONS = (
-        (MICREMP, 'Microempresa (1.30)'),
+        (MICREMP, 'Microempresa (1-30)'),
         (PEQEMP, 'Pequeña  (31-100)'),
         (MEDIEMP, 'Mediana (101-500)'),
         (GRANEMP, 'Grande (mas de 500)'),
@@ -83,162 +77,113 @@ class Empresa(models.Model):
                                       choices=TAM_EMPRESA_OPTIONS)
 
     POC = "1"
-    REG = "2"
-    SUF = "3"
-    BAST = "4"
+    SIG = "2"
+    MOD = "3"
+    REG = "4"
     MUCH = "5"
     AREA_ESTUDIO_OPTIONS = (
         (POC, 'Poco'),
+        (SIG, 'Significativo'),
+        (MOD, 'Moderado'),
         (REG, 'Regular'),
-        (SUF, 'Suficiente'),
-        (BAST, 'Bastante'),
         (MUCH, 'Mucho'),
     
     )
     area_estudio = models.CharField(max_length=2,
                                       choices=AREA_ESTUDIO_OPTIONS)
 
-    POC = "1"
-    REG = "2"
-    SUF = "3"
-    BAST = "4"
-    MUCH = "5"
     TITULACION_OPTIONS = (
         (POC, 'Poco'),
+        (SIG, 'Significativo'),
+        (MOD, 'Moderado'),
         (REG, 'Regular'),
-        (SUF, 'Suficiente'),
-        (BAST, 'Bastante'),
         (MUCH, 'Mucho'),
-    
     )
     titulacion = models.CharField(max_length=2,
                                       choices=TITULACION_OPTIONS)
 
-
-    POC = "1"
-    REG = "2"
-    SUF = "3"
-    BAST = "4"
-    MUCH = "5"
     EXP_LAB_OPTIONS = (
         (POC, 'Poco'),
+        (SIG, 'Significativo'),
+        (MOD, 'Moderado'),
         (REG, 'Regular'),
-        (SUF, 'Suficiente'),
-        (BAST, 'Bastante'),
         (MUCH, 'Mucho'),
     
     )
     exp_lab = models.CharField(max_length=2,
                                       choices=EXP_LAB_OPTIONS)
 
-    POC = "1"
-    REG = "2"
-    SUF = "3"
-    BAST = "4"
-    MUCH = "5"
     COMP_LAB_OPTIONS = (
         (POC, 'Poco'),
+        (SIG, 'Significativo'),
+        (MOD, 'Moderado'),
         (REG, 'Regular'),
-        (SUF, 'Suficiente'),
-        (BAST, 'Bastante'),
         (MUCH, 'Mucho'),
     
     )
     comp_lab = models.CharField(max_length=2,
                                       choices=COMP_LAB_OPTIONS)
     
-
-    POC = "1"
-    REG = "2"
-    SUF = "3"
-    BAST = "4"
-    MUCH = "5"
     POSICION_INST_OPTIONS = (
         (POC, 'Poco'),
+        (SIG, 'Significativo'),
+        (MOD, 'Moderado'),
         (REG, 'Regular'),
-        (SUF, 'Suficiente'),
-        (BAST, 'Bastante'),
         (MUCH, 'Mucho'),
     
     )
     posicion_inst = models.CharField(max_length=2,
                                       choices=POSICION_INST_OPTIONS)
 
-
-    POC = "1"
-    REG = "2"
-    SUF = "3"
-    BAST = "4"
-    MUCH = "5"
     CONOCIM_IDIOMAS_OPTIONS = (
         (POC, 'Poco'),
+        (SIG, 'Significativo'),
+        (MOD, 'Moderado'),
         (REG, 'Regular'),
-        (SUF, 'Suficiente'),
-        (BAST, 'Bastante'),
         (MUCH, 'Mucho'),
     
     )
     conocim_idiomas = models.CharField(max_length=2,
                                       choices=CONOCIM_IDIOMAS_OPTIONS)
-
-    POC = "1"
-    REG = "2"
-    SUF = "3"
-    BAST = "4"
-    MUCH = "5"
+   
     RECOMEND_ACTITUD_OPTIONS = (
         (POC, 'Poco'),
+        (SIG, 'Significativo'),
+        (MOD, 'Moderado'),
         (REG, 'Regular'),
-        (SUF, 'Suficiente'),
-        (BAST, 'Bastante'),
         (MUCH, 'Mucho'),
     
     )
     recomend_actitud = models.CharField(max_length=2,
                                       choices=RECOMEND_ACTITUD_OPTIONS)
 
-    POC = "1"
-    REG = "2"
-    SUF = "3"
-    BAST = "4"
-    MUCH = "5"
     PERSONALIDAD_OPTIONS = (
         (POC, 'Poco'),
+        (SIG, 'Significativo'),
+        (MOD, 'Moderado'),
         (REG, 'Regular'),
-        (SUF, 'Suficiente'),
-        (BAST, 'Bastante'),
         (MUCH, 'Mucho'),
     
     )
     personalidad = models.CharField(max_length=2,
                                       choices=PERSONALIDAD_OPTIONS)
 
-    POC = "1"
-    REG = "2"
-    SUF = "3"
-    BAST = "4"
-    MUCH = "5"
     CAP_LIDERAZGO_OPTIONS = (
         (POC, 'Poco'),
+        (SIG, 'Significativo'),
+        (MOD, 'Moderado'),
         (REG, 'Regular'),
-        (SUF, 'Suficiente'),
-        (BAST, 'Bastante'),
         (MUCH, 'Mucho'),
     
     )
     cap_liderazgo = models.CharField(max_length=2,
                                       choices=CAP_LIDERAZGO_OPTIONS)
 
-    POC = "1"
-    REG = "2"
-    SUF = "3"
-    BAST = "4"
-    MUCH = "5"
     OTROS_ASP_OPTIONS = (
         (POC, 'Poco'),
+        (SIG, 'Significativo'),
+        (MOD, 'Moderado'),
         (REG, 'Regular'),
-        (SUF, 'Suficiente'),
-        (BAST, 'Bastante'),
         (MUCH, 'Mucho'),
     
     )
@@ -247,7 +192,6 @@ class Empresa(models.Model):
 
 
 
-    encargado = models.ForeignKey(Encargado,blank=True)
     
 
     def __unicode__(self):
@@ -255,3 +199,13 @@ class Empresa(models.Model):
 
 
 
+class Encargado (models.Model):
+    empresa = models.ForeignKey(Empresa, blank=True)
+    
+    nom_encargado = models.CharField(max_length=50)
+    titulo = models.CharField(max_length=50,blank=True)
+    puesto = models.CharField(max_length=50,blank=True)
+    
+
+    def __unicode__(self):
+        return self.nom_encargado

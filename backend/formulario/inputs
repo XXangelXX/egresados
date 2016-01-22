@@ -1,0 +1,276 @@
+### Formulario de Perfil de Egresado
+
+<input  type="text" name="nombre" class="small-12.columns text-center" placeholder="Nombre" required/>
+
+<input  type="text" name="a_paterno" class="small-12.columns text-center" placeholder="Apellido Paterno" required/>
+
+<input  type="text" name="a_materno" class="small-12.columns text-center" placeholder="Apellido Materno" required/>
+
+
+<input  type="number" name="num_control" class="small-12.columns text-center" placeholder="Numero de Control" required/>
+
+<input  type="number" name="f_nacimiento" class="small-12.columns text-center" placeholder="Fecha de Nacimiento" required/>
+
+<select name="sexo">
+    <option value="M">Masculino</option>
+    <option value= "F">Femenino</option>
+</select>
+
+<input  type="text" name="curp" class="small-12.columns text-center" placeholder="Curp" required/>
+
+<select name="e_civil">
+    <option value="C">Casado(a)</option>
+    <option value= "S">Soltero(a)</option>
+    <option value="D">Divorciado(a)</option>
+    <option value="O">Otro</option>
+</select>
+
+<input  type="text" name="estado" class="small-12.columns text-center" placeholder="Estado" required/>
+
+<input  type="text" name="municipio" class="small-12.columns text-center" placeholder="Municipio" required/>
+
+<input  type="text" name="cuidad" class="small-12.columns text-center" placeholder="Cuidad" required/>
+
+<input  type="text" name="domicilio" class="small-12.columns text-center" placeholder="Domicilio" required/>
+
+<input  type="tel" name="telefono" class="small-12.columns text-center" placeholder="Telefono" required/>
+
+<input  type="text" name="especialidad" class="small-12.columns text-center" placeholder="Especialidad" required/>
+
+<input  type="mail" name="e_mail" class="small-12.columns text-center" placeholder="e-mail" required/>
+
+<input  type="datetime" name="mes_anio_egreso" class="small-12.columns text-center" placeholder="Mes y Año de Egreso" required/>
+
+<input  type="tel" name="tel_casa" class="small-12.columns text-center" placeholder="Telefono Casa" required/>
+
+<input  type="number" name="niv_ing" min="0" max="100" step="5" value="50"class="small-12.columns text-center" placeholder="Nivel de Ingles" required/>
+
+<input  type="text" name="otros_idms" class="small-12.columns text-center" placeholder="Otros Idiomas" required/>
+
+<input  type="text" name="man_paq_comp" class="small-12.columns text-center" placeholder="Manejo de Paquetes Computacionales" required/>
+
+<select name="titulado">
+    <option value="1">Titilado(a)</option>
+    <option value= "0">No Titulado(a)</option>
+</select>
+
+<select name="ocupacion">
+    <option value="1">Trabaja</option>
+    <option value= "2">Estudia</option>
+    <option value="3">Trabaja y Estudia(a)</option>
+    <option value="4">Ni Trabaja Ni Estudia</option>
+</select>
+
+<select name="estudios_act">
+    <option value="1">Especialidad</option>
+    <option value= "2">Maestria</option>
+    <option value="3">Idiomas</option>
+    <option value="4">Otro</option>
+</select>
+
+<input  type="text" name="esp_institucion" class="small-12.columns text-center" placeholder="Especialidad e Institucion" required/>
+
+<select name="tiem_primer_emple">
+    <option value="1">Antes de Egresar</option>
+    <option value= "2">Menos de seis meses</option>
+    <option value="3">Entre seis meses y un año</option>
+    <option value="4">Mas de un año</option>
+</select>
+
+<select name="calidad_docentes ">
+    <option value="1">Muy Buena</option>
+    <option value= "2">Buena</option>
+    <option value="3">Regular</option>
+    <option value="4">Mala</option>
+</select>
+
+<select name="plan_estudios">
+    <option value="1">Muy Buena</option>
+    <option value= "2">Buena</option>
+    <option value="3">Regular</option>
+    <option value="4">Mala</option>
+</select>
+
+<select name="oport_ppid">
+    <option value="1">Muy Buena</option>
+    <option value= "2">Buena</option>
+    <option value="3">Regular</option>
+    <option value="4">Mala</option>
+</select>
+
+<select name="enfasis">
+    <option value="1">Muy Buena</option>
+    <option value= "2">Buena</option>
+    <option value="3">Regular</option>
+    <option value="4">Mala</option>
+</select>
+
+<select name="infracest">
+    <option value="1">Muy Buena</option>
+    <option value= "2">Buena</option>
+    <option value="3">Regular</option>
+    <option value="4">Mala</option>
+</select>
+
+<select name="exprecprof">
+    <option value="1">Muy Buena</option>
+    <option value= "2">Buena</option>
+    <option value="3">Regular</option>
+    <option value="4">Mala</option>
+</select>
+
+<select name="eficiencia_lab">
+    <option value="1">Muy Eficiente</option>
+    <option value= "2">Eficiente</option>
+    <option value="3">Poco Eficiente</option>
+    <option value="4">Deficiente</option>
+</select>
+
+<select name="cal_formacion">
+    <option value="1">Muy Eficiente</option>
+    <option value= "2">Eficiente</option>
+    <option value="3">Poco Eficiente</option>
+    <option value="4">Deficiente</option>
+</select>
+
+<select name="util_residencia">
+    <option value="1">Excelente</option>
+    <option value= "2">Buena</option>
+    <option value="3">Regular</option>
+    <option value="4">Mala</option>
+    <option value="5">Pesimo</option>
+</select>
+
+<select name = "carrera" >
+      <option value="1">Bioquimica</option>
+    
+</select>
+
+<select name = "empresa" >
+      <option value="1">Ittehuacan</option>
+    
+</select>
+
+### Formulario Datos laborales
+
+<select name="medio_obt_trabajo">
+    <option value="1">Bolsa de Trabajo del Plantel</option>
+    <option value= "2">Contacto Personales</option>
+    <option value="3">Residencias Profesionales</option>
+    <option value="4">Medios Masivos de Comunicación</option>
+    <option value="5">Otros</option>
+</select>
+
+<select name="req_contratacion">
+    <option value="1">Competencias Laborales</option>
+    <option value= "2">Titulo Profesional</option>
+    <option value="3">Examen de Selección</option>
+    <option value="4">Idioma Extranjero</option>
+    <option value="5">Otros</option>
+</select>
+
+<select name="actit_habil">
+    <option value="1">Principios Y Valores</option>
+    <option value= "2">Ningunos</option>
+    <option value="3">Otro</option>
+</select>
+
+<select name="idioma_trab">
+    <option value="1">Ingles</option>
+    <option value= "2">Frances</option>
+    <option value="3">Aleman</option>
+    <option value="4">Japones</option>
+    <option value="5">Otros</option>
+</select>
+
+
+<input  type="text" name="hablar" class="small-12.columns text-center" placeholder="Hablar" required/>
+
+<input  type="text" name="escribir" class="small-12.columns text-center" placeholder="Escribir" required/>
+
+<input  type="text" name="leer" class="small-12.columns text-center" placeholder="Leer" required/>
+
+<input  type="text" name="escuchar" class="small-12.columns text-center" placeholder="Escuchar" required/>
+
+<input  type="number" name="salario_min_diario" class="small-12.columns text-center" placeholder="Salario Minimo Diario" required/>
+
+<select name="ant_empleo">
+    <option value="1">Menos de un año</option>
+    <option value= "2">Un año</option>
+    <option value="3">Dos años</option>
+    <option value="4">Tres años</option>
+    <option value="5">Mas de Tres años</option>
+</select>
+
+<input  type="datatime" name="anio_ingr_laboral" class="small-12.columns text-center" placeholder="Año de Ingreso Laboral" required/>
+
+<select name="niv_jerarquico">
+    <option value="1">Tecnico</option>
+    <option value= "2">Supervisor</option>
+    <option value="3">Jefe de Area</option>
+    <option value="4">Funcionario</option>
+    <option value="5">Empresario</option>
+</select>
+
+
+<input  type="select" name="relac_trab_form" class="small-12.columns text-center" placeholder="Relacion del Trabajo con su area de Formacion" required/>
+
+<select name="cond_trab">
+    <option value="1">Base</option>
+    <option value= "2">Eventual</option>
+    <option value="3">Contrato</option>
+    <option value="4">Otros</option>
+</select>
+
+<select name="tomar_curso">
+    <option value="1">Si</option>
+    <option value= "2">No</option>
+</select>
+
+
+<input  type="text" name="cuales_tc" class="small-12.columns text-center" placeholder="Cuales" required/>
+
+<select name="tomar_curso">
+    <option value="1">Si</option>
+    <option value= "2">No</option>
+</select>
+
+<input  type="text" name="cual_tp" class="small-12.columns text-center" placeholder="Cual" required/>
+
+<input  type="text" name="cuales_os" class="small-12.columns text-center" placeholder="Cuales" required/>
+
+<input  type="text" name="cuales_op" class="small-12.columns text-center" placeholder="Cuales" required/>
+
+<input  type="text" name="comentarios" class="small-12.columns text-center" placeholder="Comentarios" required/>
+
+### Formulario Encargado
+
+<input  type="text" name="nom_encargado" class="small-12.columns text-center" placeholder="Nombre del Encargado" required/>
+
+<input  type="text" name="titulo" class="small-12.columns text-center" placeholder="Titulo" required/>
+
+<input  type="text" name="puesto" class="small-12.columns text-center" placeholder="Puesto" required/>
+
+### Formulario Empresa
+
+<input  type="text" name="giro_actividad" class="small-12.columns text-center" placeholder="Giro o Actividad" required/>
+
+<input  type="text" name="razon_social" class="small-12.columns text-center" placeholder="Razon Social" required/>
+
+<input  type="text" name="domicilio" class="small-12.columns text-center" placeholder="Domicilio" required/>
+
+<input  type="text" name="cuidad" class="small-12.columns text-center" placeholder="Cuidad" required/>
+
+<input  type="text" name="municipio" class="small-12.columns text-center" placeholder="Municipio" required/>
+
+<input  type="text" name="estado" class="small-12.columns text-center" placeholder="Estado" required/>
+
+<input  type="text" name="telefono" class="small-12.columns text-center" placeholder="Telefono" required/>
+
+<input  type="text" name="fax" class="small-12.columns text-center" placeholder="Fax" required/>
+
+<input  type="emil" name="e_mail" class="small-12.columns text-center" placeholder="E-mal" required/>
+
+<input  type="url" name="url" class="small-12.columns text-center" placeholder="Url" required/>
+
+<input  type="text" name="escuchar" class="small-12.columns text-center" placeholder="Escuchar" required/>

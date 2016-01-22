@@ -12,7 +12,7 @@
   <section class="top-bar-section">
     <!-- Right Nav Section -->
     <ul class="right">
-    {% if not user.is_anonymous  %}
+   {% if user.is_staff %}
       <li class="has-form">
         <div class="row collapse">
           <div class="large-8 small-9 columns">
@@ -40,7 +40,7 @@
         </div>
       </li>
     {% endif %}
-    {% if not user.is_anonymous  %}
+    {% if user.is_staff %}
       <li class="has-form">
         <div class="row collapse">
         <form id="f_numcontrol" method="post" action="/home/">{% csrf_token %}
@@ -55,21 +55,28 @@
       </li>
     {% endif %}
       
-      <li class="active"><a href="/info">INFORMACIÓN</a></li>
+      <li class="active"><a href="/egresado/registro">REGISTRO</a></li>
       {% if not user.is_anonymous %}
         <li class="has-dropdown {{c_login}}">
           <a href="#">HOLA <span style="color:rgb(213, 165, 245);margin-right:6px;">{{user.username|upper}}</span><span style="color:rgb(213, 165, 245);" class="icon-smile"></span></a>
           <ul class="dropdown">
             {% if user.is_staff %}
               <li><a href="/admin"><span class="icon-cog"></span>Administración del Sistema</a></li>
+              <li><a href="/graficas">Graficas</a></li>
             {% endif %}
-            <li><a href="/graficas">Graficas</a></li>
+            {% if not user.is_staff %}
+            <li><a href="/egresado/change_password">Cambiar Contraseña</a></li>
+            <li><a href="/egresado/actualizar">Actualizar Datos</a></li>
+            <li><a href="/egresado/occ">OCC</a></li>
+            {% endif %}
+
+
             <li><a href="/logout"><span class="icon-switch"></span>Cerrar Sesión</a></li>
           </ul>
         </li>
       {% else %}
 
-         <li class="{{c_login}}"><a href="/login"><span class="icon-user"></span>INICIAR SESION</a></li>
+         <li class="{{c_login}}"><a href="/"><span class="icon-user"></span>INICIAR SESIÓN</a></li>
       {% endif %}
     
     </ul>

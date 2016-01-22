@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from django.db import models
-from empresa.models import Empresa
 from perfil.estados import ESTADO_OPTIONS
 
 # Create your models here.
@@ -11,9 +10,10 @@ class Carreras (models.Model):
 
 
 
-
-
 class PerfilEgresado(models.Model):
+    carrera = models.ForeignKey(Carreras)
+    #user_login = model.ForeignKey()
+
     nombre = models.CharField(max_length=30)
     a_paterno = models.CharField(max_length=30)
     a_materno = models.CharField(max_length=30)
@@ -31,6 +31,7 @@ class PerfilEgresado(models.Model):
                                       choices=SEXO_OPTIONS,
                                       default=MASCULINO)
     curp = models.CharField(max_length=19)
+    
     CASADO = 'C'
     SOLTERO = 'S'
     DIVORCIADO ='D'
@@ -52,10 +53,11 @@ class PerfilEgresado(models.Model):
     especialidad = models.CharField(max_length=20)
     e_mail = models.EmailField(blank=True)
     mes_anio_egreso = models.DateField(blank=True)
-    telefonos = models.CharField(max_length=15)
-    man_paq_comp = models.CharField(max_length=50)
+    tel_casa = models.CharField(max_length=15)
+    niv_ing = models.IntegerField()
+    otros_idms = models.CharField(max_length=100)
+    man_paq_comp = models.CharField(max_length=200)
 
-   
     SIT = "1"
     NOT = "0"
     TITULADO_OPTIONS = (
@@ -236,10 +238,6 @@ class PerfilEgresado(models.Model):
     util_residencia = models.CharField(max_length=2,
                                       choices=UTIL_RESIDENCIA_OPTIONS)
 
-
-    carrera = models.ForeignKey(Carreras)
-    empresa = models.ForeignKey(Empresa,blank=True, null=True)
-   
     def __unicode__(self):
         return self.nombre
 
@@ -330,7 +328,7 @@ class DatosLaborales (models.Model):
         (UNO, 'Un año'),
         (DOS, 'Dos años'),
         (TRES, 'Tres años'),
-        (MASDETRES, 'Mas de Tres años'),
+        (MASDETRES, 'Mas de Tres años'),    
     )
     ant_empleo = models.CharField(max_length=2,
                                       choices=ANT_EMPLEO_OPTIONS,
@@ -444,7 +442,7 @@ class DatosLaborales (models.Model):
 
 
 
-    comentarios = models.CharField(max_length=100)
+    comentarios = models.CharField(max_length=300)
     
     def __unicode__(self):
         return self.medio_obt_trabajo
