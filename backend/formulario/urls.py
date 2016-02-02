@@ -10,9 +10,11 @@ urlpatterns=patterns('formulario.views',
     #url(r'^/datoslaborales/', 'datos_laborales', name='datos_laborales'),
     #url(r'^gracias/', 'encuesta_completa', name='encuesta_completa'),
     url(r'actualizar/', 'actualizar', name='actualizar'),
+    url(r'change_password/', 'change_password', name='change_password'),
     url(r'perfil/', 'actualizar_perfil', name='actualizar_peril'),
     url(r'datoslaborales/', 'actualizar_datoslab', name='actualizar_datoslab'),
     url(r'empresa/', 'actualizar_empresa', name='actualizar_empresa'),
-    
+    url(r'occ/', 'ligaocc', name='ligaocc'),
+
 
 )

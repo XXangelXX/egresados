@@ -1,9 +1,39 @@
 {% extends "base/menu.html" %}
 {% block title %}Actualizar{% endblock title %}
 {% block contenido %}
-    <header>
-        <h1>
-            Actualizar Imformacion
+    <header class= "row text-center">
+        <h1 class="text-white">
+            Actualizar Información
         </h1>
     </header>
+    <section class= "row text-center">
+        <article class= "medium-4 columns ">
+            <a href="/egresado/perfil">
+                <div class="panel">
+                    Actualizar Perfil
+                </div>
+            </a>
+        </article>
+        <article class= "medium-4 columns ">
+           <a href="/egresado/datoslaborales">
+                <div class="panel">
+                    Actualizar Datos Laborales
+                </div>
+            </a> 
+        </article>
+        <article class= "medium-4 columns ">
+          <a href="/egresado/empresa">
+                <div class="panel">
+                    Actualizar Empresa
+                </div>
+            </a>  
+        </article>
+        <article class= "medium-12 columns">
+          <a class="button expand round "href="/egresado/occ">
+            
+                    FAVOR DE REALIZAR LA ENCUESTA DE  OCC 
+          </a>  
+        </article>
+    </section>
+
 {% endblock contenido %}

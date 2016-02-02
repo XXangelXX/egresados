@@ -27,22 +27,43 @@
            <div class="row">
             <div class="medium-6 columns">
             <!-- aqui empiezan tus input -->
-            <input  type="text" name="nombre" class="small-12.columns text-center" placeholder="Nombre" required/>
+            <input  type="text" {%if user.nombre%}value="{{user.f_nacimiento}}"{%endif%} name="nombre" class="small-12.columns text-center" placeholder="Nombre" required/>
 
             </div>
             <div class="medium-6 columns">
-              <input  type="text" name="a_paterno" class="small-12.columns text-center" placeholder="Apellido Paterno" required/>
+              <input  type="text" {{if user.a_paterno}}value="{{user.a_paterno}}"{{endif}} name="a_paterno" class="small-12.columns text-center" placeholder="Apellido Paterno" required/>
             </div>
             <div class="medium-6 columns">
-              <input  type="text" name="a_materno" class="small-12.columns text-center" placeholder="Apellido Materno" required/>
+              <input  type="text" {{if user.a_materno}}value="{{user.a_materno}}"{{endif}} name="a_materno" class="small-12.columns text-center" placeholder="Apellido Materno" required/>
 
             </div>
             <div class="medium-6 columns">
-              <input  type="text" name="num_control" class="small-12.columns text-center" placeholder="Numero de Control" required/>
+              <input  type="text" {{if user.num_control}}value="{{user.num_control}}"{{endif}} name="num_control" class="small-12.columns text-center" placeholder="Numero de Control" required/>
              </div>
+             
+             <div class="medium-6 columns">
+             <label>Carrera
+                    <select name= "carrera">
+              {{if user.carrera}} <option value="{{user.carrera}}" selected>{{user.get_carrera_display}} </option> {{endif}}
+              
+              <option  value= "1">Ing.Bioquimica</option>
+              <option  value= "2">Ing.Civil</option>
+              <option  value= "3">Ing. Electronica</option>
+              <option  value= "4">Ing. Industrial</option>
+              <option  value= "5">Ing.Mecatronica</option>
+              <option  value= "6">Ing. Sist. Computacionales</option>
+              <option  value= "7">Lic. Administración</option>
+              <option  value= "8">Contaduría Pública</option>
+              <option  value= "9">Ing. Electromecánica</option>
+              <option  value= "10">Ing. Gestión Empresarial</option>
+              <option  value= "11">Ing. Logistica</option>
+                    </select>
+              </label>
+
+            </div>
              <div class="medium-6 columns">
             <!-- FECHA -->
-            <input  type="datetime" name="f_nacimiento" class="datepicker small-12.columns text-center" placeholder="Fecha de Nacimiento" required/> 
+            <input  type="datetime" {%if user.f_nacimiento%}value="{{user.f_nacimiento}}"{%endif%} name="f_nacimiento" class="datepicker small-12.columns text-center" placeholder="Fecha de Nacimiento" required/> 
         </div>
 
         <div class="medium-6 columns">
@@ -52,8 +73,8 @@
 
         </div>
 
-         <div class="medium-6 columns">
-        <input  type="text" name="curp" class="small-12.columns text-center" placeholder="Curp" required/>
+         <div class="medium-6 columns"> 
+        <input  type="text" {{if user.nombre}}value="{{user.curp}}"{{endif}} name="curp" class="small-12.columns text-center" placeholder="Curp" required/>
         </div>
 
         <div class="medium-6 columns">
@@ -66,39 +87,71 @@
         </div>
 
         <div class="medium-6 columns">
-        <input  type="text" name="estado" class="small-12.columns text-center" placeholder="Estado" required/>
+        <select name="estado">
+              <option value="Aguascalientes">Aguascalientes</option>
+              <option value="Baja California">Baja California </option>
+              <option value="Baja California Sur">Baja California Sur </option>
+              <option value="Campeche">Campeche </option>
+              <option value="Chiapas">Chiapas </option>
+              <option value="Chihuahua">Chihuahua </option>
+              <option value="Coahuila">Coahuila </option>
+              <option value="Colima">Colima </option>
+              <option value="Distrito Federal">Distrito Federal</option>
+              <option value="Durango">Durango </option>
+              <option value="Estado de Mexico">Estado de México </option>
+              <option value="Guanajuato">Guanajuato </option>
+              <option value="Guerrero">Guerrero </option>
+              <option value="Hidalgo">Hidalgo </option>
+              <option value="Jalisco">Jalisco </option>
+              <option value="Michoacan">Michoacán </option>
+              <option value="Morelos">Morelos </option>
+              <option value="Nayarit">Nayarit </option>
+              <option value="Nuevo Leon">Nuevo León </option>
+              <option value="Oaxaca">Oaxaca </option>
+              <option value="Puebla" selected>Puebla </option>
+              <option value="Queretaro">Querétaro </option>
+              <option value="Quintana Roo">Quintana Roo </option>
+              <option value="San Luis Potosi">San Luis Potosí </option>
+              <option value="Sinaloa">Sinaloa </option>
+              <option value="Sonora">Sonora </option>
+              <option value="Tabasco">Tabasco </option>
+              <option value="Tamaulipas">Tamaulipas </option>
+              <option value="Tlaxcala">Tlaxcala </option>
+              <option value="Veracruz">Veracruz </option>
+              <option value="Yucatan">Yucatán </option>
+              <option value="Zacatecas">Zacatecas</option></select>
         </div>
 
         <div class="medium-6 columns">
-        <input  type="text" name="municipio" class="small-12.columns text-center" placeholder="Municipio" required/>
+        <input  type="text" {{if user.nombre}}value="{{user.municipio}}"{{endif}} name="municipio" class="small-12.columns text-center" placeholder="Municipio" required/>
         </div>
 
         <div class="medium-6 columns">
-        <input  type="text" name="cuidad" class="small-12.columns text-center" placeholder="Cuidad" required/>
+        <input  type="text" {{if user.nombre}}value="{{user.cuidad}}"{{endif}} name="cuidad" class="small-12.columns text-center" placeholder="Cuidad" required/>
         </div>
 
         <div class="medium-6 columns">
-        <input  type="text" name="domicilio" class="small-12.columns text-center" placeholder="Domicilio" required/>
+        <input  type="text" {{if user.nombre}}value="{{user.domicilio}}"{{endif}} name="domicilio" class="small-12.columns text-center" placeholder="Domicilio" required/>
         </div>
 
         <div class="medium-6 columns">
-        <input  type="tel" name="telefono" class="small-12.columns text-center" placeholder="Telefono" required/>
+        <input  type="tel" {{if user.nombre}}value="{{user.telefono}}"{{endif}} name="telefono" class="small-12.columns text-center" placeholder="Telefono" required/>
         </div>
 
         <div class="medium-6 columns">
-        <input  type="text" name="especialidad" class="small-12.columns text-center" placeholder="Especialidad" required/>
+        <input  type="text" {{if user.nombre}}value="{{user.especialidad}}"{{endif}} name="especialidad" class="small-12.columns text-center" placeholder="Especialidad" required/>
         </div>
 
         <div class="medium-6 columns">
-        <input  type="email" name="e_mail" class="small-12.columns text-center" placeholder="e-mail" required/>
+        <input  type="email" {{if user.nombre}}value="{{user.e_mail}}"{{endif}} name="e_mail" class="small-12.columns text-center" placeholder="e-mail" required/>
         </div>
 
         <div class="medium-6 columns">
-        <input  type="datetime" name="mes_anio_egreso" class="datepicker small-12.columns text-center" placeholder="Mes y Año de Egreso" required/>
+        <input  type="datetime" {{if user.nombre}}value="{{user.mes_anio_egreso}}"{{endif}} name="mes_anio_egreso" class="datepicker small-12.columns text-center" placeholder="Mes y Año de Egreso" required/>
         </div>
 
         <div class="medium-6 columns">
-        <input  type="tel" name="tel_casa" class="small-12.columns text-center" placeholder="Telefono Casa" required/>
+        <input  type="tel" {{if user.nombre}}value="{{user.tel_casa}}"{{endif}} name="tel_casa" class="small-12.columns text-center" placeholder="Telefono Casa" required/>
         </div>
 
         
@@ -118,11 +171,11 @@
         </div>
 
         <div class="medium-6 columns">
-        <input  type="text" name="otros_idms" class="small-12.columns text-center" placeholder="Otros Idiomas" required/>
+        <input  type="text" {{if user.nombre}}value="{{user.otros_idms}}"{{endif}} name="otros_idms" class="small-12.columns text-center" placeholder="Otros Idiomas" required/>
         </div>
         
         <div class="medium-6 columns">
-        <input  type="text" name="man_paq_comp" class="small-12.columns text-center" placeholder="Manejo de Paquetes Computacionales" required/>
+        <input  type="text" {{if user.nombre}}value="{{user.man_paq_comp}}"{{endif}} name="man_paq_comp" class="small-12.columns text-center" placeholder="Manejo de Paquetes Computacionales" required/>
         </div>
 
         

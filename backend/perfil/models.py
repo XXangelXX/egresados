@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from django.contrib.auth.models import User
 from django.db import models
 from perfil.estados import ESTADO_OPTIONS
 
@@ -12,6 +13,7 @@ class Carreras (models.Model):
 
 class PerfilEgresado(models.Model):
     carrera = models.ForeignKey(Carreras)
+    usuario =  models.ForeignKey(User)
     #user_login = model.ForeignKey()
 
     nombre = models.CharField(max_length=30)

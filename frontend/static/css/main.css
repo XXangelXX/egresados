@@ -78,7 +78,18 @@ color: white; /* W3C */
 #introduccion p{
     color:white;
 }
+#foo{
+  background: rgba(30, 37, 110, 1);
+  box-shadow: 2px 8px 7px rgb(150, 150, 150);
+ 
+}
 #foo p{
 
     margin-bottom: 0px;
+    color:white;
+
+}
+
+.text-white{
+  color:white;
 }

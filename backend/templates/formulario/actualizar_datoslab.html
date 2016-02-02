@@ -1,9 +1,309 @@
 {% extends "base/menu.html" %}
 {% block title %}Actualizar Datos Laborales{% endblock title %}
+{% load staticfiles %}
+{% block cssFormulario %}
+     <link rel="stylesheet" type="text/css" href="{% static "datepicker/themes/default.css" %}">
+     <link rel="stylesheet" type="text/css" href="{% static "datepicker/themes/default.date.css" %}">
+{% endblock cssFormulario %}
+{% block chartjs %}
+    <script src="{% static "datepicker/picker.js" %}"></script>
+    <script src="{% static "datepicker/picker.date.js" %}"></script>
+    <script src="{% static "datepicker/translations/es_ES.js" %}"></script>
+{% endblock chartjs %}
+{% block graficajs %}
+<script >
+    $('.datepicker').pickadate();
+</script>    
+{% endblock graficajs %}
+
 {% block contenido %}
-    <header>
-        <h1>
-            Actualizar Datos Laborales
-        </h1>
-    </header>
+    <section class="row panel regular">
+    <article class="small-12 columns" style="background: #fff;">
+        <!-- Perfil Formulario -->
+       <form action="." method="POST">{% csrf_token %}
+            <h2 class="text-center panel callout">Datos Laborales</h2>
+
+           <!-- por cada bloque -->
+      <div class="row">
+        <div class="medium-12 columns">
+          <label>1.-Medio de Obtencion de Trabajo</label>
+          <div class="row">
+          <div class="medium-4 columns">
+            <input type="radio" name="medio_obt_trabajo" value="1"class="small-12.columns text-center"><label for="1">Bolsa de Trabajo del Plantel</label>
+          </div>
+          <div class="medium-4 columns">
+            <input type="radio" name="medio_obt_trabajo" value="2"class="small-12.columns text-center"><label for="2">Contacto Personales</label>
+          </div>
+          <div class="medium-4 columns">
+            <input type="radio" name="medio_obt_trabajo" value="3"class="small-12.columns text-center"><label for="3">Residencias Profesionales</label>
+          </div>
+          <div class="medium-6 columns">
+            <input type="radio" name="medio_obt_trabajo" value="4"class="small-12.columns text-center"><label for="4">Medios Masivos de Comunicación</label>
+          </div>
+          <div class="medium-6 columns">
+            <input type="radio" name="medio_obt_trabajo" value="5"class="small-12.columns text-center"><label for="5">Otros</label>
+          </div>
+          </div>  
+        </div>
+
+      <div class="medium-12 columns panel callout">
+        <label>2.-Requerimientos de Contratacion</label>
+        <div class="row">
+        <div class="medium-4 columns">
+          <input type="radio" name="req_contratacion" value="1"class="small-12.columns text-center"><label for="1">Competencias Laborales</label>
+        </div>
+        <div class="medium-4 columns">
+          <input type="radio" name="req_contratacion" value="2"class="small-12.columns text-center"><label for="2">Titulo Profesional</label>
+        </div>
+        <div class="medium-4 columns">
+           <input type="radio" name="req_contratacion" value="3"class="small-12.columns text-center"><label for="3">Examen de Selección</label>
+        </div>
+        <div class="medium-6 columns">
+          <input type="radio" name="req_contratacion" value="4"class="small-12.columns text-center"><label for="4">Idioma Extranjero</label>
+        </div>
+        <div class="medium-6 columns">
+           <input type="radio" name="req_contratacion" value="5"class="small-12.columns text-center"><label for="5">Otros</label>
+        </div>
+        </div>
+      </div>
+
+
+      <div class="medium-12 columns">
+        <label>3.-Actitudes y habilidades socio-comunicativas</label>
+        <div class="row">
+        <div class="medium-4 columns">
+          <input type="radio" name="actit_habil" value="1"class="small-12.columns text-center"><label for="1">Principios Y Valores</label>
+        </div>
+        <div class="small-6 medium-4 columns">
+          <input type="radio" name="actit_habil" value="2"class="small-12.columns text-center"><label for="2">Ninguno</label>
+        </div>
+        <div class="small-6 medium-4 columns">
+          <input type="radio" name="actit_habil" value="3"class="small-12.columns text-center"><label for="3">Otros</label>
+        </div>
+        </div>
+      </div>
+
+      <div class="medium-12 columns panel callout">
+          <label>4.-Idioma que utiliza en su trabajo</label>
+          <div class="row">
+          <div class="small-6 columns">
+            <input type="radio" name="idioma_trab" value="1"class="small-12.columns text-center"><label for="1">Ingles</label>
+          </div>
+          <div class="small-6 columns">
+            <input type="radio" name="idioma_trab" value="2"class="small-12.columns text-center"><label for="2">Frances</label>
+          </div>
+          <div class="small-6 columns">
+            <input type="radio" name="idioma_trab" value="3"class="small-12.columns text-center"><label for="3">Aleman</label>
+          </div>
+          <div class="small-6 columns">
+            <input type="radio" name="idioma_trab" value="4"class="small-12.columns text-center"><label for="4">Japones</label>
+          </div>
+          <div class="small-12 columns">
+            <input type="radio" name="idioma_trab" value="5"class="small-12.columns text-center"><label for="5">Otro</label>
+          </div>
+          </div>   
+      </div>
+
+      <div class="medium-12 columns">
+        <label>Nivel de Ingles (Hablar)</label>
+            <div class="row">
+                <div class="small-9 columns">
+                  <div class="range-slider" data-slider data-options="start: 0; end: 100;step: 5;display_selector: #hablar; initial: 50;">
+                     <span class="range-slider-handle" role="slider" tabindex="0"></span>
+                     <span class="range-slider-active-segment"></span>
+                  </div>
+                </div>        
+                <div class="small-3 columns">
+                    <input type="number" name="hablar" id="hablar" min="0" max="100" step="5" value="50" />
+                </div>
+            </div>
+        </div>
+
+        <div class="medium-12 columns">
+        <label>Nivel de Ingles (Escribir)</label>
+            <div class="row">
+                <div class="small-9 columns">
+                  <div class="range-slider" data-slider data-options="start: 0; end: 100;step: 5;display_selector: #escribir; initial: 50;">
+                     <span class="range-slider-handle" role="slider" tabindex="0"></span>
+                     <span class="range-slider-active-segment"></span>
+                  </div>
+                </div>        
+                <div class="small-3 columns">
+                    <input type="number" name="escribir" id="escribir" min="0" max="100" step="5" value="50" />
+                </div>
+            </div>
+        </div>
+
+        <div class="medium-12 columns">
+        <label>Nivel de Ingles (Leer)</label>
+            <div class="row">
+                <div class="small-9 columns">
+                  <div class="range-slider" data-slider data-options="start: 0; end: 100;step: 5;display_selector: #leer; initial: 50;">
+                     <span class="range-slider-handle" role="slider" tabindex="0"></span>
+                     <span class="range-slider-active-segment"></span>
+                  </div>
+                </div>        
+                <div class="small-3 columns">
+                    <input type="number" name="leer" id="leer" min="0" max="100" step="5" value="50" />
+                </div>
+            </div>
+        </div>
+
+      <div class="medium-6 columns">
+        <input  type="number" name="salario_min_diario" class="small-12.columns text-center" placeholder="Salario Minimo Diario" required/>
+      </div>
+
+      <div class="medium-12 columns panel callout">
+        <label>Antigüedad en el empleo</label>
+        <div class="row">
+        <div class="small-7  medium-6 columns">
+          <input type="radio" name="ant_empleo" value="1"class="small-12.columns text-center"><label for="1">Menos de un año</label>
+        </div>
+        <div class="small-5 medium-6 columns">
+          <input type="radio" name="ant_empleo" value="2"class="small-12.columns text-center"><label for="2">Un año</label>
+        </div>
+        <div class="small-6 columns">
+          <input type="radio" name="ant_empleo" value="3"class="small-12.columns text-center"><label for="3">Dos años</label>
+        </div>
+        <div class="small-6 columns">
+          <input type="radio" name="ant_empleo" value="4"class="small-12.columns text-center"><label for="4">Tres años</label>
+        </div>
+        <div class="small-12 columns">
+          <input type="radio" name="ant_empleo" value="5"class="small-12.columns text-center"><label for="5">Mas de Tres años</label>
+        </div>
+      </div> 
+      </div>
+
+      <div class="medium-6 columns">
+      <label>Año de Ingreso Laboral</label>
+        <input  type="datetime" name="anio_ingr_laboral" class="datepicker small-12.columns text-center" placeholder="Año de Ingreso Laboral" required/> 
+      </div>
+
+      <div class="medium-12 columns panel callout">
+        <label>Nivel Jerarquico</label>
+        <div class="row">
+        <div class="small-6 columns">
+          <input type="radio" name="niv_jerarquico" value="1"class="small-12.columns text-center"><label for="1">Tecnico</label>
+        </div>
+        <div class="small-6 columns">
+          <input type="radio" name="niv_jerarquico" value="2"class="small-12.columns text-center"><label for="2">Supervisor</label>
+        </div>
+        <div class="small-6 columns">
+          <input type="radio" name="niv_jerarquico" value="3"class="small-12.columns text-center"><label for="3">Jefe de Area</label>
+        </div>
+        <div class="small-6 columns">
+          <input type="radio" name="niv_jerarquico" value="4"class="small-12.columns text-center"><label for="4">Funcionario</label>
+        </div>
+        <div class="small-12 columns">
+          <input type="radio" name="niv_jerarquico" value="5"class="small-12.columns text-center"><label for="5">Empresario</label>
+        </div>
+        </div>
+      </div>
+
+      <div class="medium-12 columns">
+        <label>Relacion del Trabajo con su area de Formacion</label>
+            <div class="row">
+                <div class="small-9 columns">
+                  <div class="range-slider" data-slider data-options="start: 0; end: 100;step: 5;display_selector: #relac_trab_form ; initial: 50;">
+                     <span class="range-slider-handle" role="slider" tabindex="0"></span>
+                     <span class="range-slider-active-segment"></span>
+                  </div>
+                </div>        
+                <div class="small-3 columns">
+                    <input type="number" name="relac_trab_form" id="relac_trab_form " value="50"  min="0" max="100" step="5" />
+                </div>
+            </div>
+        </div>
+
+      <div class="medium-12 columns panel callout">
+        <label>Condición de Trabajo</label>
+        <div class="row">
+        <div class="small-6 columns">
+          <input type="radio" name="cond_trab" value="1"class="small-12.columns text-center"><label for="1">Base</label>
+        </div>
+        <div class="small-6 columns">
+          <input type="radio" name="cond_trab" value="2"class="small-12.columns text-center"><label for="2">Eventual</label>
+        </div>
+        <div class="small-6 columns"><input type="radio" name="cond_trab" value="3"class="small-12.columns text-center"><label for="3">Contrato</label></div>
+        <div class="small-6 columns">
+          <input type="radio" name="cond_trab" value="4"class="small-12.columns text-center"><label for="4">Otros</label>
+        </div>
+        </div> 
+      </div>
+
+      <div class="medium-12 columns">
+        <label>EXPECTATIVAS DE DESARROLLO, SUPERACIÓN PROFESIONAL Y DE ACTUALIZACIÓN</label>
+      </div>
+
+      <div class="medium-12 columns">
+        <label>Le gustaría tomar cursos de actualización</label>
+        <input type="radio" name="tomar_curso" value="1"class="small-12.columns text-center"><label for="1">Si</label>
+        <input type="radio" name="tomar_curso" value="2"class="small-12.columns text-center"><label for="2">No</label>
+      </div>
+
+      <div class="medium-12 columns">
+        <input  type="text" name="cuales_tc" class="small-12.columns text-center" placeholder="Cuales" required/>
+      </div>
+
+      <div class="medium-12 columns">
+        <label>Le gustaría tomar algún Posgrado</label>
+        <input type="radio" name="tomar_tp" value="1"class="small-12.columns text-center"><label for="1">Si</label>
+        <input type="radio" name="tomar_tp" value="2"class="small-12.columns text-center"><label for="2">No</label>
+      </div>
+
+      <div class="medium-12 columns">
+        <input  type="text" name="cuales_tp" class="small-12.columns text-center" placeholder="Cual" required/>
+      </div>
+
+      <div class="medium-12 columns">
+        <label>PARTICIPACIÓN SOCIAL DE LOS EGRESADOS</label>
+      </div>
+
+
+      <div class="medium-12 columns">
+        <label>Pertenece a organizaciones sociales</label>
+        <input type="radio" name="cuales_os" value="1"class="small-12.columns text-center"><label for="1">Si</label>
+        <input type="radio" name="cuales_os" value="2"class="small-12.columns text-center"><label for="2">No</label>
+      </div>
+      <div class="medium-12 columns">
+        <input  type="text" name="cuales_os" class="small-12.columns text-center" placeholder="Cuales" required/>
+      </div>
+
+      <div class="medium-12 columns">
+        <label>Pertenece a organismos de profesionistas</label>
+        <input type="radio" name="cuales_op" value="1"class="small-12.columns text-center"><label for="1">Si</label>
+        <input type="radio" name="cuales_op" value="2"class="small-12.columns text-center"><label for="2">No</label>
+      </div>
+      <div class="medium-12 columns">
+        <input  type="text" name="cuales_op" class="small-12.columns text-center" placeholder="Cuales" required/>
+      </div>
+
+      <div class="medium-12 columns">
+        <label>Pertenece a la asociación de egresados</label>
+        <input type="radio" name="cuales_op" value="1"class="small-12.columns text-center"><label for="1">Si</label>
+        <input type="radio" name="cuales_op" value="2"class="small-12.columns text-center"><label for="2">No</label>
+      </div>
+
+
+      <div class="medium-12 columns">
+      <label>Comentarios</label>
+        <input  type="text" name="comentarios" class="small-12.columns text-center" placeholder="Comentarios" required/> 
+      </div>
+     </div> <!--Row principal -->
+
+      
+       
+        <!-- aqui empiezan boton de Enviar -->
+        <div class="row">
+            <div class="medium-9 medium-centered columns">
+                <input class="button round expand" type="submit" value="Enviar Datos">
+            </div>
+        </div>
+
+
+
+       </form>
+        
+    </article>
+</section>
 {% endblock contenido %}

@@ -38,10 +38,10 @@ def index_view(request):
             return render_to_response('home/index.html',
                           {'c_login':'active'},
                           context_instance=RequestContext(request))
-    elif usuario.is_staff():
+    elif usuario.is_staff:
         return HttpResponseRedirect('/home')
     else:
-        return HttpResponseRedirect('/actualizar')
+        return HttpResponseRedirect('/egresado/actualizar')
 
 from django.core.exceptions import ObjectDoesNotExist
 from perfil.models import PerfilEgresado
@@ -65,6 +65,7 @@ MAXIMO_ITEMS_HOJA = 200
 def carrera(request):
     
     pagina = request.GET.get("pagina", "")
+    filtro = request.GET.get("filtro", "")
     
     if request.method=='POST':
         cxt={}
