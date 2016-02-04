@@ -34,27 +34,28 @@
         </div>
 
         <div class="medium-6 columns">
-          <input  type="text" {{if user.nombre}}value="{{user.nombre}}"{{endif}} name="giro_actividad" class="small-12.columns text-center" placeholder="Giro o Actividad" required/>
+          <input  type="text" {%if user.giro_actividad%}value="{{user.giro_actividad}}"{{endif}} name="giro_actividad" class="small-12.columns text-center" placeholder="Giro o Actividad" required/>
         </div>
 
         <div class="medium-6 columns">
-          <input  type="text" name="razon_social" class="small-12.columns text-center" placeholder="Razon Social" required/>
+          <input  type="text" {%if user.razon_social%}value="{{user.razon_social}}"{%endif%} name="razon_social" class="small-12.columns text-center" placeholder="Razon Social" required/>
         </div>
 
         <div class="medium-6 columns">
-          <input  type="text" name="domicilio" class="small-12.columns text-center" placeholder="Domicilio" required/>
+          <input  type="text" {%if user.domicilio%}value="{{user.domicilio}}"{%endif%} name="domicilio" class="small-12.columns text-center" placeholder="Domicilio" required/>
         </div>
 
         <div class="medium-6 columns">
-          <input  type="text" name="cuidad" class="small-12.columns text-center" placeholder="Cuidad" required/>
+          <input  type="text" {%if user.cuidad%}value="{{user.cuidad}}"{%endif%} name="cuidad" class="small-12.columns text-center" placeholder="Cuidad" required/>
         </div>
 
         <div class="medium-6 columns">
-          <input  type="text" name="municipio" class="small-12.columns text-center" placeholder="Municipio" required/>
+          <input  type="text" {%if user.municipio%}value="{{user.municipio}}"{%endif%} name="municipio" class="small-12.columns text-center" placeholder="Municipio" required/>
         </div>
 
         <div class="medium-6 columns">
           <select name="estado">
+        {%if user.estado%} <option value="{{user.estado}}" selected>{{user.get_estado_display}} </option> {{endif}}
               <option value="Aguascalientes">Aguascalientes</option>
               <option value="Baja California">Baja California </option>
               <option value="Baja California Sur">Baja California Sur </option>
@@ -90,23 +91,25 @@
         </div>
 
         <div class="medium-6 columns">
-          <input  type="text" name="telefono" class="small-12.columns text-center" placeholder="Telefono" required/>
+          <input  type="text" {%if user.telefono%}value="{{user.telefono}}"{%endif%} name="telefono" class="small-12.columns text-center" placeholder="Telefono" required/>
         </div>
 
         <div class="medium-6 columns">
-          <input  type="text" name="fax" class="small-12.columns text-center" placeholder="Fax" required/>
+          <input  type="text" {%if user.fax%}value="{{user.fax}}"{%endif%}name="fax" class="small-12.columns text-center" placeholder="Fax" required/>
         </div>
 
         <div class="medium-6 columns">
-        <input  type="email" name="e_mail" class="small-12.columns text-center" placeholder="e-mail" required/>
+        <input  type="email" {%if user.e_mail%}value="{{user.e_mail}}"{%endif%} name="e_mail" class="small-12.columns text-center" placeholder="e-mail" required/>
         </div>
 
         <div class="medium-6 columns">
-          <input  type="url" name="url" class="small-12.columns text-center" placeholder="Url" required/>
+          <input  type="url" {%if user.url%}value="{{user.url}}"{%endif%} name="url" class="small-12.columns text-center" placeholder="Url" required/>
         </div>
 
         <div class="medium-12 columns panel callout">
           <label> Tamaño de la Empresa</label>
+          <select name= "tam_empresa">
+           {%if user.tam_empresa%} <option value="{{user.tam_empresa}}" selected>{{user.get_tam_emmpresa_display}} </option>{%endif%}
           <div class="row">
             <div class="medium-6 columns">
               <input type="radio" name="tam_empresa" value="1"class="small-12.columns text-center"><label for="1">Microempresa (1-30)</label>
@@ -121,12 +124,14 @@
                <input type="radio" name="tam_empresa" value="4"class="small-12.columns text-center"><label for="4">Grande (mas de 500)</label>
             </div>
           </div>
+        </select>
         </div>
 
 
 
         <div class="medium-12 columns">
         <label>Sector</label>
+        {%if user.sector_economico%} <option value="{{user.sector_economico}}" selected>{{user.get_sector_economico_display}} </option> {{endif}}
            <select name="sector_economico">
               <optgroup label="SECTOR PRIMARIO">
               <option value="11" selected=""> Agroindustria </option>
@@ -148,10 +153,13 @@
               <option value="35"> Otros </option>
               </optgroup>
             </select>
+
         </div>
 
         <div class="medium-12 columns panel callout">
           <label> Área o Campo de Estudio </label>
+          <select name= "area_estudio">
+        {%if user.area_estudio%} <option value="{{user.area_estudio}}" selected>{{user.get_area_estudio_display}} </option> {{endif}}
           <div class="row">
             <div class="medium-6 columns">
               <input type="radio" name="area_estudio" value="1"class="small-12.columns text-center"><label for="1">Poco</label>
@@ -169,10 +177,13 @@
                <input type="radio" name="area_estudio" value="4"class="small-12.columns text-center"><label for="4">Mucho</label>
             </div>
           </div>
+        </select>
         </div>
 
         <div class="medium-12 columns">
           <label> Titulación </label>
+          <select name= "titulacion">
+        {%if user.titulacion%} <option value="{{user.titulacion}}" selected>{{user.get_titulacion_display}} </option> {{endif}}
         <div class="row">
             <div class="medium-6 columns">
               <input type="radio" name="titulacion" value="1"class="small-12.columns text-center"><label for="1">Poco</label>
@@ -190,10 +201,13 @@
                <input type="radio" name="titulacion" value="4"class="small-12.columns text-center"><label for="5">Mucho</label>
             </div>
           </div>
+        </select>
         </div>
 
         <div class="medium-12 columns panel callout">
           <label> Experiencia Laboral/práctica (antes de egresar) </label>
+          <select name= "exp_lab">
+        {%if user.exp_lab%} <option value="{{user.exp_lab}}" selected>{{user.get_exp_lab_display}} </option> {{endif}}
         <div class="row">
             <div class="medium-6 columns">
               <input type="radio" name="exp_lab" value="1"class="small-12.columns text-center"><label for="1">Poco</label>
@@ -211,10 +225,13 @@
                <input type="radio" name="exp_lab" value="4"class="small-12.columns text-center"><label for="5">Mucho</label>
             </div>
           </div>
+        </select>
         </div>
 
         <div class="medium-12 columns">
           <label> Competencia Laboral: Habilidad para resolver problemas, capacidad de análisis, habilidad para el aprendizaje, creatividad, administración del tiempo, capacidad de negociación, habilidades manuales, trabajo en equipo, iniciativa, honestidad, persistencia, etc. </label>
+          <select name= "comp_lab">
+        {%if user.comp_lab%} <option value="{{user.comp_lab}}" selected>{{user.get_comp_lab_display}} </option> {{endif}}
         <div class="row">
             <div class="medium-6 columns">
               <input type="radio" name="comp_lab" value="1"class="small-12.columns text-center"><label for="1">Poco</label>
@@ -232,10 +249,13 @@
                <input type="radio" name="comp_lab" value="4"class="small-12.columns text-center"><label for="5">Mucho</label>
             </div>
           </div>
+        </select>
         </div>
 
         <div class="medium-12 columns panel callout">
           <label> Posicionamiento de la Institución de Egreso </label>
+          <select name= "posicion_inst">
+        {%if user.posicion_inst%} <option value="{{user.posicion_inst}}" selected>{{user.get_posicion_inst_display}} </option> {{endif}}
         <div class="row">
             <div class="medium-6 columns">
               <input type="radio" name="posicion_inst" value="1"class="small-12.columns text-center"><label for="1">Poco</label>
@@ -253,10 +273,13 @@
                <input type="radio" name="posicion_inst" value="4"class="small-12.columns text-center"><label for="5">Mucho</label>
             </div>
           </div>
+        </select>
         </div>
 
         <div class="medium-12 columns">
           <label> Conocimiento de Idiomas Extranjeros </label>
+          <select name= "conocim_idiomas">
+        {%if user.conocim_idiomas%} <option value="{{user.conocim_idiomas}}" selected>{{user.get_conocim_idiomas_display}} </option> {{endif}}
         <div class="row">
             <div class="medium-6 columns">
               <input type="radio" name="conocim_idiomas" value="1"class="small-12.columns text-center"><label for="1">Poco</label>
@@ -274,10 +297,13 @@
                <input type="radio" name="conocim_idiomas" value="4"class="small-12.columns text-center"><label for="5">Mucho</label>
             </div>
           </div>
+        </select>
         </div>
 
         <div class="medium-12 columns panel callout">
           <label> Recomendaciones/ referencias </label>
+          <select name= "recomend_actitud">
+        {%if user.recomend_actitud%} <option value="{{user.recomend_actitud}}" selected>{{user.get_recomend_actitud_display}} </option> {{endif}}
         <div class="row">
             <div class="medium-6 columns">
               <input type="radio" name="recomend_actitud" value="1"class="small-12.columns text-center"><label for="1">Poco</label>
@@ -295,10 +321,13 @@
                <input type="radio" name="recomend_actitud" value="4"class="small-12.columns text-center"><label for="5">Mucho</label>
             </div>
           </div>
+        </select>
         </div>
 
         <div class="medium-12 columns">
           <label> Personalidad/Actitudes </label>
+          <select name= "personalidad">
+        {%if user.personalidad%} <option value="{{user.personalidad}}" selected>{{user.get_personalidad_display}} </option> {{endif}}
         <div class="row">
             <div class="medium-6 columns">
               <input type="radio" name="personalidad" value="1"class="small-12.columns text-center"><label for="1">Poco</label>
@@ -316,10 +345,13 @@
                <input type="radio" name="personalidad" value="4"class="small-12.columns text-center"><label for="5">Mucho</label>
             </div>
           </div>
+        </select>
         </div>
 
         <div class="medium-12 columns panel callout">
           <label> Capacidad de liderazgo </label>
+          <select name= "cap_liderazgo">
+        {%if user.cap_liderazgo%} <option value="{{user.cap_liderazgo}}" selected>{{user.get_cap_liderazgo_display}} </option> {{endif}}
         <div class="row">
             <div class="medium-6 columns">
               <input type="radio" name="cap_liderazgo" value="1"class="small-12.columns text-center"><label for="1">Poco</label>
@@ -337,10 +369,13 @@
                <input type="radio" name="cap_liderazgo" value="4"class="small-12.columns text-center"><label for="5">Mucho</label>
             </div>
           </div>
+        </select>
         </div>
 
         <div class="medium-12 columns">
           <label> Otros </label>
+          <select name= "otros_asp">
+        {%if user.otros_asp%} <option value="{{user.otros_asp}}" selected>{{user.get_otros_asp_display}} </option> {{endif}}
         <div class="row">
             <div class="medium-6 columns">
               <input type="radio" name="otros_asp" value="1"class="small-12.columns text-center"><label for="1">Poco</label>
@@ -358,6 +393,7 @@
                <input type="radio" name="otros_asp" value="4"class="small-12.columns text-center"><label for="5">Mucho</label>
             </div>
           </div>
+        </select>
         </div>
 
       </div>
@@ -365,15 +401,15 @@
     
 
         <div class="medium-6 columns panel callout">
-        <input  type="text" name="nom_encargado" class="small-12.columns text-center" placeholder="Nombre del Encargado" required/>
+        <input  type="text" {%if user.nom_encargado%}value="{{user.nom_encargado}}"{%endif%} name="nom_encargado" class="small-12.columns text-center" placeholder="Nombre del Encargado" required/>
       </div>
 
       <div class="medium-6 columns panel callout">
-        <input  type="text" name="titulo" class="small-12.columns text-center" placeholder="Titulo" required/>
+        <input  type="text" {%if user.titulo%}value="{{user.titulo}}"{%endif%} name="titulo" class="small-12.columns text-center" placeholder="Titulo" required/>
       </div>
 
       <div class="medium-6 columns panel callout">
-        <input  type="text" name="puesto" class="small-12.columns text-center" placeholder="Puesto" required/>
+        <input  type="text" {%if user.puesto%}value="{{user.puesto}}"{%endif%}name="puesto" class="small-12.columns text-center" placeholder="Puesto" required/>
       </div>
 
 

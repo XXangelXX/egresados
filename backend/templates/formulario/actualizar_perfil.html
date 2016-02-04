@@ -27,24 +27,24 @@
            <div class="row">
             <div class="medium-6 columns">
             <!-- aqui empiezan tus input -->
-            <input  type="text" {%if user.nombre%}value="{{user.f_nacimiento}}"{%endif%} name="nombre" class="small-12.columns text-center" placeholder="Nombre" required/>
+            <input  type="text" {%if user.nombre%}value="{{user.nombre}}"{%endif%} name="nombre" class="small-12.columns text-center" placeholder="Nombre" required/>
 
             </div>
             <div class="medium-6 columns">
-              <input  type="text" {{if user.a_paterno}}value="{{user.a_paterno}}"{{endif}} name="a_paterno" class="small-12.columns text-center" placeholder="Apellido Paterno" required/>
+              <input  type="text" {%if user.a_paterno%}value="{{user.a_paterno}}"{%endif%} name="a_paterno" class="small-12.columns text-center" placeholder="Apellido Paterno" required/>
             </div>
             <div class="medium-6 columns">
-              <input  type="text" {{if user.a_materno}}value="{{user.a_materno}}"{{endif}} name="a_materno" class="small-12.columns text-center" placeholder="Apellido Materno" required/>
+              <input  type="text" {%if user.a_materno%}value="{{user.a_materno}}"{%endif%} name="a_materno" class="small-12.columns text-center" placeholder="Apellido Materno" required/>
 
             </div>
             <div class="medium-6 columns">
-              <input  type="text" {{if user.num_control}}value="{{user.num_control}}"{{endif}} name="num_control" class="small-12.columns text-center" placeholder="Numero de Control" required/>
+              <input  type="text" {%if user.num_control%}value="{{user.num_control}}"{%endif%} name="num_control" class="small-12.columns text-center" placeholder="Numero de Control" required/>
              </div>
              
              <div class="medium-6 columns">
              <label>Carrera
                     <select name= "carrera">
-              {{if user.carrera}} <option value="{{user.carrera}}" selected>{{user.get_carrera_display}} </option> {{endif}}
+              {%if user.carrera%} <option value="{{user.carrera}}" selected>{{user.get_carrera_display}} </option> {%endif%}
               
               <option  value= "1">Ing.Bioquimica</option>
               <option  value= "2">Ing.Civil</option>
@@ -68,26 +68,32 @@
 
         <div class="medium-6 columns">
         <label>Sexo</label>
+        <select name= "sexo">
+        {%if user.sexo%} <option value="{{user.sexo}}" selected>{{user.get_sexo_display}} </option> {%endif%}
       <input type="radio" name="sexo" value="M" id="masculino" class="small-12.columns text-center"><label for="masculino">Masculino</label>
       <input type="radio" name="sexo" value="F" id="femenino" class="small-12.columns text-center"><label for="femenino">Femenino</label>
-
+        </select>
         </div>
 
          <div class="medium-6 columns"> 
-        <input  type="text" {{if user.nombre}}value="{{user.curp}}"{{endif}} name="curp" class="small-12.columns text-center" placeholder="Curp" required/>
+        <input  type="text" {%if user.curp%}value="{{user.curp}}"{%endif%} name="curp" class="small-12.columns text-center" placeholder="Curp" required/>
         </div>
 
         <div class="medium-6 columns">
         <label>Estado Civil</label>
+        <select name= "e_civil">
+        {%if user.e_civil%} <option value="{{user.e_civil}}" selected>{{user.get_e_civil_display}} </option> {%endif%}
       <input type="radio" name="e_civil" value="C" id="casado(a)" class="small-12.columns text-center"><label for="casado">Casado(a)</label>
       <input type="radio" name="e_civil" value="F" id="soltero(a)" class="small-12.columns text-center"><label for="soltero">Soltero(a)</label>
       <input type="radio" name="e_civil" value="D" id="divorciado(a)" class="small-12.columns text-center"><label for="divorciado">Divorciado(a)</label>
       <input type="radio" name="e_civil" value="O" id="otro" class="small-12.columns text-center"><label for="otro">Otro</label>
+       </select>
 
         </div>
 
         <div class="medium-6 columns">
         <select name="estado">
+        {%if user.estado%} <option value="{{user.estado}}" selected>{{user.get_estado_display}} </option> {%endif%}
               <option value="Aguascalientes">Aguascalientes</option>
               <option value="Baja California">Baja California </option>
               <option value="Baja California Sur">Baja California Sur </option>
@@ -123,35 +129,35 @@
         </div>
 
         <div class="medium-6 columns">
-        <input  type="text" {{if user.nombre}}value="{{user.municipio}}"{{endif}} name="municipio" class="small-12.columns text-center" placeholder="Municipio" required/>
+        <input  type="text" {%if user.municipio%}value="{{user.municipio}}"{%endif%} name="municipio" class="small-12.columns text-center" placeholder="Municipio" required/>
         </div>
 
         <div class="medium-6 columns">
-        <input  type="text" {{if user.nombre}}value="{{user.cuidad}}"{{endif}} name="cuidad" class="small-12.columns text-center" placeholder="Cuidad" required/>
+        <input  type="text" {%if user.cuidad%}}value="{{user.cuidad}}"{%endif%} name="cuidad" class="small-12.columns text-center" placeholder="Cuidad" required/>
         </div>
 
         <div class="medium-6 columns">
-        <input  type="text" {{if user.nombre}}value="{{user.domicilio}}"{{endif}} name="domicilio" class="small-12.columns text-center" placeholder="Domicilio" required/>
+        <input  type="text" {%if user.domicilio%}value="{{user.domicilio}}"{%endif%} name="domicilio" class="small-12.columns text-center" placeholder="Domicilio" required/>
         </div>
 
         <div class="medium-6 columns">
-        <input  type="tel" {{if user.nombre}}value="{{user.telefono}}"{{endif}} name="telefono" class="small-12.columns text-center" placeholder="Telefono" required/>
+        <input  type="tel" {{%if user.telefono%}value="{{user.telefono}}"{%endif%} name="telefono" class="small-12.columns text-center" placeholder="Telefono" required/>
         </div>
 
         <div class="medium-6 columns">
-        <input  type="text" {{if user.nombre}}value="{{user.especialidad}}"{{endif}} name="especialidad" class="small-12.columns text-center" placeholder="Especialidad" required/>
+        <input  type="text" {%if user.especialidad%}value="{{user.especialidad}}"{%endif%} name="especialidad" class="small-12.columns text-center" placeholder="Especialidad" required/>
         </div>
 
         <div class="medium-6 columns">
-        <input  type="email" {{if user.nombre}}value="{{user.e_mail}}"{{endif}} name="e_mail" class="small-12.columns text-center" placeholder="e-mail" required/>
+        <input  type="email" {%if user.e_mail%}value="{{user.e_mail}}"{%endif%} name="e_mail" class="small-12.columns text-center" placeholder="e-mail" required/>
         </div>
 
         <div class="medium-6 columns">
-        <input  type="datetime" {{if user.nombre}}value="{{user.mes_anio_egreso}}"{{endif}} name="mes_anio_egreso" class="datepicker small-12.columns text-center" placeholder="Mes y Año de Egreso" required/>
+        <input  type="datetime" {%if user.mes_anio_egreso%}value="{{user.mes_anio_egreso}}"{%endif%} name="mes_anio_egreso" class="datepicker small-12.columns text-center" placeholder="Mes y Año de Egreso" required/>
         </div>
 
         <div class="medium-6 columns">
-        <input  type="tel" {{if user.nombre}}value="{{user.tel_casa}}"{{endif}} name="tel_casa" class="small-12.columns text-center" placeholder="Telefono Casa" required/>
+        <input  type="tel" {%if user.tel_casa%}value="{{user.tel_casa}}"{%endif%} name="tel_casa" class="small-12.columns text-center" placeholder="Telefono Casa" required/>
         </div>
 
         
@@ -159,23 +165,23 @@
         <label>Dominio del Lenguaje Extranjero Ingles( % )</label>
             <div class="row">
                 <div class="small-9 columns">
-                  <div class="range-slider" data-slider data-options="start: 0; end: 100;step: 5;display_selector: #niv_ing; initial: 50;">
+                  <div class="range-slider" data-slider data-options="start: 0; end: 100;step: 5;display_selector: #niv_ing; {%if user.niv_ing%}initial: {{user.niv_ing}};{% else %}initial: 50; {%endif%}">
                      <span class="range-slider-handle" role="slider" tabindex="0"></span>
                      <span class="range-slider-active-segment"></span>
                   </div>
                 </div>        
                 <div class="small-3 columns">
-                    <input type="number" name="niv_ing" id="niv_ing" min="0" max="100" step="5" value="50" />
+                    <input type="number" name="niv_ing" id="niv_ing" min="0" max="100" step="5" {% if user.niv_ing %}value="user.niv_ing" {% else %}value="50"{% endif %} />
                 </div>
             </div>
         </div>
 
         <div class="medium-6 columns">
-        <input  type="text" {{if user.nombre}}value="{{user.otros_idms}}"{{endif}} name="otros_idms" class="small-12.columns text-center" placeholder="Otros Idiomas" required/>
+        <input  type="text" {%if user.otros_idms%}value="{{user.otros_idms}}"{%endif%} name="otros_idms" class="small-12.columns text-center" placeholder="Otros Idiomas" required/>
         </div>
         
         <div class="medium-6 columns">
-        <input  type="text" {{if user.nombre}}value="{{user.man_paq_comp}}"{{endif}} name="man_paq_comp" class="small-12.columns text-center" placeholder="Manejo de Paquetes Computacionales" required/>
+        <input  type="text" {%if user.man_paq_comp%}value="{{user.man_paq_comp}}"{%endif%} name="man_paq_comp" class="small-12.columns text-center" placeholder="Manejo de Paquetes Computacionales" required/>
         </div>
 
         
@@ -210,6 +216,8 @@
 
       <div class="medium-12 columns text-center panel callout">
       <label>Ocupación</label>
+      <select name= "ocupacion">
+        {%if user.ocupacion%} <option value="{{user.ocupacion}}" selected>{{user.get_ocupacion_display}} </option> {%endif%}
       <div class="row">
         <div class="small-6 medium-2 columns">
           <input type="radio" name="ocupacion" value="1"class="small-12.columns text-center"><label for="1">Trabaja</label>
@@ -222,14 +230,17 @@
         </div>
         <div class="medium-4 columns">
           <input type="radio" name="ocupacion" value="4"class="small-12.columns text-center"><label for="4">Ni Trabaja Ni Estudia</label>
+         </div>
         </div>
-      </div>
+      </select>
       </div>
 
 
 
       <div class="medium-6 columns">
       <label>Estudio Actuales</label>
+      <select name= "estudios_act">
+        {%if user.estudios_act%} <option value="{{user.estudios_act}}" selected>{{user.get_estudios_act_display}} </option> {%endif%}
       <div class="row">
       <div class="small-6 columns">
         <input type="radio" name="estudios_act" value="1"class="small-12.columns text-center"><label for="1">Especialidad</label>
@@ -244,11 +255,12 @@
         <input type="radio" name="estudios_act" value="4"class="small-12.columns text-center"><label for="4">Otro</label>
       </div>
       </div>
+      </select>
       </div>
       
 
       <div class="medium-6 columns panel callout">
-        <input  type="text" name="esp_institucion" class="small-12.columns text-center" placeholder="Especialidad e Institucoón" required/>
+        <input  type="text" {%if user.esp_institucion%}value="{{user.esp_institucion}}"{%endif%} name="esp_institucion" class="small-12.columns text-center" placeholder="Especialidad e Institucoón" required/>
       </div>
 
       <div class="medium-12 columns" >
@@ -258,6 +270,8 @@
 
       <div class="medium-12 columns panel callout">
       <label>Tiempo para Obtener Tu Primer Empleo</label>
+      <select name= "tiem_primer_emple">
+        {%if user.tiem_primer_emple%} <option value="{{user.tiem_primer_emple}}" selected>{{user.get_tiem_primer_emple_display}} </option> {%endif%}
       <div class="row">
       <div class="medium-3 columns">
         <input type="radio" name="tiem_primer_emple" value="1"class="small-12.columns text-center"><label for="1">Antes de Egresar</label>
@@ -272,55 +286,80 @@
         <input type="radio" name="tiem_primer_emple" value="4"class="small-12.columns text-center"><label for="4">Mas de un año</label>
       </div>
       </div>
+      </select>
       </div>
 
       <div class="medium-12 columns">
       <label>Calidad de los Docentes</label>
+      <select name= "calidad_docentes">
+        {%if user.calidad_docentes%} <option value="{{user.calidad_docentes}}" selected>{{user.get_calidad_docentes_display}} </option> {%endif%}
       <input type="radio" name="calidad_docentes" value="1"class="small-12.columns text-center"><label for="1">Muy Buena</label>
       <input type="radio" name="calidad_docentes" value="2"class="small-12.columns text-center"><label for="2">Buena</label>
       <input type="radio" name="calidad_docentes" value="3"class="small-12.columns text-center"><label for="3">Regular</label>
       <input type="radio" name="calidad_docentes" value="4"class="small-12.columns text-center"><label for="4">Mala</label>
+      </select>
       </div>
+      
 
       <div class="medium-12 columns panel callout">
       <label>Plan de Estudios</label>
+      <select name= "plan_estudios">
+        {%if user.plan_estudios%} <option value="{{user.plan_estudios}}" selected>{{user.get_plan_estudios_display}} </option> {%endif%}
       <input type="radio" name="plan_estudios" value="1"class="small-12.columns text-center"><label for="1">Muy Buena</label>
       <input type="radio" name="plan_estudios" value="2"class="small-12.columns text-center"><label for="2">Buena</label>
       <input type="radio" name="plan_estudios" value="3"class="small-12.columns text-center"><label for="3">Regular</label>
       <input type="radio" name="plan_estudios" value="4"class="small-12.columns text-center"><label for="4">Mala</label>
+      </select>
       </div>
+      
 
       <div class="medium-12 columns">
       <label>Oportunidad de participar en proyectos de investigación y desarrollo</label>
+      <select name= "estudios_act">
+      {%if user.oport_ppid%} <option value="{{user.oport_ppid}}" selected>{{user.get_oport_ppid_display}} </option> {%endif%}
       <input type="radio" name="oport_ppid" value="1"class="small-12.columns text-center"><label for="1">Muy Buena</label>
       <input type="radio" name="oport_ppid" value="2"class="small-12.columns text-center"><label for="2">Buena</label>
       <input type="radio" name="oport_ppid" value="3"class="small-12.columns text-center"><label for="3">Regular</label>
       <input type="radio" name="oport_ppid" value="4"class="small-12.columns text-center"><label for="4">Mala</label>
+      </select>
       </div>
+      
 
       <div class="medium-12 columns panel callout">
       <label>Énfasis que se le prestaba a la investigación dentro del proceso de enseñanza</label>
+      <select name= "enfasis">
+      {%if user.enfasis%} <option value="{{user.enfasis}}" selected>{{user.get_enfasis_display}} </option> {%endif%}
       <input type="radio" name="enfasis" value="1"class="small-12.columns text-center"><label for="1">Muy Buena</label>
       <input type="radio" name="enfasis" value="2"class="small-12.columns text-center"><label for="2">Buena</label>
       <input type="radio" name="enfasis" value="3"class="small-12.columns text-center"><label for="3">Regular</label>
       <input type="radio" name="enfasis" value="4"class="small-12.columns text-center"><label for="4">Mala</label>
+      </select>
       </div>
+     
 
       <div class="medium-12 columns">
       <label>Satisfacción con las condiciones de estudio (infraestructura)</label>
+      <select name= "infracest">
+      {%if user.infracest%} <option value="{{user.infracest}}" selected>{{user.get_infracest_display}} </option> {%endif%}
       <input type="radio" name="infracest" value="1"class="small-12.columns text-center"><label for="1">Muy Buena</label>
       <input type="radio" name="infracest" value="2"class="small-12.columns text-center"><label for="2">Buena</label>
       <input type="radio" name="infracest" value="3"class="small-12.columns text-center"><label for="3">Regular</label>
       <input type="radio" name="infracest" value="4"class="small-12.columns text-center"><label for="4">Mala</label>
+      </select>
       </div>
+      
 
       <div class="medium-12 columns panel callout">
       <label>Experiencia obtenida a través de la residencia profesional</label>
+      <select name= "exprecprof">
+      {%if user.exprecprof%} <option value="{{user.exprecprof}}" selected>{{user.get_exprecprof_display}} </option> {%endif%}
       <input type="radio" name="exprecprof" value="1"class="small-12.columns text-center"><label for="1">Muy Buena</label>
       <input type="radio" name="exprecprof" value="2"class="small-12.columns text-center"><label for="2">Buena</label>
       <input type="radio" name="exprecprof" value="3"class="small-12.columns text-center"><label for="3">Regular</label>
       <input type="radio" name="exprecprof" value="4"class="small-12.columns text-center"><label for="4">Mala</label>
+      </select>
       </div>
+      
 
       <div class="medium-12 columns">
       <label>DESEMPEÑO PROFESIONAL DE LOS EGRESADOS (COHERENCIA ENTRE LA FORMACIÓN Y EL TIPO DE EMPLEO)</label>
@@ -329,29 +368,40 @@
 
       <div class="medium-12 columns">
       <label>Eficiencia para realizar las actividades laborales, en relación con su formación académica</label>
+      <select name= "eficiencia_lab">
+      {%if user.eficiencia_lab%} <option value="{{user.eficiencia_lab}}" selected>{{user.get_eficiencia_lab_display}} </option> {%endif%}
       <input type="radio" name="eficiencia_lab" value="1"class="small-12.columns text-center"><label for="1">Muy Eficiente</label>
       <input type="radio" name="eficiencia_lab" value="2"class="small-12.columns text-center"><label for="2">Eficiente</label>
       <input type="radio" name="eficiencia_lab" value="3"class="small-12.columns text-center"><label for="3">Poco Eficiente</label>
       <input type="radio" name="eficiencia_lab" value="4"class="small-12.columns text-center"><label for="4">Deficiente</label>
+      </select>
       </div>
+      
 
       <div class="medium-12 columns panel callout">
       <label>Cómo califica su formación académica con respecto a su desempeño laboral</label>
+      <select name= "cal_formacion">
+      {%if user.cal_formacion%} <option value="{{user.cal_formacion}}" selected>{{user.get_cal_formacion_display}} </option> {%endif%}
       <input type="radio" name="cal_formacion" value="1"class="small-12.columns text-center"><label for="1">Excelente</label>
       <input type="radio" name="cal_formacion" value="2"class="small-12.columns text-center"><label for="2">Buena</label>
       <input type="radio" name="cal_formacion" value="3"class="small-12.columns text-center"><label for="3">Regular</label>
       <input type="radio" name="cal_formacion" value="4"class="small-12.columns text-center"><label for="4">Mala</label>
       <input type="radio" name="cal_formacion" value="4"class="small-12.columns text-center"><label for="4">Pesimo</label>
+      </select>
       </div>
+      
 
       <div class="medium-12 columns">
       <label>Utilidad de las residencias profesionales o prácticas profesionales para su desarrollo laboral y profesional</label>
+      <select name= "util_residencia">
+      {%if user.util_residencia%} <option value="{{user.util_residencia}}" selected>{{user.get_util_residencia_display}} </option> {%endif%}
       <input type="radio" name="util_residencia" value="1"class="small-12.columns text-center"><label for="1">Excelente</label>
       <input type="radio" name="util_residencia" value="2"class="small-12.columns text-center"><label for="2">Buena</label>
       <input type="radio" name="util_residencia" value="3"class="small-12.columns text-center"><label for="3">Regular</label>
       <input type="radio" name="util_residencia" value="4"class="small-12.columns text-center"><label for="4">Mala</label>
        <input type="radio" name="util_residencia" value="5"class="small-12.columns text-center"><label for="5">Pesimo</label>
-      </div>
+       </select>
+       </div>
 
      </div> <!--Row principal -->
 

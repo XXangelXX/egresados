@@ -61,15 +61,32 @@ def titulado(request, q):
     if request.POST.get('titulado_f','') =="TODOS": 
         return q
     else:
+        # filtro  sin titulo
         if request.POST.get('titulado_f','') =="0":
             q = q.filter(titulado=0)
             return q
+        # filtro  con titulo
         elif request.POST.get('titulado_f','') =="1":
             q = q.filter(titulado=1)
             return q
+        # filtro  estudia y labora
         elif request.POST.get('titulado_f','') =="2":
             q = q.filter(Q(ocupacion=1) | Q(ocupacion=3))
             return q
+        # filtro  trabajando
+        elif request.POST.get('titulado_f','') =="3":
+            q = q.filter(ocupacion=1)
+            return q
+
+        # filtro  estudia y no trabaja
+        elif request.POST.get('titulado_f','') =="4":
+            q = q.filter(ocupacion=2)
+            return q
+        # filtro  ni trabaja ni estudia
+        elif request.POST.get('titulado_f','') =="5":
+            q = q.filter(ocupacion=4)
+            return q
+
 
 def graficacion(q,c,a,t):
     data_cxt = []
@@ -130,35 +147,53 @@ def graficacion(q,c,a,t):
         return cxt
     elif c=="TODOS" and a!="TODOS" and t=="TODOS":
         data_cxt = filtro_carreras_anio(q,a)
+        total_egresados = q.all().count()
         titulo_carrera = "Grafica de Egresados de todas las Carreras "
         anio_titulo = "En el año: " + str(a)
         filtro_titulo = "Filtro por: Sin Filtro "  
         cxt= {'lista_anios': lista_anios,'data_labels':lista_carreras, 'data_general': data_cxt,
-        'grafica_titulo': titulo_carrera, 'grafica_anio': anio_titulo, 'grafica_filtros': filtro_titulo}
+        'grafica_titulo': titulo_carrera, 'grafica_anio': anio_titulo, 'grafica_filtros': filtro_titulo,
+        'totales' : total_egresados}
         return cxt
+
+    elif c=="TODOS" and a!="TODOS" and t!="TODOS":
+        data_cxt = filtro_carreras_anio(q,a)
+        total_egresados = q.all().count()
+        titulo_carrera = "Grafica de Egresados de todas las Carreras "
+        anio_titulo = "En el año: " + str(a)
+        filtro_titulo = "Filtro por: " + lista_filtros.get(int(t))  
+        cxt= {'lista_anios': lista_anios,'data_labels':lista_carreras, 'data_general': data_cxt,
+        'grafica_titulo': titulo_carrera, 'grafica_anio': anio_titulo, 'grafica_filtros': filtro_titulo,
+        'totales' : total_egresados}
+        return cxt
+
 
     
 
 def filtro_meses(q):
     data_cxt = []
+    # ciclo de enero a diciembre
     for mes in range(1,13):
         data_cxt.append(q.filter(mes_anio_egreso__month=mes).count())
     return data_cxt
 
 def filtro_anios(q):
     data_cxt = []
+    # todos los años hasta 2016
     for anio in range (1985,2016):
         data_cxt.append(q.filter(mes_anio_egreso__year=anio).count())
     return data_cxt
 
 def filtro_carreras(q):
     data_cxt = []
+    # ciclo de una a once carreras
     for carrera_f in range (1,12):
         data_cxt.append(q.filter(carrera=carrera_f).count())
     return data_cxt
 
 def filtro_carreras_anio(q,a):
     data_cxt = []
+    # ciclo de una a once carreras
     for carrera_f in range (1,12):
         data_cxt.append(q.filter(carrera=carrera_f).filter(mes_anio_egreso__year=int(a)).count())
     return data_cxt

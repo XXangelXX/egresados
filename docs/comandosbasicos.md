@@ -21,7 +21,7 @@ nota: suponiendo que los entornos virtuales estan en /home/user/proyectos/backen
     nota: donde angel es el nombre del usuario de la base de datos y bd.sql es el nombre del archivo.
 
 ### para restaurar  bases de datos
-1.- $ mysql --user=angel --password prueba2 < prueba2.sql
+1.- $ mysql --user=angel --password egresadostec_db < base_egresados4feb.sql
 
 
 ### queryset para graficas
