@@ -78,10 +78,18 @@
 
         <div class="medium-6 columns">
         <label>Estado Civil</label>
+      <div class="medium-6 columns">
         <input type="radio" name="e_civil" value="C" id="casado(a)" class="small-12.columns text-center" {% if user.e_civil == "C" %}checked {% endif %}><label for="casado">Casado(a)</label>
+      </div>
+      <div class="medium-6 columns">
         <input type="radio" name="e_civil" value="F" id="soltero(a)" class="small-12.columns text-center" {% if user.e_civil == "S" %}checked {% endif %}><label for="soltero">Soltero(a)</label>
+      </div>
+      <div class="medium-6 columns">
         <input type="radio" name="e_civil" value="D" id="divorciado(a)" class="small-12.columns text-center" {% if user.e_civil == "D" %}checked {% endif %}><label for="divorciado">Divorciado(a)</label>
+      </div>
+      <div class="medium-6 columns">
         <input type="radio" name="e_civil" value="O" id="otro" class="small-12.columns text-center" {% if user.e_civil == "O" %}checked {% endif %}><label for="otro">Otro</label>
+      </div>
         </div>
 
         <div class="medium-6 columns">
@@ -206,20 +214,20 @@
 
           
 
-      <div class="medium-12 columns text-center panel callout">
+      <div class="medium-12 columns panel callout">
       <label>Ocupación</label>
       <div class="row">
-        <div class="small-6 medium-2 columns">
-          <input type="radio" name="ocupacion" value="1"class="small-12.columns text-center" {% if user.ocupacion == "1" %}checked {% endif %}><label for="1">Trabaja</label>
+        <div class="small-12 medium-4 columns">
+          <input type="radio" name="ocupacion" value="1"class="small-12.columns" {% if user.ocupacion == "1" %}checked {% endif %}><label for="1">Trabaja</label>
         </div>
-        <div class="small-6 medium-2 columns">
-          <input type="radio" name="ocupacion" value="2"class="small-12.columns text-center" {% if user.ocupacion == "2" %}checked {% endif %}><label for="2">Estudia</label>
+        <div class="small-12 medium-4 columns">
+          <input type="radio" name="ocupacion" value="2"class="small-12.columns" {% if user.ocupacion == "2" %}checked {% endif %}><label for="2">Estudia</label>
         </div>
-        <div class="medium-4 columns">
-          <input type="radio" name="ocupacion" value="3"class="small-12.columns text-center" {% if user.ocupacion == "3" %}checked {% endif %}><label for="3">Trabaja y Estudia</label>
+        <div class="small-12 medium-4 columns">
+          <input type="radio" name="ocupacion" value="3"class="small-12.columns" {% if user.ocupacion == "3" %}checked {% endif %}><label for="3">Trabaja y Estudia</label>
         </div>
-        <div class="medium-4 columns">
-          <input type="radio" name="ocupacion" value="4"class="small-12.columns text-center" {% if user.ocupacion == "4" %}checked {% endif %}><label for="4">Ni Trabaja Ni Estudia</label>
+        <div class="medium-12 columns">
+          <input type="radio" name="ocupacion" value="4"class="small-12.columns" {% if user.ocupacion == "4" %}checked {% endif %}><label for="4">Ni Trabaja Ni Estudia</label>
          </div>
         </div>
       </div>
@@ -229,10 +237,10 @@
       <div class="medium-6 columns">
       <label>Estudio Actuales</label>
       <div class="row">
-      <div class="small-6 columns">
+      <div class="small-12 columns">
         <input type="radio" name="estudios_act" value="1"class="small-12.columns text-center" {% if user.estudios_act == "1" %}checked {% endif %}><label for="1">Especialidad</label>
       </div>
-      <div class="small-6 columns">
+      <div class="small-12 columns">
         <input type="radio" name="estudios_act" value="2"class="small-12.columns text-center" {% if user.estudios_act == "2" %}checked {% endif %}><label for="2">Maestria</label>
       </div>
       <div class="small-6 columns">
@@ -272,21 +280,37 @@
       </div>
       </div>
 
-      <div class="medium-12 columns">
+      <div class="medium-9 columns">
       <label>Calidad de los Docentes</label>
-      <input type="radio" name="calidad_docentes" value="1"class="small-12.columns text-center" {% if user.calidad_docentes == "1" %}checked {% endif %}><label for="1">Muy Buena</label>
-      <input type="radio" name="calidad_docentes" value="2"class="small-12.columns text-center" {% if user.calidad_docentes == "2" %}checked {% endif %}><label for="2">Buena</label>
+    <div class="medium-4 columns">
+      <input type="radio" name="calidad_docentes" value="1"class="small-9.columns text-center" {% if user.calidad_docentes == "1" %}checked {% endif %}><label for="1">Muy Buena</label>
+    </div>
+    <div class="medium-4 columns">
+      <input type="radio" name="calidad_docentes" value="2"class="small-9.columns text-center" {% if user.calidad_docentes == "2" %}checked {% endif %}><label for="2">Buena</label>
+    </div>
+    <div class="medium-4 columns">
       <input type="radio" name="calidad_docentes" value="3"class="small-12.columns text-center" {% if user.calidad_docentes == "3" %}checked {% endif %}><label for="3">Regular</label>
+    </div>
+    <div class="medium-12 columns">
       <input type="radio" name="calidad_docentes" value="4"class="small-12.columns text-center" {% if user.calidad_docentes == "4" %}checked {% endif %}><label for="4">Mala</label>
+    </div>
       </div>
       
 
       <div class="medium-12 columns panel callout">
       <label>Plan de Estudios</label>
-      <input type="radio" name="plan_estudios" value="1"class="small-12.columns text-center" {% if user.plan_estudios == "1" %}checked {% endif %}><label for="1">Muy Buena</label> 
+    <div class="medium-12 columns">
+      <input type="radio" name="plan_estudios" value="1"class="small-12.columns text-center" {% if user.plan_estudios == "1" %}checked {% endif %}><label for="1">Muy Buena</label>
+    </div>
+    <div class="medium-12 columns">
       <input type="radio" name="plan_estudios" value="2"class="small-12.columns text-center" {% if user.plan_estudios == "2" %}checked {% endif %}><label for="2">Buena</label>
+    </div>
+    <div class="medium-12 columns">
       <input type="radio" name="plan_estudios" value="3"class="small-12.columns text-center" {% if user.plan_estudios == "3" %}checked {% endif %}><label for="3">Regular</label>
+    </div>
+    <div class="medium-12 columns">
       <input type="radio" name="plan_estudios" value="4"class="small-12.columns text-center" {% if user.plan_estudios == "4" %}checked {% endif %}><label for="4">Mala</label>
+    </div>
       </div>
       
 

@@ -43,6 +43,13 @@ font-size: 2.5em;}
  background-size: cover;
    
 }
+#bg_passwd{
+ height: 100vh;
+ background: url(../img/mural.jpg) center center;
+ background-repeat: no-repeat;
+ background-size: cover;
+   
+}
 #login{
 padding-top: 2em;
 padding-bottom: 5em;

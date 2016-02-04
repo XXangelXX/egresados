@@ -3,8 +3,10 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
+from django.core.exceptions import ObjectDoesNotExist
 from django.template import RequestContext
 from .actions import Paginador
+from perfil.models import PerfilEgresado
 
 
 # Create your views here.
@@ -41,10 +43,14 @@ def index_view(request):
     elif usuario.is_staff:
         return HttpResponseRedirect('/home')
     else:
-        return HttpResponseRedirect('/egresado/actualizar')
+        current_user = request.user
+        print current_user.username
+        try:
+            user = PerfilEgresado.objects.get(num_control=current_user.username)
+            return HttpResponseRedirect('/egresado/actualizar')
+        except ObjectDoesNotExist:
+            return HttpResponseRedirect('/egresado/perfil')
 
-from django.core.exceptions import ObjectDoesNotExist
-from perfil.models import PerfilEgresado
 
 def home(request):
     cxt={}
@@ -61,24 +67,39 @@ def home(request):
         
     return render(request,'home/home.html', cxt)
 
-MAXIMO_ITEMS_HOJA = 200
+MAXIMO_ITEMS_HOJA = 10
 def carrera(request):
     
-    pagina = request.GET.get("pagina", "")
-    filtro = request.GET.get("filtro", "")
+    cxt={}
     
     if request.method=='POST':
-        cxt={}
-        filtro_carrera=request.POST.get('carrera_f','')
-        if filtro_carrera == "carrera":
+        filtro = request.POST.get("carrera_f", "")
+        if filtro == "carrera":
             return redirect('/home/') 
         else:
-            egresados = PerfilEgresado.objects.filter(carrera=filtro_carrera)
+            egresados = PerfilEgresado.objects.filter(carrera=filtro)
+            
+            egresados = Paginador(egresados, MAXIMO_ITEMS_HOJA, 1)
+            cxt = {'Egresados': egresados,
+                valuecarrera(filtro): True, "filtrocarrera":filtro}
+            return render(request,'home/home.html', cxt)
+    elif request.method=='GET':
+        pagina = request.GET.get("pagina", "")
+        filtro = request.GET.get("filtro", "")
+        if filtro == "carrera":
+            return redirect('/home/') 
+        else:
+            egresados = PerfilEgresado.objects.filter(carrera=filtro)
             
             egresados = Paginador(egresados, MAXIMO_ITEMS_HOJA, pagina)
             cxt = {'Egresados': egresados,
-                valuecarrera(filtro_carrera): True}
+                valuecarrera(filtro): True, "filtrocarrera":filtro}
             return render(request,'home/home.html', cxt)
+    else:
+        return render(request,'home/home.html', cxt)
+
+
+
 
 
 def valuecarrera(carrera):
