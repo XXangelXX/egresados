@@ -14,6 +14,9 @@ class Carreras (models.Model):
 class PerfilEgresado(models.Model):
     carrera = models.ForeignKey(Carreras)
     usuario =  models.ForeignKey(User)
+    #f_registro = models.DateField(auto_now_add=True, blank=True)
+    #f_modificacion = models.DateField(auto_now=True, blank=True)
+
     #user_login = model.ForeignKey()
 
     nombre = models.CharField(max_length=30)

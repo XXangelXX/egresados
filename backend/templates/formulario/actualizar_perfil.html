@@ -68,11 +68,8 @@
 
         <div class="medium-6 columns">
         <label>Sexo</label>
-        <select name= "sexo">
-        {%if user.sexo%} <option value="{{user.sexo}}" selected>{{user.get_sexo_display}} </option> {%endif%}
-      <input type="radio" name="sexo" value="M" id="masculino" class="small-12.columns text-center"><label for="masculino">Masculino</label>
-      <input type="radio" name="sexo" value="F" id="femenino" class="small-12.columns text-center"><label for="femenino">Femenino</label>
-        </select>
+      <input type="radio" name="sexo" value="M" id="masculino" class="small-12.columns text-center" {% if user.sexo == "M" %}checked {% endif %}><label for="masculino">Masculino</label>
+      <input type="radio" name="sexo" value="F" id="femenino" class="small-12.columns text-center" {% if user.sexo == "F" %}checked {% endif %}><label for="femenino">Femenino</label>
         </div>
 
          <div class="medium-6 columns"> 
@@ -81,14 +78,10 @@
 
         <div class="medium-6 columns">
         <label>Estado Civil</label>
-        <select name= "e_civil">
-        {%if user.e_civil%} <option value="{{user.e_civil}}" selected>{{user.get_e_civil_display}} </option> {%endif%}
-      <input type="radio" name="e_civil" value="C" id="casado(a)" class="small-12.columns text-center"><label for="casado">Casado(a)</label>
-      <input type="radio" name="e_civil" value="F" id="soltero(a)" class="small-12.columns text-center"><label for="soltero">Soltero(a)</label>
-      <input type="radio" name="e_civil" value="D" id="divorciado(a)" class="small-12.columns text-center"><label for="divorciado">Divorciado(a)</label>
-      <input type="radio" name="e_civil" value="O" id="otro" class="small-12.columns text-center"><label for="otro">Otro</label>
-       </select>
-
+        <input type="radio" name="e_civil" value="C" id="casado(a)" class="small-12.columns text-center" {% if user.e_civil == "C" %}checked {% endif %}><label for="casado">Casado(a)</label>
+        <input type="radio" name="e_civil" value="F" id="soltero(a)" class="small-12.columns text-center" {% if user.e_civil == "S" %}checked {% endif %}><label for="soltero">Soltero(a)</label>
+        <input type="radio" name="e_civil" value="D" id="divorciado(a)" class="small-12.columns text-center" {% if user.e_civil == "D" %}checked {% endif %}><label for="divorciado">Divorciado(a)</label>
+        <input type="radio" name="e_civil" value="O" id="otro" class="small-12.columns text-center" {% if user.e_civil == "O" %}checked {% endif %}><label for="otro">Otro</label>
         </div>
 
         <div class="medium-6 columns">
@@ -141,7 +134,7 @@
         </div>
 
         <div class="medium-6 columns">
-        <input  type="tel" {{%if user.telefono%}value="{{user.telefono}}"{%endif%} name="telefono" class="small-12.columns text-center" placeholder="Telefono" required/>
+        <input  type="tel" {%if user.telefono%}value="{{user.telefono}}"{%endif%} name="telefono" class="small-12.columns text-center" placeholder="Telefono" required/>
         </div>
 
         <div class="medium-6 columns">
@@ -197,10 +190,9 @@
         <div class="small-4 columns"> 
         
           <div class="switch round">
-            <input id="titulado_cb" name="titulado" type="checkbox">
+            <input id="titulado_cb" name="titulado" type="checkbox"{% if user.titulado == "1" %}checked{% endif %}>
             <label for="titulado_cb"></label>
           </div>
-          
          </div>
          <div class="small-2 columns">
             <Label class="left">Si</Label>
@@ -216,46 +208,40 @@
 
       <div class="medium-12 columns text-center panel callout">
       <label>Ocupación</label>
-      <select name= "ocupacion">
-        {%if user.ocupacion%} <option value="{{user.ocupacion}}" selected>{{user.get_ocupacion_display}} </option> {%endif%}
       <div class="row">
         <div class="small-6 medium-2 columns">
-          <input type="radio" name="ocupacion" value="1"class="small-12.columns text-center"><label for="1">Trabaja</label>
+          <input type="radio" name="ocupacion" value="1"class="small-12.columns text-center" {% if user.ocupacion == "1" %}checked {% endif %}><label for="1">Trabaja</label>
         </div>
         <div class="small-6 medium-2 columns">
-          <input type="radio" name="ocupacion" value="2"class="small-12.columns text-center"><label for="2">Estudia</label>
+          <input type="radio" name="ocupacion" value="2"class="small-12.columns text-center" {% if user.ocupacion == "2" %}checked {% endif %}><label for="2">Estudia</label>
         </div>
         <div class="medium-4 columns">
-          <input type="radio" name="ocupacion" value="3"class="small-12.columns text-center"><label for="3">Trabaja y Estudia</label>
+          <input type="radio" name="ocupacion" value="3"class="small-12.columns text-center" {% if user.ocupacion == "3" %}checked {% endif %}><label for="3">Trabaja y Estudia</label>
         </div>
         <div class="medium-4 columns">
-          <input type="radio" name="ocupacion" value="4"class="small-12.columns text-center"><label for="4">Ni Trabaja Ni Estudia</label>
+          <input type="radio" name="ocupacion" value="4"class="small-12.columns text-center" {% if user.ocupacion == "4" %}checked {% endif %}><label for="4">Ni Trabaja Ni Estudia</label>
          </div>
         </div>
-      </select>
       </div>
 
 
 
       <div class="medium-6 columns">
       <label>Estudio Actuales</label>
-      <select name= "estudios_act">
-        {%if user.estudios_act%} <option value="{{user.estudios_act}}" selected>{{user.get_estudios_act_display}} </option> {%endif%}
       <div class="row">
       <div class="small-6 columns">
-        <input type="radio" name="estudios_act" value="1"class="small-12.columns text-center"><label for="1">Especialidad</label>
+        <input type="radio" name="estudios_act" value="1"class="small-12.columns text-center" {% if user.estudios_act == "1" %}checked {% endif %}><label for="1">Especialidad</label>
       </div>
       <div class="small-6 columns">
-        <input type="radio" name="estudios_act" value="2"class="small-12.columns text-center"><label for="2">Maestria</label>
+        <input type="radio" name="estudios_act" value="2"class="small-12.columns text-center" {% if user.estudios_act == "2" %}checked {% endif %}><label for="2">Maestria</label>
       </div>
       <div class="small-6 columns">
-        <input type="radio" name="estudios_act" value="3"class="small-12.columns text-center"><label for="3">Idiomas</label>
+        <input type="radio" name="estudios_act" value="3"class="small-12.columns text-center" {% if user.estudios_act == "3" %}checked {% endif %}><label for="3">Idiomas</label>
       </div>
       <div class="small-6 columns">
-        <input type="radio" name="estudios_act" value="4"class="small-12.columns text-center"><label for="4">Otro</label>
+        <input type="radio" name="estudios_act" value="4"class="small-12.columns text-center" {% if user.estudios_act == "4" %}checked {% endif %}><label for="4">Otro</label>
       </div>
       </div>
-      </select>
       </div>
       
 
@@ -270,94 +256,73 @@
 
       <div class="medium-12 columns panel callout">
       <label>Tiempo para Obtener Tu Primer Empleo</label>
-      <select name= "tiem_primer_emple">
-        {%if user.tiem_primer_emple%} <option value="{{user.tiem_primer_emple}}" selected>{{user.get_tiem_primer_emple_display}} </option> {%endif%}
       <div class="row">
       <div class="medium-3 columns">
-        <input type="radio" name="tiem_primer_emple" value="1"class="small-12.columns text-center"><label for="1">Antes de Egresar</label>
+        <input type="radio" name="tiem_primer_emple" value="1"class="small-12.columns text-center" {% if user.tiem_primer_emple == "1" %}checked {% endif %}><label for="1">Antes de Egresar</label>
       </div>
       <div class="medium-3 columns">
-        <input type="radio" name="tiem_primer_emple" value="2"class="small-12.columns text-center"><label for="2">Menos de seis meses</label>
+        <input type="radio" name="tiem_primer_emple" value="2"class="small-12.columns text-center" {% if user.tiem_primer_emple == "2" %}checked {% endif %}><label for="2">Menos de seis meses</label>
       </div>
       <div class="medium-3 columns">
-        <input type="radio" name="tiem_primer_emple" value="3"class="small-12.columns text-center"><label for="3">Entre seis meses y un año</label>
+        <input type="radio" name="tiem_primer_emple" value="3"class="small-12.columns text-center" {% if user.tiem_primer_emple == "3" %}checked {% endif %}><label for="3">Entre seis meses y un año</label>
       </div>
       <div class="medium-3 columns">
-        <input type="radio" name="tiem_primer_emple" value="4"class="small-12.columns text-center"><label for="4">Mas de un año</label>
+        <input type="radio" name="tiem_primer_emple" value="4"class="small-12.columns text-center" {% if user.tiem_primer_emple == "4" %}checked {% endif %}><label for="4">Mas de un año</label>
       </div>
       </div>
-      </select>
       </div>
 
       <div class="medium-12 columns">
       <label>Calidad de los Docentes</label>
-      <select name= "calidad_docentes">
-        {%if user.calidad_docentes%} <option value="{{user.calidad_docentes}}" selected>{{user.get_calidad_docentes_display}} </option> {%endif%}
-      <input type="radio" name="calidad_docentes" value="1"class="small-12.columns text-center"><label for="1">Muy Buena</label>
-      <input type="radio" name="calidad_docentes" value="2"class="small-12.columns text-center"><label for="2">Buena</label>
-      <input type="radio" name="calidad_docentes" value="3"class="small-12.columns text-center"><label for="3">Regular</label>
-      <input type="radio" name="calidad_docentes" value="4"class="small-12.columns text-center"><label for="4">Mala</label>
-      </select>
+      <input type="radio" name="calidad_docentes" value="1"class="small-12.columns text-center" {% if user.calidad_docentes == "1" %}checked {% endif %}><label for="1">Muy Buena</label>
+      <input type="radio" name="calidad_docentes" value="2"class="small-12.columns text-center" {% if user.calidad_docentes == "2" %}checked {% endif %}><label for="2">Buena</label>
+      <input type="radio" name="calidad_docentes" value="3"class="small-12.columns text-center" {% if user.calidad_docentes == "3" %}checked {% endif %}><label for="3">Regular</label>
+      <input type="radio" name="calidad_docentes" value="4"class="small-12.columns text-center" {% if user.calidad_docentes == "4" %}checked {% endif %}><label for="4">Mala</label>
       </div>
       
 
       <div class="medium-12 columns panel callout">
       <label>Plan de Estudios</label>
-      <select name= "plan_estudios">
-        {%if user.plan_estudios%} <option value="{{user.plan_estudios}}" selected>{{user.get_plan_estudios_display}} </option> {%endif%}
-      <input type="radio" name="plan_estudios" value="1"class="small-12.columns text-center"><label for="1">Muy Buena</label>
-      <input type="radio" name="plan_estudios" value="2"class="small-12.columns text-center"><label for="2">Buena</label>
-      <input type="radio" name="plan_estudios" value="3"class="small-12.columns text-center"><label for="3">Regular</label>
-      <input type="radio" name="plan_estudios" value="4"class="small-12.columns text-center"><label for="4">Mala</label>
-      </select>
+      <input type="radio" name="plan_estudios" value="1"class="small-12.columns text-center" {% if user.plan_estudios == "1" %}checked {% endif %}><label for="1">Muy Buena</label> 
+      <input type="radio" name="plan_estudios" value="2"class="small-12.columns text-center" {% if user.plan_estudios == "2" %}checked {% endif %}><label for="2">Buena</label>
+      <input type="radio" name="plan_estudios" value="3"class="small-12.columns text-center" {% if user.plan_estudios == "3" %}checked {% endif %}><label for="3">Regular</label>
+      <input type="radio" name="plan_estudios" value="4"class="small-12.columns text-center" {% if user.plan_estudios == "4" %}checked {% endif %}><label for="4">Mala</label>
       </div>
       
 
       <div class="medium-12 columns">
       <label>Oportunidad de participar en proyectos de investigación y desarrollo</label>
-      <select name= "estudios_act">
-      {%if user.oport_ppid%} <option value="{{user.oport_ppid}}" selected>{{user.get_oport_ppid_display}} </option> {%endif%}
-      <input type="radio" name="oport_ppid" value="1"class="small-12.columns text-center"><label for="1">Muy Buena</label>
-      <input type="radio" name="oport_ppid" value="2"class="small-12.columns text-center"><label for="2">Buena</label>
-      <input type="radio" name="oport_ppid" value="3"class="small-12.columns text-center"><label for="3">Regular</label>
-      <input type="radio" name="oport_ppid" value="4"class="small-12.columns text-center"><label for="4">Mala</label>
-      </select>
+      <input type="radio" name="oport_ppid" value="1"class="small-12.columns text-center" {% if user.oport_ppid == "1" %}checked {% endif %}><label for="1">Muy Buena</label>
+      <input type="radio" name="oport_ppid" value="2"class="small-12.columns text-center" {% if user.oport_ppid == "2" %}checked {% endif %}><label for="2">Buena</label>
+      <input type="radio" name="oport_ppid" value="3"class="small-12.columns text-center" {% if user.oport_ppid == "3" %}checked {% endif %}><label for="3">Regular</label>
+      <input type="radio" name="oport_ppid" value="4"class="small-12.columns text-center" {% if user.oport_ppid == "4" %}checked {% endif %}><label for="4">Mala</label>
       </div>
       
 
       <div class="medium-12 columns panel callout">
       <label>Énfasis que se le prestaba a la investigación dentro del proceso de enseñanza</label>
-      <select name= "enfasis">
-      {%if user.enfasis%} <option value="{{user.enfasis}}" selected>{{user.get_enfasis_display}} </option> {%endif%}
-      <input type="radio" name="enfasis" value="1"class="small-12.columns text-center"><label for="1">Muy Buena</label>
-      <input type="radio" name="enfasis" value="2"class="small-12.columns text-center"><label for="2">Buena</label>
-      <input type="radio" name="enfasis" value="3"class="small-12.columns text-center"><label for="3">Regular</label>
-      <input type="radio" name="enfasis" value="4"class="small-12.columns text-center"><label for="4">Mala</label>
-      </select>
+      <input type="radio" name="enfasis" value="1"class="small-12.columns text-center" {% if user.enfasis == "1" %}checked {% endif %}><label for="1">Muy Buena</label>
+      <input type="radio" name="enfasis" value="2"class="small-12.columns text-center" {% if user.enfasis == "2" %}checked {% endif %}><label for="2">Buena</label>
+      <input type="radio" name="enfasis" value="3"class="small-12.columns text-center" {% if user.enfasis == "3" %}checked {% endif %}><label for="3">Regular</label>
+      <input type="radio" name="enfasis" value="4"class="small-12.columns text-center" {% if user.enfasis == "4" %}checked {% endif %}><label for="4">Mala</label>
       </div>
      
 
       <div class="medium-12 columns">
       <label>Satisfacción con las condiciones de estudio (infraestructura)</label>
-      <select name= "infracest">
-      {%if user.infracest%} <option value="{{user.infracest}}" selected>{{user.get_infracest_display}} </option> {%endif%}
-      <input type="radio" name="infracest" value="1"class="small-12.columns text-center"><label for="1">Muy Buena</label>
-      <input type="radio" name="infracest" value="2"class="small-12.columns text-center"><label for="2">Buena</label>
-      <input type="radio" name="infracest" value="3"class="small-12.columns text-center"><label for="3">Regular</label>
-      <input type="radio" name="infracest" value="4"class="small-12.columns text-center"><label for="4">Mala</label>
-      </select>
+      <input type="radio" name="infracest" value="1"class="small-12.columns text-center" {% if user.infracest == "1" %}checked {% endif %}><label for="1">Muy Buena</label>
+      <input type="radio" name="infracest" value="2"class="small-12.columns text-center" {% if user.infracest == "2" %}checked {% endif %}><label for="2">Buena</label>
+      <input type="radio" name="infracest" value="3"class="small-12.columns text-center" {% if user.infracest == "3" %}checked {% endif %}><label for="3">Regular</label>
+      <input type="radio" name="infracest" value="4"class="small-12.columns text-center" {% if user.infracest == "4" %}checked {% endif %}><label for="4">Mala</label>
       </div>
       
 
       <div class="medium-12 columns panel callout">
       <label>Experiencia obtenida a través de la residencia profesional</label>
-      <select name= "exprecprof">
-      {%if user.exprecprof%} <option value="{{user.exprecprof}}" selected>{{user.get_exprecprof_display}} </option> {%endif%}
-      <input type="radio" name="exprecprof" value="1"class="small-12.columns text-center"><label for="1">Muy Buena</label>
-      <input type="radio" name="exprecprof" value="2"class="small-12.columns text-center"><label for="2">Buena</label>
-      <input type="radio" name="exprecprof" value="3"class="small-12.columns text-center"><label for="3">Regular</label>
-      <input type="radio" name="exprecprof" value="4"class="small-12.columns text-center"><label for="4">Mala</label>
-      </select>
+      <input type="radio" name="exprecprof" value="1"class="small-12.columns text-center" {% if user.exprecprof == "1" %}checked {% endif %}><label for="1">Muy Buena</label>
+      <input type="radio" name="exprecprof" value="2"class="small-12.columns text-center" {% if user.exprecprof == "2" %}checked {% endif %}><label for="2">Buena</label>
+      <input type="radio" name="exprecprof" value="3"class="small-12.columns text-center" {% if user.exprecprof == "3" %}checked {% endif %}><label for="3">Regular</label>
+      <input type="radio" name="exprecprof" value="4"class="small-12.columns text-center" {% if user.exprecprof == "4" %}checked {% endif %}><label for="4">Mala</label>
       </div>
       
 
@@ -368,39 +333,30 @@
 
       <div class="medium-12 columns">
       <label>Eficiencia para realizar las actividades laborales, en relación con su formación académica</label>
-      <select name= "eficiencia_lab">
-      {%if user.eficiencia_lab%} <option value="{{user.eficiencia_lab}}" selected>{{user.get_eficiencia_lab_display}} </option> {%endif%}
-      <input type="radio" name="eficiencia_lab" value="1"class="small-12.columns text-center"><label for="1">Muy Eficiente</label>
-      <input type="radio" name="eficiencia_lab" value="2"class="small-12.columns text-center"><label for="2">Eficiente</label>
-      <input type="radio" name="eficiencia_lab" value="3"class="small-12.columns text-center"><label for="3">Poco Eficiente</label>
-      <input type="radio" name="eficiencia_lab" value="4"class="small-12.columns text-center"><label for="4">Deficiente</label>
-      </select>
+      <input type="radio" name="eficiencia_lab" value="1"class="small-12.columns text-center" {% if user.eficiencia_lab == "1" %}checked {% endif %}><label for="1">Muy Eficiente</label>
+      <input type="radio" name="eficiencia_lab" value="2"class="small-12.columns text-center" {% if user.eficiencia_lab == "2" %}checked {% endif %}><label for="2">Eficiente</label>
+      <input type="radio" name="eficiencia_lab" value="3"class="small-12.columns text-center" {% if user.eficiencia_lab == "3" %}checked {% endif %}><label for="3">Poco Eficiente</label>
+      <input type="radio" name="eficiencia_lab" value="4"class="small-12.columns text-center" {% if user.eficiencia_lab == "4" %}checked {% endif %}><label for="4">Deficiente</label>
       </div>
       
 
       <div class="medium-12 columns panel callout">
       <label>Cómo califica su formación académica con respecto a su desempeño laboral</label>
-      <select name= "cal_formacion">
-      {%if user.cal_formacion%} <option value="{{user.cal_formacion}}" selected>{{user.get_cal_formacion_display}} </option> {%endif%}
-      <input type="radio" name="cal_formacion" value="1"class="small-12.columns text-center"><label for="1">Excelente</label>
-      <input type="radio" name="cal_formacion" value="2"class="small-12.columns text-center"><label for="2">Buena</label>
-      <input type="radio" name="cal_formacion" value="3"class="small-12.columns text-center"><label for="3">Regular</label>
-      <input type="radio" name="cal_formacion" value="4"class="small-12.columns text-center"><label for="4">Mala</label>
-      <input type="radio" name="cal_formacion" value="4"class="small-12.columns text-center"><label for="4">Pesimo</label>
-      </select>
+      <input type="radio" name="cal_formacion" value="1"class="small-12.columns text-center" {% if user.cal_formacion == "1" %}checked {% endif %}><label for="1">Excelente</label>
+      <input type="radio" name="cal_formacion" value="2"class="small-12.columns text-center" {% if user.cal_formacion == "2" %}checked {% endif %}><label for="2">Buena</label>
+      <input type="radio" name="cal_formacion" value="3"class="small-12.columns text-center" {% if user.cal_formacion == "3" %}checked {% endif %}data-slider=><label for="3">Regular</label>
+      <input type="radio" name="cal_formacion" value="4"class="small-12.columns text-center" {% if user.cal_formacion == "4" %}checked {% endif %}><label for="4">Mala</label>
+      <input type="radio" name="cal_formacion" value="4"class="small-12.columns text-center" {% if user.cal_formacion == "5" %}checked {% endif %}><label for="4">Pesimo</label>
       </div>
       
 
       <div class="medium-12 columns">
       <label>Utilidad de las residencias profesionales o prácticas profesionales para su desarrollo laboral y profesional</label>
-      <select name= "util_residencia">
-      {%if user.util_residencia%} <option value="{{user.util_residencia}}" selected>{{user.get_util_residencia_display}} </option> {%endif%}
-      <input type="radio" name="util_residencia" value="1"class="small-12.columns text-center"><label for="1">Excelente</label>
-      <input type="radio" name="util_residencia" value="2"class="small-12.columns text-center"><label for="2">Buena</label>
-      <input type="radio" name="util_residencia" value="3"class="small-12.columns text-center"><label for="3">Regular</label>
-      <input type="radio" name="util_residencia" value="4"class="small-12.columns text-center"><label for="4">Mala</label>
-       <input type="radio" name="util_residencia" value="5"class="small-12.columns text-center"><label for="5">Pesimo</label>
-       </select>
+      <input type="radio" name="util_residencia" value="1"class="small-12.columns text-center" {% if user.util_residencia == "1" %}checked {% endif %}><label for="1">Excelente</label>
+      <input type="radio" name="util_residencia" value="2"class="small-12.columns text-center" {% if user.util_residencia == "2" %}checked {% endif %}><label for="2">Buena</label>
+      <input type="radio" name="util_residencia" value="3"class="small-12.columns text-center" {% if user.util_residencia == "3" %}checked {% endif %}><label for="3">Regular</label>
+      <input type="radio" name="util_residencia" value="4"class="small-12.columns text-center" {% if user.util_residencia == "4" %}checked {% endif %}><label for="4">Mala</label>
+       <input type="radio" name="util_residencia" value="5"class="small-12.columns text-center" {% if user.util_residencia == "5" %}checked {% endif %}><label for="5">Pesimo</label>
        </div>
 
      </div> <!--Row principal -->

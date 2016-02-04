@@ -24,6 +24,8 @@ nota: suponiendo que los entornos virtuales estan en /home/user/proyectos/backen
 1.- $ mysql --user=angel --password egresadostec_db < base_egresados4feb.sql
 
 
+
+
 ### queryset para graficas
 
 python manage.py shell
