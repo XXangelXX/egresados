@@ -3,12 +3,12 @@
 {% load staticfiles %}
 {% block cssFormulario %}
      <link rel="stylesheet" type="text/css" href="{% static "datepicker/themes/default.css" %}">
-    <link rel="stylesheet" type="text/css" href="{% static "datepicker/themes/default.date.css" %}">
+     <link rel="stylesheet" type="text/css" href="{% static "datepicker/themes/default.date.css" %}">
 {% endblock cssFormulario %}
 {% block chartjs %}
-  <script src="{% static "datepicker/picker.js" %}"></script>
-  <script src="{% static "datepicker/picker.date.js" %}"></script>
-  <script src="{% static "datepicker/translations/es_ES.js" %}"></script>
+    <script src="{% static "datepicker/picker.js" %}"></script>
+    <script src="{% static "datepicker/picker.date.js" %}"></script>
+    <script src="{% static "datepicker/translations/es_ES.js" %}"></script>
 {% endblock chartjs %}
 {% block graficajs %}
 <script >
@@ -17,22 +17,19 @@
 {% endblock graficajs %}
 
 {% block contenido %}
-    <section class="row  panel regular">
+  <section class="row panel">
     <article class="small-12 columns" style="background: #fff;">
-        <!-- Perfil Formulario -->
-       <form action="." method="POST">{% csrf_token %}
-            <h2 class="text-center panel callout">Perfil de Egresado</h2>
-
-           <!-- por cada bloque -->
-           <div class="row">
-            <div class="medium-6 columns">
+    <form action="." method="POST">{% csrf_token %}
+        <h2 class="text-center panel callout">Perfil de Egresado</h2>
+        <div class="row">
+          <div class="medium-6 columns">
             <!-- aqui empiezan tus input -->
             <input  type="text" {%if user.nombre%}value="{{user.nombre}}"{%endif%} name="nombre" class="small-12.columns text-center" placeholder="Nombre" required/>
-
-            </div>
-            <div class="medium-6 columns">
+          </div>
+          <div class="medium-6 columns">
               <input  type="text" {%if user.a_paterno%}value="{{user.a_paterno}}"{%endif%} name="a_paterno" class="small-12.columns text-center" placeholder="Apellido Paterno" required/>
             </div>
+
             <div class="medium-6 columns">
               <input  type="text" {%if user.a_materno%}value="{{user.a_materno}}"{%endif%} name="a_materno" class="small-12.columns text-center" placeholder="Apellido Materno" required/>
 
@@ -40,7 +37,6 @@
             <div class="medium-6 columns">
               <input  type="text" {%if user.num_control%}value="{{user.num_control}}"{%endif%} name="num_control" class="small-12.columns text-center" placeholder="Numero de Control" required/>
              </div>
-             
              <div class="medium-6 columns">
              <label>Carrera
                     <select name= "carrera">
@@ -59,40 +55,36 @@
               <option  value= "11">Ing. Logistica</option>
                     </select>
               </label>
-
-            </div>
-             <div class="medium-6 columns">
+              </div>
+            <div class="medium-6 columns">
             <!-- FECHA -->
             <input  type="datetime" {%if user.f_nacimiento%}value="{{user.f_nacimiento}}"{%endif%} name="f_nacimiento" class="datepicker small-12.columns text-center" placeholder="Fecha de Nacimiento" required/> 
-        </div>
+            </div>
+            <div class="medium-6 columns">
+                <label>Sexo</label>
+              <input type="radio" name="sexo" value="M" id="masculino" class="small-12.columns text-center" {% if user.sexo == "M" %}checked {% endif %}><label for="masculino">Masculino</label>
+              <input type="radio" name="sexo" value="F" id="femenino" class="small-12.columns text-center" {% if user.sexo == "F" %}checked {% endif %}><label for="femenino">Femenino</label>
+                </div>
 
-        <div class="medium-6 columns">
-        <label>Sexo</label>
-      <input type="radio" name="sexo" value="M" id="masculino" class="small-12.columns text-center" {% if user.sexo == "M" %}checked {% endif %}><label for="masculino">Masculino</label>
-      <input type="radio" name="sexo" value="F" id="femenino" class="small-12.columns text-center" {% if user.sexo == "F" %}checked {% endif %}><label for="femenino">Femenino</label>
-        </div>
-
-         <div class="medium-6 columns"> 
-        <input  type="text" {%if user.curp%}value="{{user.curp}}"{%endif%} name="curp" class="small-12.columns text-center" placeholder="Curp" required/>
-        </div>
-
-        <div class="medium-6 columns">
-        <label>Estado Civil</label>
-      <div class="medium-6 columns">
-        <input type="radio" name="e_civil" value="C" id="casado(a)" class="small-12.columns text-center" {% if user.e_civil == "C" %}checked {% endif %}><label for="casado">Casado(a)</label>
-      </div>
-      <div class="medium-6 columns">
-        <input type="radio" name="e_civil" value="F" id="soltero(a)" class="small-12.columns text-center" {% if user.e_civil == "S" %}checked {% endif %}><label for="soltero">Soltero(a)</label>
-      </div>
-      <div class="medium-6 columns">
-        <input type="radio" name="e_civil" value="D" id="divorciado(a)" class="small-12.columns text-center" {% if user.e_civil == "D" %}checked {% endif %}><label for="divorciado">Divorciado(a)</label>
-      </div>
-      <div class="medium-6 columns">
-        <input type="radio" name="e_civil" value="O" id="otro" class="small-12.columns text-center" {% if user.e_civil == "O" %}checked {% endif %}><label for="otro">Otro</label>
-      </div>
-        </div>
-
-        <div class="medium-6 columns">
+            <div class="medium-6 columns"> 
+              <input  type="text" {%if user.curp%}value="{{user.curp}}"{%endif%} name="curp" class="small-12.columns text-center" placeholder="Curp" required/>
+            </div>
+            <div class="medium-6 columns">
+              <label>Estado Civil</label>
+            <div class="medium-6 columns">
+              <input type="radio" name="e_civil" value="C" id="casado(a)" class="small-12.columns text-center" {% if user.e_civil == "C" %}checked {% endif %}><label for="casado">Casado(a)</label>
+            </div>
+            <div class="medium-6 columns">
+              <input type="radio" name="e_civil" value="F" id="soltero(a)" class="small-12.columns text-center" {% if user.e_civil == "S" %}checked {% endif %}><label for="soltero">Soltero(a)</label>
+            </div>
+            <div class="medium-6 columns">
+              <input type="radio" name="e_civil" value="D" id="divorciado(a)" class="small-12.columns text-center" {% if user.e_civil == "D" %}checked {% endif %}><label for="divorciado">Divorciado(a)</label>
+            </div>
+            <div class="medium-6 columns">
+              <input type="radio" name="e_civil" value="O" id="otro" class="small-12.columns text-center" {% if user.e_civil == "O" %}checked {% endif %}><label for="otro">Otro</label>
+            </div>
+            </div>
+             <div class="medium-6 columns">
         <select name="estado">
         {%if user.estado%} <option value="{{user.estado}}" selected>{{user.get_estado_display}} </option> {%endif%}
               <option value="Aguascalientes">Aguascalientes</option>
@@ -127,37 +119,36 @@
               <option value="Veracruz">Veracruz </option>
               <option value="Yucatan">Yucatán </option>
               <option value="Zacatecas">Zacatecas</option></select>
-        </div>
+           </div>
 
-        <div class="medium-6 columns">
-        <input  type="text" {%if user.municipio%}value="{{user.municipio}}"{%endif%} name="municipio" class="small-12.columns text-center" placeholder="Municipio" required/>
-        </div>
+            <div class="medium-6 columns">
+            <input  type="text" {%if user.municipio%}value="{{user.municipio}}"{%endif%} name="municipio" class="small-12.columns text-center" placeholder="Municipio" required/>
+            </div>
 
-        <div class="medium-6 columns">
-        <input  type="text" {%if user.cuidad%}}value="{{user.cuidad}}"{%endif%} name="cuidad" class="small-12.columns text-center" placeholder="Cuidad" required/>
-        </div>
+            <div class="medium-6 columns">
+            <input  type="text" {%if user.cuidad%}}value="{{user.cuidad}}"{%endif%} name="cuidad" class="small-12.columns text-center" placeholder="Cuidad" required/>
+            </div>
 
-        <div class="medium-6 columns">
-        <input  type="text" {%if user.domicilio%}value="{{user.domicilio}}"{%endif%} name="domicilio" class="small-12.columns text-center" placeholder="Domicilio" required/>
-        </div>
+            <div class="medium-6 columns">
+            <input  type="text" {%if user.domicilio%}value="{{user.domicilio}}"{%endif%} name="domicilio" class="small-12.columns text-center" placeholder="Domicilio" required/>
+            </div>
 
-        <div class="medium-6 columns">
-        <input  type="tel" {%if user.telefono%}value="{{user.telefono}}"{%endif%} name="telefono" class="small-12.columns text-center" placeholder="Telefono" required/>
-        </div>
+            <div class="medium-6 columns">
+            <input  type="tel" {%if user.telefono%}value="{{user.telefono}}"{%endif%} name="telefono" class="small-12.columns text-center" placeholder="Telefono" required/>
+            </div>
 
-        <div class="medium-6 columns">
-        <input  type="text" {%if user.especialidad%}value="{{user.especialidad}}"{%endif%} name="especialidad" class="small-12.columns text-center" placeholder="Especialidad" required/>
-        </div>
+            <div class="medium-6 columns">
+            <input  type="text" {%if user.especialidad%}value="{{user.especialidad}}"{%endif%} name="especialidad" class="small-12.columns text-center" placeholder="Especialidad" required/>
+            </div>
 
-        <div class="medium-6 columns">
-        <input  type="email" {%if user.e_mail%}value="{{user.e_mail}}"{%endif%} name="e_mail" class="small-12.columns text-center" placeholder="e-mail" required/>
-        </div>
+            <div class="medium-6 columns">
+            <input  type="email" {%if user.e_mail%}value="{{user.e_mail}}"{%endif%} name="e_mail" class="small-12.columns text-center" placeholder="e-mail" required/>
+            </div>
 
-        <div class="medium-6 columns">
-        <input  type="datetime" {%if user.mes_anio_egreso%}value="{{user.mes_anio_egreso}}"{%endif%} name="mes_anio_egreso" class="datepicker small-12.columns text-center" placeholder="Mes y Año de Egreso" required/>
-        </div>
-
-        <div class="medium-6 columns">
+            <div class="medium-6 columns">
+            <input  type="datetime" {%if user.mes_anio_egreso%}value="{{user.mes_anio_egreso}}"{%endif%} name="mes_anio_egreso" class="datepicker small-12.columns text-center" placeholder="Mes y Año de Egreso" required/>
+            </div>
+            <div class="medium-6 columns">
         <input  type="tel" {%if user.tel_casa%}value="{{user.tel_casa}}"{%endif%} name="tel_casa" class="small-12.columns text-center" placeholder="Telefono Casa" required/>
         </div>
 
@@ -177,44 +168,37 @@
             </div>
         </div>
 
-        <div class="medium-6 columns">
-        <input  type="text" {%if user.otros_idms%}value="{{user.otros_idms}}"{%endif%} name="otros_idms" class="small-12.columns text-center" placeholder="Otros Idiomas" required/>
-        </div>
-        
-        <div class="medium-6 columns">
-        <input  type="text" {%if user.man_paq_comp%}value="{{user.man_paq_comp}}"{%endif%} name="man_paq_comp" class="small-12.columns text-center" placeholder="Manejo de Paquetes Computacionales" required/>
-        </div>
+            <div class="medium-6 columns">
+            <input  type="text" {%if user.otros_idms%}value="{{user.otros_idms}}"{%endif%} name="otros_idms" class="small-12.columns text-center" placeholder="Otros Idiomas" required/>
+            </div>
+            
+            <div class="medium-6 columns">
+            <input  type="text" {%if user.man_paq_comp%}value="{{user.man_paq_comp}}"{%endif%} name="man_paq_comp" class="small-12.columns text-center" placeholder="Manejo de Paquetes Computacionales" required/>
+            </div>
 
-        
-      
-        <div class="medium-6 medium-centered columns text-center">
-          <div class="row">
-        <div class="small-4 columns">
-          <label for="right-label" class="right inline">¿Estas Titulado?</label>
-        </div>
-        <div class="small-2 columns">
-          <label class="right">No</label>
-        </div>
-        <div class="small-4 columns"> 
-        
-          <div class="switch round">
-            <input id="titulado_cb" name="titulado" type="checkbox"{% if user.titulado == "1" %}checked{% endif %}>
-            <label for="titulado_cb"></label>
-          </div>
-         </div>
-         <div class="small-2 columns">
-            <Label class="left">Si</Label>
-         </div>
-        </div>
-      </div>
-
-
-
-
-
+            
           
-
-      <div class="medium-12 columns panel callout">
+            <div class="medium-6 medium-centered columns text-center">
+              <div class="row">
+            <div class="small-4 columns">
+              <label for="right-label" class="right inline">¿Estas Titulado?</label>
+            </div>
+            <div class="small-2 columns">
+              <label class="right">No</label>
+            </div>
+            <div class="small-4 columns"> 
+            
+              <div class="switch round">
+                <input id="titulado_cb" name="titulado" type="checkbox"{% if user.titulado == "1" %}checked{% endif %}>
+                <label for="titulado_cb"></label>
+              </div>
+             </div>
+             <div class="small-2 columns">
+                <label class="left">Si</label>
+             </div>
+            </div>
+          </div>
+          <div class="medium-12 columns panel callout">
       <label>Ocupación</label>
       <div class="row">
         <div class="small-12 medium-4 columns">
@@ -234,170 +218,211 @@
 
 
 
-      <div class="medium-6 columns">
-      <label>Estudio Actuales</label>
-      <div class="row">
-      <div class="small-12 columns">
-        <input type="radio" name="estudios_act" value="1"class="small-12.columns text-center" {% if user.estudios_act == "1" %}checked {% endif %}><label for="1">Especialidad</label>
-      </div>
-      <div class="small-12 columns">
-        <input type="radio" name="estudios_act" value="2"class="small-12.columns text-center" {% if user.estudios_act == "2" %}checked {% endif %}><label for="2">Maestria</label>
-      </div>
-      <div class="small-6 columns">
-        <input type="radio" name="estudios_act" value="3"class="small-12.columns text-center" {% if user.estudios_act == "3" %}checked {% endif %}><label for="3">Idiomas</label>
-      </div>
-      <div class="small-6 columns">
-        <input type="radio" name="estudios_act" value="4"class="small-12.columns text-center" {% if user.estudios_act == "4" %}checked {% endif %}><label for="4">Otro</label>
-      </div>
-      </div>
-      </div>
-      
+          <div class="medium-6 columns">
+          <label>Estudio Actuales</label>
+          <div class="row">
+          <div class="small-12 columns">
+            <input type="radio" name="estudios_act" value="1"class="small-12.columns text-center" {% if user.estudios_act == "1" %}checked {% endif %}><label for="1">Especialidad</label>
+          </div>
+          <div class="small-12 columns">
+            <input type="radio" name="estudios_act" value="2"class="small-12.columns text-center" {% if user.estudios_act == "2" %}checked {% endif %}><label for="2">Maestria</label>
+          </div>
+          <div class="small-6 columns">
+            <input type="radio" name="estudios_act" value="3"class="small-12.columns text-center" {% if user.estudios_act == "3" %}checked {% endif %}><label for="3">Idiomas</label>
+          </div>
+          <div class="small-6 columns">
+            <input type="radio" name="estudios_act" value="4"class="small-12.columns text-center" {% if user.estudios_act == "4" %}checked {% endif %}><label for="4">Otro</label>
+          </div>
+          </div>
+          </div>
+          
 
-      <div class="medium-6 columns panel callout">
-        <input  type="text" {%if user.esp_institucion%}value="{{user.esp_institucion}}"{%endif%} name="esp_institucion" class="small-12.columns text-center" placeholder="Especialidad e Institucoón" required/>
-      </div>
+          <div class="medium-6 columns panel callout">
+            <input  type="text" {%if user.esp_institucion%}value="{{user.esp_institucion}}"{%endif%} name="esp_institucion" class="small-12.columns text-center" placeholder="Especialidad e Institución" required/>
+          </div>
 
-      <div class="medium-12 columns" >
-       <label> PERTINENCIA Y DISPONIBILIDAD DE MEDIOS Y RECURSOS PARA EL APRENDIZAJE</label>
-      </div>
-
-
-      <div class="medium-12 columns panel callout">
-      <label>Tiempo para Obtener Tu Primer Empleo</label>
-      <div class="row">
-      <div class="medium-3 columns">
-        <input type="radio" name="tiem_primer_emple" value="1"class="small-12.columns text-center" {% if user.tiem_primer_emple == "1" %}checked {% endif %}><label for="1">Antes de Egresar</label>
-      </div>
-      <div class="medium-3 columns">
-        <input type="radio" name="tiem_primer_emple" value="2"class="small-12.columns text-center" {% if user.tiem_primer_emple == "2" %}checked {% endif %}><label for="2">Menos de seis meses</label>
-      </div>
-      <div class="medium-3 columns">
-        <input type="radio" name="tiem_primer_emple" value="3"class="small-12.columns text-center" {% if user.tiem_primer_emple == "3" %}checked {% endif %}><label for="3">Entre seis meses y un año</label>
-      </div>
-      <div class="medium-3 columns">
-        <input type="radio" name="tiem_primer_emple" value="4"class="small-12.columns text-center" {% if user.tiem_primer_emple == "4" %}checked {% endif %}><label for="4">Mas de un año</label>
-      </div>
-      </div>
-      </div>
-
-      <div class="medium-9 columns">
-      <label>Calidad de los Docentes</label>
-    <div class="medium-4 columns">
-      <input type="radio" name="calidad_docentes" value="1"class="small-9.columns text-center" {% if user.calidad_docentes == "1" %}checked {% endif %}><label for="1">Muy Buena</label>
-    </div>
-    <div class="medium-4 columns">
-      <input type="radio" name="calidad_docentes" value="2"class="small-9.columns text-center" {% if user.calidad_docentes == "2" %}checked {% endif %}><label for="2">Buena</label>
-    </div>
-    <div class="medium-4 columns">
-      <input type="radio" name="calidad_docentes" value="3"class="small-12.columns text-center" {% if user.calidad_docentes == "3" %}checked {% endif %}><label for="3">Regular</label>
-    </div>
-    <div class="medium-12 columns">
-      <input type="radio" name="calidad_docentes" value="4"class="small-12.columns text-center" {% if user.calidad_docentes == "4" %}checked {% endif %}><label for="4">Mala</label>
-    </div>
-      </div>
-      
-
-      <div class="medium-12 columns panel callout">
-      <label>Plan de Estudios</label>
-    <div class="medium-12 columns">
-      <input type="radio" name="plan_estudios" value="1"class="small-12.columns text-center" {% if user.plan_estudios == "1" %}checked {% endif %}><label for="1">Muy Buena</label>
-    </div>
-    <div class="medium-12 columns">
-      <input type="radio" name="plan_estudios" value="2"class="small-12.columns text-center" {% if user.plan_estudios == "2" %}checked {% endif %}><label for="2">Buena</label>
-    </div>
-    <div class="medium-12 columns">
-      <input type="radio" name="plan_estudios" value="3"class="small-12.columns text-center" {% if user.plan_estudios == "3" %}checked {% endif %}><label for="3">Regular</label>
-    </div>
-    <div class="medium-12 columns">
-      <input type="radio" name="plan_estudios" value="4"class="small-12.columns text-center" {% if user.plan_estudios == "4" %}checked {% endif %}><label for="4">Mala</label>
-    </div>
-      </div>
-      
-
-      <div class="medium-12 columns">
-      <label>Oportunidad de participar en proyectos de investigación y desarrollo</label>
-      <input type="radio" name="oport_ppid" value="1"class="small-12.columns text-center" {% if user.oport_ppid == "1" %}checked {% endif %}><label for="1">Muy Buena</label>
-      <input type="radio" name="oport_ppid" value="2"class="small-12.columns text-center" {% if user.oport_ppid == "2" %}checked {% endif %}><label for="2">Buena</label>
-      <input type="radio" name="oport_ppid" value="3"class="small-12.columns text-center" {% if user.oport_ppid == "3" %}checked {% endif %}><label for="3">Regular</label>
-      <input type="radio" name="oport_ppid" value="4"class="small-12.columns text-center" {% if user.oport_ppid == "4" %}checked {% endif %}><label for="4">Mala</label>
-      </div>
-      
-
-      <div class="medium-12 columns panel callout">
-      <label>Énfasis que se le prestaba a la investigación dentro del proceso de enseñanza</label>
-      <input type="radio" name="enfasis" value="1"class="small-12.columns text-center" {% if user.enfasis == "1" %}checked {% endif %}><label for="1">Muy Buena</label>
-      <input type="radio" name="enfasis" value="2"class="small-12.columns text-center" {% if user.enfasis == "2" %}checked {% endif %}><label for="2">Buena</label>
-      <input type="radio" name="enfasis" value="3"class="small-12.columns text-center" {% if user.enfasis == "3" %}checked {% endif %}><label for="3">Regular</label>
-      <input type="radio" name="enfasis" value="4"class="small-12.columns text-center" {% if user.enfasis == "4" %}checked {% endif %}><label for="4">Mala</label>
-      </div>
-     
-
-      <div class="medium-12 columns">
-      <label>Satisfacción con las condiciones de estudio (infraestructura)</label>
-      <input type="radio" name="infracest" value="1"class="small-12.columns text-center" {% if user.infracest == "1" %}checked {% endif %}><label for="1">Muy Buena</label>
-      <input type="radio" name="infracest" value="2"class="small-12.columns text-center" {% if user.infracest == "2" %}checked {% endif %}><label for="2">Buena</label>
-      <input type="radio" name="infracest" value="3"class="small-12.columns text-center" {% if user.infracest == "3" %}checked {% endif %}><label for="3">Regular</label>
-      <input type="radio" name="infracest" value="4"class="small-12.columns text-center" {% if user.infracest == "4" %}checked {% endif %}><label for="4">Mala</label>
-      </div>
-      
-
-      <div class="medium-12 columns panel callout">
-      <label>Experiencia obtenida a través de la residencia profesional</label>
-      <input type="radio" name="exprecprof" value="1"class="small-12.columns text-center" {% if user.exprecprof == "1" %}checked {% endif %}><label for="1">Muy Buena</label>
-      <input type="radio" name="exprecprof" value="2"class="small-12.columns text-center" {% if user.exprecprof == "2" %}checked {% endif %}><label for="2">Buena</label>
-      <input type="radio" name="exprecprof" value="3"class="small-12.columns text-center" {% if user.exprecprof == "3" %}checked {% endif %}><label for="3">Regular</label>
-      <input type="radio" name="exprecprof" value="4"class="small-12.columns text-center" {% if user.exprecprof == "4" %}checked {% endif %}><label for="4">Mala</label>
-      </div>
-      
-
-      <div class="medium-12 columns">
-      <label>DESEMPEÑO PROFESIONAL DE LOS EGRESADOS (COHERENCIA ENTRE LA FORMACIÓN Y EL TIPO DE EMPLEO)</label>
-      </div>
+          <div class="medium-12 columns" >
+           <h3 class="panel"> II.PERTINENCIA Y DISPONIBILIDAD DE MEDIOS Y RECURSOS PARA EL APRENDIZAJE</h3>
+          </div>
 
 
-      <div class="medium-12 columns">
-      <label>Eficiencia para realizar las actividades laborales, en relación con su formación académica</label>
-      <input type="radio" name="eficiencia_lab" value="1"class="small-12.columns text-center" {% if user.eficiencia_lab == "1" %}checked {% endif %}><label for="1">Muy Eficiente</label>
-      <input type="radio" name="eficiencia_lab" value="2"class="small-12.columns text-center" {% if user.eficiencia_lab == "2" %}checked {% endif %}><label for="2">Eficiente</label>
-      <input type="radio" name="eficiencia_lab" value="3"class="small-12.columns text-center" {% if user.eficiencia_lab == "3" %}checked {% endif %}><label for="3">Poco Eficiente</label>
-      <input type="radio" name="eficiencia_lab" value="4"class="small-12.columns text-center" {% if user.eficiencia_lab == "4" %}checked {% endif %}><label for="4">Deficiente</label>
-      </div>
-      
+          <div class="medium-12 columns panel callout">
+          <label>Tiempo para Obtener Tu Primer Empleo</label>
+          <div class="row">
+          <div class="medium-3 columns">
+            <input type="radio" name="tiem_primer_emple" value="1"class="small-12.columns text-center" {% if user.tiem_primer_emple == "1" %}checked {% endif %}><label for="1">Antes de Egresar</label>
+          </div>
+          <div class="medium-3 columns">
+            <input type="radio" name="tiem_primer_emple" value="2"class="small-12.columns text-center" {% if user.tiem_primer_emple == "2" %}checked {% endif %}><label for="2">Menos de seis meses</label>
+          </div>
+          <div class="medium-3 columns">
+            <input type="radio" name="tiem_primer_emple" value="3"class="small-12.columns text-center" {% if user.tiem_primer_emple == "3" %}checked {% endif %}><label for="3">Entre seis meses y un año</label>
+          </div>
+          <div class="medium-3 columns">
+            <input type="radio" name="tiem_primer_emple" value="4"class="small-12.columns text-center" {% if user.tiem_primer_emple == "4" %}checked {% endif %}><label for="4">Mas de un año</label>
+          </div>
+          </div>
+          </div>
 
-      <div class="medium-12 columns panel callout">
-      <label>Cómo califica su formación académica con respecto a su desempeño laboral</label>
-      <input type="radio" name="cal_formacion" value="1"class="small-12.columns text-center" {% if user.cal_formacion == "1" %}checked {% endif %}><label for="1">Excelente</label>
-      <input type="radio" name="cal_formacion" value="2"class="small-12.columns text-center" {% if user.cal_formacion == "2" %}checked {% endif %}><label for="2">Buena</label>
-      <input type="radio" name="cal_formacion" value="3"class="small-12.columns text-center" {% if user.cal_formacion == "3" %}checked {% endif %}data-slider=><label for="3">Regular</label>
-      <input type="radio" name="cal_formacion" value="4"class="small-12.columns text-center" {% if user.cal_formacion == "4" %}checked {% endif %}><label for="4">Mala</label>
-      <input type="radio" name="cal_formacion" value="4"class="small-12.columns text-center" {% if user.cal_formacion == "5" %}checked {% endif %}><label for="4">Pesimo</label>
-      </div>
-      
-
-      <div class="medium-12 columns">
-      <label>Utilidad de las residencias profesionales o prácticas profesionales para su desarrollo laboral y profesional</label>
-      <input type="radio" name="util_residencia" value="1"class="small-12.columns text-center" {% if user.util_residencia == "1" %}checked {% endif %}><label for="1">Excelente</label>
-      <input type="radio" name="util_residencia" value="2"class="small-12.columns text-center" {% if user.util_residencia == "2" %}checked {% endif %}><label for="2">Buena</label>
-      <input type="radio" name="util_residencia" value="3"class="small-12.columns text-center" {% if user.util_residencia == "3" %}checked {% endif %}><label for="3">Regular</label>
-      <input type="radio" name="util_residencia" value="4"class="small-12.columns text-center" {% if user.util_residencia == "4" %}checked {% endif %}><label for="4">Mala</label>
-       <input type="radio" name="util_residencia" value="5"class="small-12.columns text-center" {% if user.util_residencia == "5" %}checked {% endif %}><label for="5">Pesimo</label>
-       </div>
-
-     </div> <!--Row principal -->
-
-      
-       
-        <!-- aqui empiezan boton de Enviar -->
-        <div class="row">
-            <div class="medium-6 medium-centered columns">
-                <input class="button round expand" type="submit" value="Enviar Datos">
+                <div class="medium-9 columns">
+                <label>Calidad de los Docentes</label>
+              <div class="medium-4 columns">
+                <input type="radio" name="calidad_docentes" value="1"class="small-9.columns text-center" {% if user.calidad_docentes == "1" %}checked {% endif %}><label for="1">Muy Buena</label>
+              </div>
+              <div class="medium-4 columns">
+                <input type="radio" name="calidad_docentes" value="2"class="small-9.columns text-center" {% if user.calidad_docentes == "2" %}checked {% endif %}><label for="2">Buena</label>
+              </div>
+              <div class="medium-4 columns">
+                <input type="radio" name="calidad_docentes" value="3"class="small-12.columns text-center" {% if user.calidad_docentes == "3" %}checked {% endif %}><label for="3">Regular</label>
+              </div>
+              <div class="medium-12 columns">
+                <input type="radio" name="calidad_docentes" value="4"class="small-12.columns text-center" {% if user.calidad_docentes == "4" %}checked {% endif %}><label for="4">Mala</label>
+              </div>
             </div>
+            <div class="medium-12 columns panel callout">
+            <label>Plan de Estudios</label>
+          <div class="medium-4 columns">
+            <input type="radio" name="plan_estudios" value="1"class="small-12.columns text-center" {% if user.plan_estudios == "1" %}checked {% endif %}><label for="1">Muy Buena</label>
+          </div>
+          <div class="medium-4 columns">
+            <input type="radio" name="plan_estudios" value="2"class="small-12.columns text-center" {% if user.plan_estudios == "2" %}checked {% endif %}><label for="2">Buena</label>
+          </div>
+          <div class="medium-4 columns">
+            <input type="radio" name="plan_estudios" value="3"class="small-12.columns text-center" {% if user.plan_estudios == "3" %}checked {% endif %}><label for="3">Regular</label>
+          </div>
+          <div class="medium-12 columns">
+            <input type="radio" name="plan_estudios" value="4"class="small-12.columns text-center" {% if user.plan_estudios == "4" %}checked {% endif %}><label for="4">Mala</label>
+          </div>
+            </div>
+            
+
+            <div class="medium-12 columns">
+            <label>Oportunidad de participar en proyectos de investigación y desarrollo</label>
+          <div class="medium-4 columns">
+            <input type="radio" name="oport_ppid" value="1"class="small-12.columns text-center" {% if user.oport_ppid == "1" %}checked {% endif %}><label for="1">Muy Buena</label>
+          </div>
+          <div class="medium-4 columns">
+            <input type="radio" name="oport_ppid" value="2"class="small-12.columns text-center" {% if user.oport_ppid == "2" %}checked {% endif %}><label for="2">Buena</label>
+          </div>
+          <div class="medium-4 columns">
+            <input type="radio" name="oport_ppid" value="3"class="small-12.columns text-center" {% if user.oport_ppid == "3" %}checked {% endif %}><label for="3">Regular</label>
+          </div>
+          <div class="medium-12 columns">
+            <input type="radio" name="oport_ppid" value="4"class="small-12.columns text-center" {% if user.oport_ppid == "4" %}checked {% endif %}><label for="4">Mala</label>
+          </div>
+            </div>
+            
+
+            <div class="medium-12 columns panel callout">
+            <label>Énfasis que se le prestaba a la investigación dentro del proceso de enseñanza</label>
+          <div class="medium-4 columns">
+            <input type="radio" name="enfasis" value="1"class="small-12.columns text-center" {% if user.enfasis == "1" %}checked {% endif %}><label for="1">Muy Buena</label>
+          </div>
+          <div class="medium-4 columns">
+            <input type="radio" name="enfasis" value="2"class="small-12.columns text-center" {% if user.enfasis == "2" %}checked {% endif %}><label for="2">Buena</label>
+          </div>
+          <div class="medium-4 columns">
+            <input type="radio" name="enfasis" value="3"class="small-12.columns text-center" {% if user.enfasis == "3" %}checked {% endif %}><label for="3">Regular</label>
+          </div>
+          <div class="medium-12 columns">
+            <input type="radio" name="enfasis" value="4"class="small-12.columns text-center" {% if user.enfasis == "4" %}checked {% endif %}><label for="4">Mala</label>
+          </div>
+            </div>
+           
+
+            <div class="medium-12 columns">
+            <label>Satisfacción con las condiciones de estudio (infraestructura)</label>
+           <div class="medium-4 columns">
+            <input type="radio" name="infracest" value="1"class="small-12.columns text-center" {% if user.infracest == "1" %}checked {% endif %}><label for="1">Muy Buena</label>
+          </div>
+           <div class="medium-4 columns">
+            <input type="radio" name="infracest" value="2"class="small-12.columns text-center" {% if user.infracest == "2" %}checked {% endif %}><label for="2">Buena</label>
+          </div>
+           <div class="medium-4 columns">
+            <input type="radio" name="infracest" value="3"class="small-12.columns text-center" {% if user.infracest == "3" %}checked {% endif %}><label for="3">Regular</label>
+          </div>
+           <div class="medium-12 columns">
+            <input type="radio" name="infracest" value="4"class="small-12.columns text-center" {% if user.infracest == "4" %}checked {% endif %}><label for="4">Mala</label>
+          </div>
+          </div>
+           <div class="medium-12 columns panel callout">
+          <label>Experiencia obtenida a través de la residencia profesional</label>
+         <div class="medium-4 columns">
+          <input type="radio" name="exprecprof" value="1"class="small-12.columns text-center" {% if user.exprecprof == "1" %}checked {% endif %}><label for="1">Muy Buena</label>
         </div>
+         <div class="medium-4 columns">
+          <input type="radio" name="exprecprof" value="2"class="small-12.columns text-center" {% if user.exprecprof == "2" %}checked {% endif %}><label for="2">Buena</label>
+        </div>
+         <div class="medium-4 columns">
+          <input type="radio" name="exprecprof" value="3"class="small-12.columns text-center" {% if user.exprecprof == "3" %}checked {% endif %}><label for="3">Regular</label>
+        </div>
+         <div class="medium-12 columns">
+          <input type="radio" name="exprecprof" value="4"class="small-12.columns text-center" {% if user.exprecprof == "4" %}checked {% endif %}><label for="4">Mala</label>
+        </div>
+          </div>
+          <div class="medium-12 columns">
+          <label>DESEMPEÑO PROFESIONAL DE LOS EGRESADOS (COHERENCIA ENTRE LA FORMACIÓN Y EL TIPO DE EMPLEO)</label>
+          </div>
+          <div class="medium-12 columns">
+            <label>Eficiencia para realizar las actividades laborales, en relación con su formación académica</label>
+          <div class="medium-4 columns">
+            <input type="radio" name="eficiencia_lab" value="1"class="small-12.columns text-center" {% if user.eficiencia_lab == "1" %}checked {% endif %}><label for="1">Muy Eficiente</label>
+          </div>
+            <div class="medium-4 columns">
+            <input type="radio" name="eficiencia_lab" value="2"class="small-12.columns text-center" {% if user.eficiencia_lab == "2" %}checked {% endif %}><label for="2">Eficiente</label>
+          </div>
+          <div class="medium-4 columns">
+            <input type="radio" name="eficiencia_lab" value="3"class="small-12.columns text-center" {% if user.eficiencia_lab == "3" %}checked {% endif %}><label for="3">Poco Eficiente</label>
+          </div>
+           <div class="medium-12 columns">
+            <input type="radio" name="eficiencia_lab" value="4"class="small-12.columns text-center" {% if user.eficiencia_lab == "4" %}checked {% endif %}><label for="4">Deficiente</label>
+          </div>
+            </div>
+          <div class="medium-12 columns panel">
+            <label>Cómo califica su formación académica con respecto a su desempeño laboral</label>
+            <div class="medium-6 columns">
+              <input type="radio" name="cal_formacion" value="1"class="small-12.columns text-center" {% if user.cal_formacion == "1" %}checked {% endif %}><label for="1">Excelente</label>
+            </div>
+            <div class="medium-6 columns">
+              <input type="radio" name="cal_formacion" value="2"class="small-12.columns text-center" {% if user.cal_formacion == "2" %}checked {% endif %}><label for="2">Buena</label>
+            </div>
+            <div class="medium-6 columns">
+              <input type="radio" name="cal_formacion" value="3"class="small-12.columns text-center" {% if user.cal_formacion == "3" %}checked {% endif %}><label for="3">Regular</label>
+            </div>
+            <div class="medium-6 columns">
+              <input type="radio" name="cal_formacion" value="4"class="small-12.columns text-center" {% if user.cal_formacion == "4" %}checked {% endif %}><label for="4">Mala</label>
+            </div>
+            <div class="medium-12 columns">
+              <input type="radio" name="cal_formacion" value="5"class="small-12.columns text-center" {% if user.cal_formacion == "5" %}checked {% endif %}><label for="5">Pesimo</label>
+            </div>
+
+
+          </div>
+
+          <div class="medium-12 columns">
+            <label>Utilidad de las residencias profesionales o prácticas profesionales para su desarrollo laboral y profesional</label>
+            <div class="medium-6 columns">
+            <input type="radio" name="util_residencia" value="1"class="small-12.columns text-center" {% if user.util_residencia == "1" %}checked {% endif %}><label for="1">Excelente</label>
+          </div>
+          <div class="medium-6 columns">
+            <input type="radio" name="util_residencia" value="2"class="small-12.columns text-center" {% if user.util_residencia == "2" %}checked {% endif %}><label for="2">Buena</label>
+          </div>
+          <div class="medium-6 columns">
+            <input type="radio" name="util_residencia" value="3"class="small-12.columns text-center" {% if user.util_residencia == "3" %}checked {% endif %}><label for="3">Regular</label>
+          </div>
+          <div class="medium-6 columns">
+            <input type="radio" name="util_residencia" value="4"class="small-12.columns text-center" {% if user.util_residencia == "4" %}checked {% endif %}><label for="4">Mala</label>
+          </div>
+          <div class="medium-12 columns">
+             <input type="radio" name="util_residencia" value="5"class="small-12.columns text-center" {% if user.util_residencia == "5" %}checked {% endif %}><label for="5">Pesimo</label>
+          </div>
+          </div>
 
 
 
-       </form>
-        
+
+        </div>
+    </form>
     </article>
-</section>
+  </section>
 {% endblock contenido %}
