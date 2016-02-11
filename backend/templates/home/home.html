@@ -28,9 +28,9 @@
       <th width="150">Titulado</th>
       <th width="150">Ocupacion</th>
       <th width="150">Telefono</th>
+      <th width="150">Curp</th>
       <th width="100">Fecha de Registro</th>
       <th width="100">Fecha de Actualización</th>
-
     </tr>
   </thead>
   <tbody>
@@ -43,6 +43,7 @@
       <td>{{egresado.get_titulado_display}}</td>
       <td>{{egresado.get_ocupacion_display}}</td>
       <td>{{egresado.telefono}}</td>
+      <td>{{egresado.curp}}</td>
        </tr>
     {% endfor %}
    
@@ -54,6 +55,7 @@
       <td>{{egresado_numcontrol.get_titulado_display}}</td>
       <td>{{egresado_numcontrol.get_ocupacion_display}}</td>
       <td>{{egresado_numcontrol.telefono}}</td>
+      <td>{{egresado_numcontrol.curp}}</td>
        </tr>
       
     

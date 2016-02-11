@@ -131,8 +131,8 @@ def valuecarrera(carrera):
     
   
 
-def info(request):
-    return render(request,'home/info.html', {'nombre':'luis'})
+def olvidec(request):
+    return render(request,'home/olvidec.html',{})
 
 
 @login_required(login_url='/')

@@ -60,7 +60,9 @@
       {% endif %}
       {% if not user.is_anonymous %}
         <li class="has-dropdown {{c_login}}">
-          <a href="#">HOLA <span style="color:rgb(213, 165, 245);margin-right:6px;">{{user.username|upper}}</span><span style="color:rgb(213, 165, 245);" class="icon-smile"></span></a>
+          <a href="#">HOLA <span style="color:rgb(213, 165, 245);margin-right:6px;">{% if user.username %}{{user.username|upper}}{% else %}{{user.num_control}}
+          {% endif %}
+          </span><span style="color:rgb(213, 165, 245);" class="icon-smile"></span></a>
           <ul class="dropdown">
             {% if user.is_staff %}
               <li><a href="/admin"><span class="icon-cog"></span>Administración del Sistema</a></li>

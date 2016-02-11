@@ -13,18 +13,18 @@ h1, h2, h3, h4, h5, p{
 }
 
 ::-webkit-input-placeholder {
-  color: rgba(0,0,0,.90); }
+  color: rgba(0,0,0,1); }
 
 :-moz-placeholder {
   /* Firefox 18- */
-  color: rgba(0,0,0,.90); }
+  color: rgba(0,0,0,1); }
 
 ::-moz-placeholder {
   /* Firefox 19+ */
-  color: rgba(0,0,0,.90); }
+  color: rgba(0,0,0,1); }
 
 :-ms-input-placeholder {
-  color: rgba(0,0,0,.90); }
+  color: rgba(0,0,0,1); }
 
 #h_home{
 background: rgba(30, 37, 110, 0.9) url("../img/LOGOTEC5.PNG") no-repeat 1.5em center;
@@ -74,11 +74,10 @@ padding-bottom: 5em;
 }
 
 #introduccion{
-background: -webkit-linear-gradient(90deg, #ff0084 10%, #33001b 90%); /* Chrome 10+, Saf5.1+ */
-  background:    -moz-linear-gradient(90deg, #ff0084 10%, #33001b 90%); /* FF3.6+ */
-  background:     -ms-linear-gradient(90deg, #ff0084 10%, #33001b 90%); /* IE10 */
-  background:      -o-linear-gradient(90deg, #ff0084 10%, #33001b 90%); /* Opera 11.10+ */
-  background:         linear-gradient(90deg, #ff0084 10%, #33001b 90%);
+background: #348F50; /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #348F50 , #56B4D3); /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #348F50 , #56B4D3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        
 color: white; /* W3C */
 }
 #introduccion h5,
