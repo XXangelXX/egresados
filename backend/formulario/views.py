@@ -42,31 +42,47 @@ def actualizar(request):
 
 @login_required(login_url='/')  # /egresado/perfil
 def actualizar_perfil(request):
+    errors=[]
     usuario=request.user
     if request.method=='POST':
-        siguiente = request.GET.get('siguiente','')
+        print usuario.id
+        print usuario.username
+        print usuario
+        siguiente = request.GET.get('siguiente','') 
+        print siguiente
+        
+        print "Entro al post"
 
         if siguiente == "actualizar":
+            print siguiente
             instance = get_object_or_404(PerfilEgresado, num_control=usuario.username)
             fperfil=PerfilEgresadoForm(request.POST, instance=instance)
             if fperfil.is_valid():
                 perfil=fperfil.save()
-                perfil.usuario=usuario
+                perfil.usuario=usuario.id
                 perfil.save()
                 return Redirect("/egresado/actualizar")
             else:
+                errors.append(fperfil.errors)
+                print errors
                 print("Datos Incorrectos")
                 return Redirect("/egresado/perfil")
+
         elif siguiente == "nuevo":
+            print siguiente
             fperfil = PerfilEgresadoForm(request.POST)
             if fperfil.is_valid():
                 perfil=fperfil.save()
-                perfil.usuario=usuario
+                perfil.usuario=int(usuario.id)
                 perfil.save()
                 return Redirect("/egresado/datoslaborales")
             else:
+                errors.append(fperfil.errors)
+                print errors
                 print("Datos Incorrectos")
-                return render (request, "formulario/actualizar_perfil.html", {"error":"Datos Incorrectos"})
+                return render(request, "formulario/actualizar_perfil.html", {"error":"Datos Incorrectos"})
+
+            #return Redirect("/egresado/actualizar")
     else:
         try:
             user = PerfilEgresado.objects.get(num_control=usuario.username)
@@ -76,6 +92,7 @@ def actualizar_perfil(request):
     
 
 # /egresado/datoslaborales
+@login_required(login_url='/')
 def actualizar_datoslab(request):
     usuario=request.user
     if request.method=='POST':
@@ -105,15 +122,60 @@ def actualizar_datoslab(request):
     else:
         try:
             print usuario.id
-            user = DatosLaborales.objects.get(id=usuario.id)
+            user = DatosLaborales.objects.get(num_control=usuario.username)
             return render (request, "formulario/actualizar_datoslab.html", {"usuario":user, "siguiente":"actualizar"})
         except ObjectDoesNotExist:
             return render (request, "formulario/actualizar_datoslab.html", {"siguiente":"nuevo"})
     
 
 # /egresado/empresa
+@login_required(login_url='/')
 def actualizar_empresa(request):
-     return render (request, "formulario/actualizar_empresa.html", {})
+    usuario=request.user
+    if request.method=='POST':
+        siguiente = request.GET.get('siguiente','')
+
+        if siguiente == "actualizar":
+            instance = get_object_or_404(Empresa, num_control=usuario.username)
+            fperfil=DatosLaboralesForm(request.POST, instance=instance)
+            if fperfil.is_valid():
+                perfil=fperfil.save()
+                perfil.usuario=usuario
+                perfil.save()
+                return Redirect("/egresado/actualizar")
+            else:
+                print("Datos Incorrectos")
+                return Redirect("/egresado/perfil")
+        elif siguiente == "nuevo":
+            fperfil = DatosLaboralesForm(request.POST)
+            if fperfil.is_valid():
+                perfil=fperfil.save()
+                perfil.usuario=usuario
+                perfil.save()
+                return Redirect("/egresado/actualizar")
+            else:
+                print("Datos Incorrectos")
+                return render (request, "formulario/actualizar_empresa.html", {"error":"Datos Incorrectos"})
+    else:
+        try:
+            print usuario.id
+            user = Empresa.objects.get(num_control=usuario.username)
+            encargado=get_encargado(request)
+            return render (request, "formulario/actualizar_empresa.html", {"usuario":user,
+                         "siguiente":"actualizar", "encargado":encargado})
+        except ObjectDoesNotExist:
+            return render (request, "formulario/actualizar_empresa.html", {"siguiente":"nuevo"})
+
+def get_encargado(request):
+    usuario=request.user
+    try:
+        encargado=Encargado.objects.get(num_control=usuario.username)
+        return encargado
+    except Exception, e:
+        encargado={}
+        return encargado
+    
+
 
 def change_password(request):
     if request.method=='POST':

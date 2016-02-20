@@ -42,10 +42,10 @@ INSTALLED_APPS = (
     'home',
     'empresa',
     'perfil',
-    'import_export',
     'chartjs',
     'graficas',
     'formulario',
+    'import_export',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -85,12 +85,11 @@ WSGI_APPLICATION = 'Egresados.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'egresadostec2_db',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'hola',
         'USER': 'angel',
         'PASSWORD': 'root',
         'HOST': 'localhost',
-        'PORT': '',
     }
 }
 

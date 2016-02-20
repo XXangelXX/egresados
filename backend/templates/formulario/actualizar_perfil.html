@@ -12,15 +12,21 @@
 {% endblock chartjs %}
 {% block graficajs %}
 <script >
-    $('.datepicker').pickadate();
+    $('.datepicker').pickadate({
+      format: 'dd/mm/yyyy',
+      selectMonths: true,
+      selectYears: true,
+      formatSubmit: 'yyyy/mm/dd',
+      selectYears: 100
+    });
 </script>    
 {% endblock graficajs %}
 
 {% block contenido %}
   <section class="row panel">
     <article class="small-12 columns" style="background: #fff;">
-    <form action="." method="POST">{% csrf_token %}
-        <h2 class="text-center panel callout">Perfil de Egresado</h2>
+    <form method="POST" action="./?siguiente={{siguiente}}">{% csrf_token %}
+        <h2 class="text-center panel callout"> I.Perfil de Egresado</h2>
         <div class="row">
           <div class="medium-6 columns">
             <!-- aqui empiezan tus input -->
@@ -37,11 +43,14 @@
             <div class="medium-6 columns">
               <input  type="text" {%if usuario.num_control%}value="{{usuario.num_control}}"{%endif%} name="num_control" class="small-12.columns text-center" placeholder="Numero de Control" required/>
              </div>
+           </div>
+           
              <div class="medium-6 columns">
              <label>Carrera
-                    <select name= "carrera">
+              <select name= "carrera">
               {%if usuario.carrera%} 
-              <option  value= "{{usuario.carrera.id}}" selected="selected">{{usuario.carrera}}</option>
+              <option  value= "{{usuario.carrera.id}}" selected="selected">{{usuario.carrera}}
+              </option>
               {%endif%}
               
               <option  value= "1">Ing.Bioquimica</option>
@@ -55,40 +64,50 @@
               <option  value= "9">Ing. Electromecánica</option>
               <option  value= "10">Ing. Gestión Empresarial</option>
               <option  value= "11">Ing. Logistica</option>
-                    </select>
+              </select>
               </label>
               </div>
             <div class="medium-6 columns">
             <!-- FECHA -->
+            <label>Fecha de Nacimiento
             <input  type="datetime" {%if usuario.f_nacimiento%}value="{{usuario.f_nacimiento}}"{%endif%} name="f_nacimiento" class="datepicker small-12.columns text-center" placeholder="Fecha de Nacimiento" required/> 
+            </label>
             </div>
-            <div class="medium-6 columns">
-                <label>Sexo</label>
-              <input type="radio" name="sexo" value="M" id="masculino" class="small-12.columns text-center" {% if usuario.sexo == "M" %}checked {% endif %}><label for="masculino">Masculino</label>
-              <input type="radio" name="sexo" value="F" id="femenino" class="small-12.columns text-center" {% if usuario.sexo == "F" %}checked {% endif %}><label for="femenino">Femenino</label>
-                </div>
+          
+          <div class="row">
+             <div class="medium-6 columns">
+              <label>Sexo</label>
+              <input type="radio" name="sexo" value="M" id="masculino" class="small-12.columns text-center" {% if usuario.sexo == "M" %}checked="checked" {% endif %}/><label for="masculino">Masculino</label>
+              <input type="radio" name="sexo" value="F" id="femenino" class="small-12.columns text-center" {% if usuario.sexo == "F" %}checked="checked" {% endif %}/><label for="femenino">Femenino</label>
+            </div>
 
             <div class="medium-6 columns"> 
               <input  type="text" {%if usuario.curp%}value="{{usuario.curp}}"{%endif%} name="curp" class="small-12.columns text-center" placeholder="Curp" required/>
             </div>
-            <div class="medium-6 columns">
+            
+            <div class="medium-12 columns">
               <label>Estado Civil</label>
-            <div class="medium-6 columns">
-              <input type="radio" name="e_civil" value="C" id="casado(a)" class="small-12.columns text-center" {% if usuario.e_civil == "C" %}checked {% endif %}><label for="casado">Casado(a)</label>
+            <div class="medium-3 columns">
+              <input type="radio" name="e_civil" value="C" id="casado" class="small-12.columns text-center" {% if usuario.e_civil == "C" %}checked {% endif %}><label for="casado">Casado(a)</label>
             </div>
-            <div class="medium-6 columns">
-              <input type="radio" name="e_civil" value="F" id="soltero(a)" class="small-12.columns text-center" {% if usuario.e_civil == "S" %}checked {% endif %}><label for="soltero">Soltero(a)</label>
+            <div class="medium-3 columns">
+              <input type="radio" name="e_civil" value="S" id="soltero" class="small-12.columns text-center" {% if usuario.e_civil == "S" %}checked {% endif %}><label for="soltero">Soltero(a)</label>
             </div>
-            <div class="medium-6 columns">
-              <input type="radio" name="e_civil" value="D" id="divorciado(a)" class="small-12.columns text-center" {% if usuario.e_civil == "D" %}checked {% endif %}><label for="divorciado">Divorciado(a)</label>
+            <div class="medium-4 columns">
+              <input type="radio" name="e_civil" value="D" id="divorciado" class="small-12.columns text-center" {% if usuario.e_civil == "D" %}checked {% endif %}><label for="divorciado">Divorciado(a)</label>
             </div>
-            <div class="medium-6 columns">
+            <div class="medium-2 columns">
               <input type="radio" name="e_civil" value="O" id="otro" class="small-12.columns text-center" {% if usuario.e_civil == "O" %}checked {% endif %}><label for="otro">Otro</label>
             </div>
             </div>
+          </div>
+          <div class="row">
+            
              <div class="medium-6 columns">
-        <select name="estado">
-        {%if usuario.estado%} <option value="{{usuario.estado}}" selected="selected">{{usuario.estado}}</option> {%endif%}
+                <select name="estado">
+                {%if usuario.estado%} 
+                <option value="{{usuario.estado}}" selected="selected">{{usuario.estado}}
+                </option> {%endif%}
               <option value="Aguascalientes">Aguascalientes</option>
               <option value="Baja California">Baja California </option>
               <option value="Baja California Sur">Baja California Sur </option>
@@ -109,7 +128,9 @@
               <option value="Nayarit">Nayarit </option>
               <option value="Nuevo Leon">Nuevo León </option>
               <option value="Oaxaca">Oaxaca </option>
-              <option value="Puebla" selected>Puebla </option>
+              <option value="Puebla" {% if not usuario.estado %}selected="selected"
+                
+              {% endif %}>Puebla </option>
               <option value="Queretaro">Querétaro </option>
               <option value="Quintana Roo">Quintana Roo </option>
               <option value="San Luis Potosi">San Luis Potosí </option>
@@ -120,7 +141,8 @@
               <option value="Tlaxcala">Tlaxcala </option>
               <option value="Veracruz">Veracruz </option>
               <option value="Yucatan">Yucatán </option>
-              <option value="Zacatecas">Zacatecas</option></select>
+              <option value="Zacatecas">Zacatecas</option>
+              </select>
            </div>
 
             <div class="medium-6 columns">
@@ -128,7 +150,7 @@
             </div>
 
             <div class="medium-6 columns">
-            <input  type="text" {%if usuario.cuidad%}value="{{usuario.cuidad}}"{%endif%} name="cuidad" class="small-12.columns text-center" placeholder="Ciudad" required/>
+            <input  type="text" {%if usuario.ciudad%}value="{{usuario.ciudad}}"{%endif%} name="ciudad" class="small-12.columns text-center" placeholder="Ciudad" required/>
             </div>
 
             <div class="medium-6 columns">
@@ -191,7 +213,7 @@
             <div class="small-4 columns"> 
             
               <div class="switch round">
-                <input id="titulado_cb" name="titulado" type="checkbox"{% if usuario.titulado == "1" %}checked{% endif %}>
+                <input id="titulado_cb" name="titulado" value="1" type="checkbox"{% if usuario.titulado == "1" %}checked{% endif %}>
                 <label for="titulado_cb"></label>
               </div>
              </div>
@@ -200,6 +222,7 @@
              </div>
             </div>
           </div>
+          
           <div class="medium-12 columns panel callout">
       <label>Ocupación</label>
       <div class="row">
@@ -240,7 +263,7 @@
           
 
           <div class="medium-6 columns panel callout">
-            <input  type="text" {%if usuario.esp_institucion%}value="{{usuario.esp_institucion}}"{%endif%} name="esp_institucion" class="small-12.columns text-center" placeholder="Especialidad e Institución" required/>
+            <input  type="text" {%if usuario.esp_intitucion%}value="{{usuario.esp_intitucion}}"{%endif%} name="esp_intitucion" class="small-12.columns text-center" placeholder="Especialidad e Institución" required/>
           </div>
 
           <div class="medium-12 columns" >
@@ -425,7 +448,7 @@
 
         </div>
         <div class="medium-6 medium-centered columns">
-          <input class="button round" method="POST" action="." type="submit" value="Guardar Y Siguiente">
+          <input class="button round" type="submit" value="Guardar Y Siguiente">
         </div>
     </form>
     </article>

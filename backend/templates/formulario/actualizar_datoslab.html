@@ -12,7 +12,13 @@
 {% endblock chartjs %}
 {% block graficajs %}
 <script >
-    $('.datepicker').pickadate();
+    $('.datepicker').pickadate({
+      format: 'dd/mm/yyyy',
+      selectMonths: true,
+      selectYears: true,
+      formatSubmit: 'yyyy/mm/dd',
+      selectYears: 100
+    });
 </script>    
 {% endblock graficajs %}
 
@@ -20,7 +26,7 @@
     <section class="row panel regular">
     <article class="small-12 columns" style="background: #fff;">
         <!-- Perfil Formulario -->
-       <form action="." method="POST">{% csrf_token %}
+       <form method="POST" action="./?siguiente={{siguiente}}">{% csrf_token %}
             <h2 class="text-center panel callout">Datos Laborales</h2>
 
            <!-- por cada bloque -->
@@ -199,20 +205,21 @@
         </div>
         </div>
       </div>
-
+      <div class="row">
       <div class="medium-12 columns">
         <label>Relacion del Trabajo con su area de Formacion</label>
             <div class="row">
                 <div class="small-9 columns">
-                  <div class="range-slider" data-slider data-options="start: 0; end: 100;step: 5;display_selector: #relac_trab_form ; {%if usuario.relac_trab_form%}initial: {{usuario.relac_trab_form}};{% else %}initial: 50; {%endif%}">
+                  <div class="range-slider" data-slider data-options="start: 0; end: 100;step: 5;display_selector: #relac_trab_form; {%if usuario.relac_trab_form%}initial: {{usuario.relac_trab_form}};{% else %}initial: 50; {%endif%}">
                      <span class="range-slider-handle" role="slider" tabindex="0"></span>
                      <span class="range-slider-active-segment"></span>
                   </div>
                 </div>        
                 <div class="small-3 columns">
-                    <input type="number" name="relac_trab_form" id="relac_trab_form " value="50"  {% if usuario.relac_trab_form %}value="usuario.relac_trab_form" {% else %}value="50"{% endif %} />
+                    <input type="number" name="relac_trab_form" id="relac_trab_form" min="0" max="100" step="5" {% if usuario.relac_trab_form %}value="usuario.relac_trab_form" {% else %}value="50"{% endif %} />
                 </div>
             </div>
+        </div>
         </div>
 
       <div class="medium-12 columns panel callout">
@@ -232,7 +239,7 @@
       </div>
 
       <div class="medium-12 columns">
-        <label>EXPECTATIVAS DE DESARROLLO, SUPERACIÓN PROFESIONAL Y DE ACTUALIZACIÓN</label>
+        <h3> III.EXPECTATIVAS DE DESARROLLO, SUPERACIÓN PROFESIONAL Y DE ACTUALIZACIÓN</h3>
       </div>
 
       <div class="medium-12 columns">

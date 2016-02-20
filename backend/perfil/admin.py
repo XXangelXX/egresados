@@ -8,6 +8,7 @@ class PerfilEgresadoResource(resources.ModelResource):
 
     class Meta:
         model = PerfilEgresado
+        exclude = ("f_registro","f_modificacion",)
         
 class DatosLaboralesResource(resources.ModelResource):
 
@@ -22,7 +23,7 @@ class CarrerasResource(resources.ModelResource):
 class PerfilEgresadoAdmin(ImportExportModelAdmin):
     resource_class = PerfilEgresadoResource
     list_display =("id","nombre","a_paterno","a_materno","num_control","mes_anio_egreso",
-        "especialidad","telefono","cuidad",)
+        "especialidad","telefono","ciudad",)
 
 class DatosLaboralesAdmin(ImportExportModelAdmin):
     resource_class = DatosLaboralesResource

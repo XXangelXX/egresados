@@ -14,10 +14,10 @@ class Carreras (models.Model):
 class PerfilEgresado(models.Model):
     carrera = models.ForeignKey(Carreras)
     usuario =  models.ForeignKey(User)
-    #f_registro = models.DateField(auto_now_add=True, blank=True)
-    #f_modificacion = models.DateField(auto_now=True, blank=True)
+    f_registro = models.DateField(auto_now_add=True )
+    f_modificacion = models.DateField(auto_now=True )
 
-    #user_login = model.ForeignKey()
+    
 
     nombre = models.CharField(max_length=30)
     a_paterno = models.CharField(max_length=30)
@@ -51,7 +51,7 @@ class PerfilEgresado(models.Model):
                                       choices=EST_CIVIL_OPTIONS,
                                       default=SOLTERO)
     estado = models.CharField(max_length=30, choices=ESTADO_OPTIONS)
-    cuidad = models.CharField(max_length=30)
+    ciudad = models.CharField(max_length=30)
     municipio = models.CharField(max_length=50)
     domicilio = models.CharField(max_length=30)
     telefono = models.CharField(max_length=15)
@@ -244,11 +244,13 @@ class PerfilEgresado(models.Model):
                                       choices=UTIL_RESIDENCIA_OPTIONS)
 
     def __unicode__(self):
-        return self.nombre
+        return self.num_control
 
 
 class DatosLaborales (models.Model):
     egresado = models.ForeignKey(PerfilEgresado)
+
+    num_control = models.CharField(max_length=9)
     
     BOLTRABPLAN = '1'
     CONTPER = '2'
@@ -450,6 +452,6 @@ class DatosLaborales (models.Model):
     comentarios = models.CharField(max_length=300)
     
     def __unicode__(self):
-        return self.medio_obt_trabajo
+        return self.num_control
 
    

@@ -5,8 +5,10 @@ from perfil.models import DatosLaborales
 
 # Create your models here.
 class Empresa(models.Model):
+    
 
     datoslaborales = models.ForeignKey(DatosLaborales)
+    num_control = models.CharField(max_length=9)
     
     PUBLICO = "1"
     PRIVADO = "2"
@@ -22,7 +24,7 @@ class Empresa(models.Model):
     giro_actividad = models.CharField(max_length=50,blank=True)
     razon_social = models.CharField(max_length=50)
     domicilio = models.CharField(max_length=50,blank=True)
-    cuidad = models.CharField(max_length=50)
+    ciudad = models.CharField(max_length=50)
     municipio = models.CharField(max_length=50)  
     estado = models.CharField(max_length=50, choices=ESTADO_OPTIONS)
     telefono = models.CharField(max_length=15,blank=True)
@@ -201,6 +203,7 @@ class Empresa(models.Model):
 
 class Encargado (models.Model):
     empresa = models.ForeignKey(Empresa, blank=True)
+    num_control = models.CharField(max_length=9)
     
     nom_encargado = models.CharField(max_length=50)
     titulo = models.CharField(max_length=50,blank=True)

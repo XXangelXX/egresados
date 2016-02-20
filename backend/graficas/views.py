@@ -34,11 +34,11 @@ def graficas(request):
 
     else:
         datae_anio=[]
-        for anio in range(1985,2016):
+        for anio in range(1985,2017):
             datae_anio.append(PerfilEgresado.objects.filter(mes_anio_egreso__year=anio).count())
         total_egresados = PerfilEgresado.objects.all().count()
         cxt= {'lista_anios': lista_anios,'data_labels':lista_anios, 'data_general': datae_anio,
-        'grafica_titulo':"GRAFICA GENERAL", 'grafica_anio': 'Desde 1985 a 2015', 'grafica_filtros': 'Sin Filtros',
+        'grafica_titulo':"GRAFICA GENERAL", 'grafica_anio': 'Desde 1985 a 2016', 'grafica_filtros': 'Sin Filtros',
         'totales' : total_egresados}
         return render(request, 'graficas/grafica_base.html', cxt)   
 
@@ -95,7 +95,7 @@ def graficacion(q,c,a,t):
         data_cxt = filtro_carreras(q)
         total_egresados = q.all().count()
         cxt= {'lista_anios': lista_anios,'data_labels':lista_carreras, 'data_general': data_cxt,
-        'grafica_titulo':"Grafica de Egresados de Todas las Carreras", 'grafica_anio': 'Desde 1985 a 2015', 'grafica_filtros': 'Sin Filtros',
+        'grafica_titulo':"Grafica de Egresados de Todas las Carreras", 'grafica_anio': 'Desde 1985 a 2016', 'grafica_filtros': 'Sin Filtros',
         'totales' : total_egresados}
         return cxt
     elif c!="TODOS" and a == "TODOS" and t == "TODOS":
@@ -103,7 +103,7 @@ def graficacion(q,c,a,t):
         total_egresados = q.all().count()
         titulo_carrera = "Grafica de Egresados de la Carrera: " + lista_carreras[int(c)-1]
         cxt= {'lista_anios': lista_anios,'data_labels':lista_anios, 'data_general': data_cxt,
-        'grafica_titulo': titulo_carrera, 'grafica_anio': 'Desde 1985 a 2015', 'grafica_filtros': 'Sin Filtros',
+        'grafica_titulo': titulo_carrera, 'grafica_anio': 'Desde 1985 a 2016', 'grafica_filtros': 'Sin Filtros',
         'totales' : total_egresados}
         return cxt
     elif c!="TODOS" and a!="TODOS" and t=="TODOS":
@@ -129,7 +129,7 @@ def graficacion(q,c,a,t):
         data_cxt = filtro_anios(q)
         total_egresados = q.all().count()
         titulo_carrera = "Grafica de Egresados de la Carrera: " + lista_carreras[int(c)-1]
-        anio_titulo = "Todos los Años: desde 1985 a 2015"
+        anio_titulo = "Todos los Años: desde 1985 a 2016"
         filtro_titulo = "Filtro por: " + lista_filtros.get(int(t))
         cxt= {'lista_anios': lista_anios,'data_labels':lista_anios, 'data_general': data_cxt,
         'grafica_titulo': titulo_carrera, 'grafica_anio': anio_titulo, 'grafica_filtros': filtro_titulo,
@@ -139,7 +139,7 @@ def graficacion(q,c,a,t):
         data_cxt = filtro_carreras(q)
         total_egresados = q.all().count()
         titulo_carrera = "Grafica de Egresados de todas las Carreras "
-        anio_titulo = "Todos los Años: desde 1985 a 2015"
+        anio_titulo = "Todos los Años: desde 1985 a 2016"
         filtro_titulo = "Filtro por: " + lista_filtros.get(int(t)) 
         cxt= {'lista_anios': lista_anios,'data_labels':lista_carreras, 'data_general': data_cxt,
         'grafica_titulo': titulo_carrera, 'grafica_anio': anio_titulo, 'grafica_filtros': filtro_titulo,
@@ -180,7 +180,7 @@ def filtro_meses(q):
 def filtro_anios(q):
     data_cxt = []
     # todos los años hasta 2016
-    for anio in range (1985,2016):
+    for anio in range (1985,2017):
         data_cxt.append(q.filter(mes_anio_egreso__year=anio).count())
     return data_cxt
 
