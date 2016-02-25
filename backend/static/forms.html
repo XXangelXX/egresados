@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/foundation.css">
+
+  <!-- This is how you would link your custom stylesheet -->
+
+  <script src="js/vendor/modernizr.js"></script>
+
+</head>
+</head>
+<body>
+
+
+<section class="row">
+    <article class="small-12 columns">
+        <!-- Perfil Formulario -->
+       <form action="." method="POST">{% csrf_token %}
+            <h2 class="text-center">Perfil de Egresado</h2>
+
+           <!-- por cada bloque -->
+           <div class="row">
+            <div class="medium-6 columns">
+            <!-- aqui empiezan tus input -->
+            <input  type="text" name="nombre" class="small-12.columns text-center" placeholder="Nombre" required/>
+
+            </div>
+            <div class="medium-6 columns">
+              <input  type="text" name="a_paterno" class="small-12.columns text-center" placeholder="Apellido Paterno" required/>
+            </div>
+            <div class="medium-6 columns">
+              <input  type="text" name="a_materno" class="small-12.columns text-center" placeholder="Apellido Materno" required/>
+
+            </div>
+            <div class="medium-6 columns">
+              <input  type="text" name="num_control" class="small-12.columns text-center" placeholder="Numero de Control" required/>
+             </div>
+             <div class="medium-6 columns">
+            <!-- FECHA -->
+            <input  type="datetime" name="f_nacimiento" class="small-12.columns text-center" placeholder="Fecha de Nacimiento" required/> 
+        </div>
+
+        <div class="medium-6 columns">
+        <label>Sexo</label>
+      <input type="radio" name="sexo" value="M" id="masculino" class="small-12.columns text-center"><label for="masculino">Masculino</label>
+      <input type="radio" name="sexo" value="F" id="femenino" class="small-12.columns text-center"><label for="femenino">Femenino</label>
+
+        </div>
+
+         <div class="medium-6 columns">
+        <input  type="text" name="curp" class="small-12.columns text-center" placeholder="Curp" required/>
+        </div>
+
+        <div class="medium-6 columns">
+        <label>Estado Civil</label>
+      <input type="radio" name="e_civil" value="C" id="casado(a)" class="small-12.columns text-center"><label for="casado">Casado(a)</label>
+      <input type="radio" name="e_civil" value="F" id="soltero(a)" class="small-12.columns text-center"><label for="soltero">Soltero(a)</label>
+      <input type="radio" name="e_civil" value="D" id="divorciado(a)" class="small-12.columns text-center"><label for="divorciado">Divorciado(a)</label>
+      <input type="radio" name="e_civil" value="O" id="otro" class="small-12.columns text-center"><label for="otro">Otro</label>
+
+        </div>
+
+        <div class="medium-6 columns">
+        <input  type="text" name="estado" class="small-12.columns text-center" placeholder="Estado" required/>
+        </div>
+
+        <div class="medium-6 columns">
+        <input  type="text" name="municipio" class="small-12.columns text-center" placeholder="Municipio" required/>
+        </div>
+
+        <div class="medium-6 columns">
+        <input  type="text" name="cuidad" class="small-12.columns text-center" placeholder="Cuidad" required/>
+        </div>
+
+        <div class="medium-6 columns">
+        <input  type="text" name="domicilio" class="small-12.columns text-center" placeholder="Domicilio" required/>
+        </div>
+
+        <div class="medium-6 columns">
+        <input  type="tel" name="telefono" class="small-12.columns text-center" placeholder="Telefono" required/>
+        </div>
+
+        <div class="medium-6 columns">
+        <input  type="text" name="especialidad" class="small-12.columns text-center" placeholder="Especialidad" required/>
+        </div>
+
+        <div class="medium-6 columns">
+        <input  type="mail" name="e_mail" class="small-12.columns text-center" placeholder="e-mail" required/>
+        </div>
+
+        <div class="medium-6 columns">
+        <input  type="datetime" name="mes_anio_egreso" class="small-12.columns text-center" placeholder="Mes y Año de Egreso" required/>
+        </div>
+
+        <div class="medium-6 columns">
+        <input  type="tel" name="tel_casa" class="small-12.columns text-center" placeholder="Telefono Casa" required/>
+        </div>
+
+        </div>
+        <div class="medium-6 columns">
+        <h1>Nivel de Ingles</h1>
+        <div class="row">
+        <div class="small-9 columns">
+        <div class="range-slider" data-slider data-options="display_selector: #days-off-count; initial: 28;">
+           <span class="range-slider-handle" role="slider" tabindex="0"></span>
+           <span class="range-slider-active-segment"></span>
+        </div>
+        
+        </div>
+        <div class="small-3 columns">
+        <input type="number" id="days-off-count" value="28" />
+        </div>
+
+        <div class="medium-12 columns">
+        <input  type="text" name="otros_idms" class="small-12.columns text-center" placeholder="Otros Idiomas" required/>
+        </div>
+        
+        <div class="medium-12 columns">
+        <input  type="text" name="man_paq_comp" class="small-12.columns text-center" placeholder="Manejo de Paquetes Computacionales" required/>
+        </div>
+
+        </div>
+      </div>
+        <h1>Titulado</h1>
+        <div class="switch radius">
+        <input id="Titulado" type="radio" name="titulado">
+        <label for="Titulado"></label>
+        </div> 
+
+      </div>
+      <div class="medium-6 columns">
+      <label>Ocupación</label>
+      <input type="radio" name="ocupacion" value="1"class="small-12.columns text-center"><label for="1">Trabaja</label>
+      <input type="radio" name="ocupacion" value="2"class="small-12.columns text-center"><label for="2">Estudia</label>
+      <input type="radio" name="ocupacion" value="3"class="small-12.columns text-center"><label for="3">Trabaja y Estudia</label>
+      <input type="radio" name="ocupacion" value="4"class="small-12.columns text-center"><label for="4">Ni Trabaja Ni Estudia</label>
+      </div>
+
+      <div class="medium-12 columns">
+      <label>Estudio Actuales</label>
+      <input type="radio" name="estudios_act" value="1"class="small-12.columns text-center"><label for="1">Especialidad</label>
+      <input type="radio" name="estudios_act" value="2"class="small-12.columns text-center"><label for="2">Maestria</label>
+      <input type="radio" name="estudios_act" value="3"class="small-12.columns text-center"><label for="3">Idiomas</label>
+      <input type="radio" name="estudios_act" value="4"class="small-12.columns text-center"><label for="4">Otro</label>
+      </div>
+
+      <div class="medium-12 columns">
+        <input  type="text" name="esp_institucion" class="small-12.columns text-center" placeholder="Especialidad e Institucoón" required/>
+      </div>
+       
+       <div class="medium-12 columns">
+       <h2> PERTINENCIA Y DISPONIBILIDAD DE MEDIOS Y RECURSOS PARA EL APRENDIZAJE</h2>
+       </div>
+      
+      </div>
+      <div class="medium-9 columns">
+      <label>Tiempo para Obtener Tu Primer Empleo</label>
+      <input type="radio" name="tiem_primer_emple" value="1"class="small-12.columns text-center"><label for="1">Antes de Egresar</label>
+      <input type="radio" name="tiem_primer_emple" value="2"class="small-12.columns text-center"><label for="2">Menos de seis meses</label>
+      <input type="radio" name="tiem_primer_emple" value="3"class="small-12.columns text-center"><label for="3">Entre seis meses y un año</label>
+      <input type="radio" name="tiem_primer_emple" value="4"class="small-12.columns text-center"><label for="4">Mas de un año</label>
+      </div>
+      </div>
+
+      <div class="medium-6 columns">
+      <label>Calidad de los Docentes</label>
+      <input type="radio" name="calidad_docentes" value="1"class="small-12.columns text-center"><label for="1">Muy Buena</label>
+      <input type="radio" name="calidad_docentes" value="2"class="small-12.columns text-center"><label for="2">Buena</label>
+      <input type="radio" name="calidad_docentes" value="3"class="small-12.columns text-center"><label for="3">Regular</label>
+      <input type="radio" name="calidad_docentes" value="4"class="small-12.columns text-center"><label for="4">Mala</label>
+      </div>
+      
+      <div class="medium-6 columns">
+      <label>Plan de Estudios</label>
+      <input type="radio" name="plan_estudios" value="1"class="small-12.columns text-center"><label for="1">Muy Buena</label>
+      <input type="radio" name="plan_estudios" value="2"class="small-12.columns text-center"><label for="2">Buena</label>
+      <input type="radio" name="plan_estudios" value="3"class="small-12.columns text-center"><label for="3">Regular</label>
+      <input type="radio" name="plan_estudios" value="4"class="small-12.columns text-center"><label for="4">Mala</label>
+      </div>
+
+      <div class="medium-6 columns">
+      <label>Oportunidad de participar en proyectos de investigación y desarrollo</label>
+      <input type="radio" name="oport_ppid" value="1"class="small-12.columns text-center"><label for="1">Muy Buena</label>
+      <input type="radio" name="oport_ppid" value="2"class="small-12.columns text-center"><label for="2">Buena</label>
+      <input type="radio" name="oport_ppid" value="3"class="small-12.columns text-center"><label for="3">Regular</label>
+      <input type="radio" name="oport_ppid" value="4"class="small-12.columns text-center"><label for="4">Mala</label>
+      </div>
+
+      <div class="medium-6 columns">
+      <label>Énfasis que se le prestaba a la investigación dentro del proceso de enseñanza</label>
+      <input type="radio" name="enfasis" value="1"class="small-12.columns text-center"><label for="1">Muy Buena</label>
+      <input type="radio" name="enfasis" value="2"class="small-12.columns text-center"><label for="2">Buena</label>
+      <input type="radio" name="enfasis" value="3"class="small-12.columns text-center"><label for="3">Regular</label>
+      <input type="radio" name="enfasis" value="4"class="small-12.columns text-center"><label for="4">Mala</label>
+      </div>
+
+      <div class="medium-6 columns">
+      <label>Satisfacción con las condiciones de estudio (infraestructura)</label>
+      <input type="radio" name="infracest" value="1"class="small-12.columns text-center"><label for="1">Muy Buena</label>
+      <input type="radio" name="infracest" value="2"class="small-12.columns text-center"><label for="2">Buena</label>
+      <input type="radio" name="infracest" value="3"class="small-12.columns text-center"><label for="3">Regular</label>
+      <input type="radio" name="infracest" value="4"class="small-12.columns text-center"><label for="4">Mala</label>
+      </div>
+
+      <div class="medium-6 columns">
+      <label>Experiencia obtenida a través de la residencia profesional</label>
+      <input type="radio" name="exprecprof" value="1"class="small-12.columns text-center"><label for="1">Muy Buena</label>
+      <input type="radio" name="exprecprof" value="2"class="small-12.columns text-center"><label for="2">Buena</label>
+      <input type="radio" name="exprecprof" value="3"class="small-12.columns text-center"><label for="3">Regular</label>
+      <input type="radio" name="exprecprof" value="4"class="small-12.columns text-center"><label for="4">Mala</label>
+      </div>
+
+      <div class="medium-12 columns">
+      <h3>DESEMPEÑO PROFESIONAL DE LOS EGRESADOS (COHERENCIA ENTRE LA FORMACIÓN Y EL TIPO DE EMPLEO)</h3>
+      </div>
+
+
+      <div class="medium-9 columns">
+      <label>Eficiencia para realizar las actividades laborales, en relación con su formación académica</label>
+      <input type="radio" name="eficiencia_lab" value="1"class="small-12.columns text-center"><label for="1">Muy Eficiente</label>
+      <input type="radio" name="eficiencia_lab" value="2"class="small-12.columns text-center"><label for="2">Eficiente</label>
+      <input type="radio" name="eficiencia_lab" value="3"class="small-12.columns text-center"><label for="3">Poco Eficiente</label>
+      <input type="radio" name="eficiencia_lab" value="4"class="small-12.columns text-center"><label for="4">Deficiente</label>
+      </div>
+
+      <div class="medium-9 columns">
+      <label>Cómo califica su formación académica con respecto a su desempeño laboral</label>
+      <input type="radio" name="cal_formacion" value="1"class="small-12.columns text-center"><label for="1">Excelente</label>
+      <input type="radio" name="cal_formacion" value="2"class="small-12.columns text-center"><label for="2">Buena</label>
+      <input type="radio" name="cal_formacion" value="3"class="small-12.columns text-center"><label for="3">Regular</label>
+      <input type="radio" name="cal_formacion" value="4"class="small-12.columns text-center"><label for="4">Mala</label>
+      <input type="radio" name="cal_formacion" value="4"class="small-12.columns text-center"><label for="4">Pesimo</label>
+      </div>
+
+      <div class="medium-9 columns">
+      <label>Utilidad de las residencias profesionales o prácticas profesionales para su desarrollo laboral y profesional</label>
+      <input type="radio" name="util_residencia" value="1"class="small-12.columns text-center"><label for="1">Excelente</label>
+      <input type="radio" name="util_residencia" value="2"class="small-12.columns text-center"><label for="2">Buena</label>
+      <input type="radio" name="util_residencia" value="3"class="small-12.columns text-center"><label for="3">Regular</label>
+      <input type="radio" name="util_residencia" value="4"class="small-12.columns text-center"><label for="4">Mala</label>
+       <input type="radio" name="util_residencia" value="5"class="small-12.columns text-center"><label for="5">Pesimo</label>
+      </div>
+
+      </div>
+
+        </div>
+
+        
+
+
+
+
+
+
+        <!-- aqui empiezan boton de Enviar -->
+        <div class="row">
+            <div class="medium-6 medium-centered columns">
+                <input class="button round expand" type="submit" value="Enviar Datos">
+            </div>
+        </div>
+
+
+
+       </form>
+        
+    </article>
+</section>
+
+
+
+
+
+ <script src="js/vendor/jquery.js"></script>
+  <script src="js/foundation.min.js"></script>
+  <script>
+    $(document).foundation();
+  </script>   
+</body>
+</html>

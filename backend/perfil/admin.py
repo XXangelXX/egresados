@@ -22,11 +22,13 @@ class CarrerasResource(resources.ModelResource):
 
 class PerfilEgresadoAdmin(ImportExportModelAdmin):
     resource_class = PerfilEgresadoResource
+    search_fields = ['num_control']
     list_display =("id","nombre","a_paterno","a_materno","num_control","mes_anio_egreso",
         "especialidad","telefono","ciudad",)
 
 class DatosLaboralesAdmin(ImportExportModelAdmin):
     resource_class = DatosLaboralesResource
+    search_fields = ['num_control']
     list_display =("egresado","medio_obt_trabajo","req_contratacion","ant_empleo",
         "niv_jerarquico",)
 

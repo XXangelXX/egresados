@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/foundation.css">
+<link rel="stylesheet" type="text/css" href="datepicker/themes/default.css">
+  <!-- This is how you would link your custom stylesheet -->
+
+  <script src="js/vendor/modernizr.js"></script>
+
+</head>
+</head>
+<body>
+
+
+<section class="row panel regular">
+    <article class="small-12 columns" style="background: #fff;">
+        <!-- Perfil Formulario -->
+       <form action="." method="POST">{% csrf_token %}
+            <h2 class="text-center panel callout">Datos Empresa</h2>
+
+           <!-- por cada bloque -->
+      <div class="row">
+
+        <div class="medium-12 columns">
+          <label>1.-Tipo de Empresa</label>
+          <input type="radio" name="tipo" value="1"class="small-12.columns text-center"><label for="1">Publico</label>
+          <input type="radio" name="tipo" value="2"class="small-12.columns text-center"><label for="2">Privado</label>
+          <input type="radio" name="tipo" value="3"class="small-12.columns text-center"><label for="3">Social</label>
+        </div>
+
+        <div class="medium-6 columns">
+          <input  type="text" name="giro_actividad" class="small-12.columns text-center" placeholder="Giro o Actividad" required/>
+        </div>
+
+        <div class="medium-6 columns">
+          <input  type="text" name="razon_social" class="small-12.columns text-center" placeholder="Razon Social" required/>
+        </div>
+
+        <div class="medium-6 columns">
+          <input  type="text" name="domicilio" class="small-12.columns text-center" placeholder="Domicilio" required/>
+        </div>
+
+        <div class="medium-6 columns">
+          <input  type="text" name="cuidad" class="small-12.columns text-center" placeholder="Cuidad" required/>
+        </div>
+
+        <div class="medium-6 columns">
+          <input  type="text" name="municipio" class="small-12.columns text-center" placeholder="Municipio" required/>
+        </div>
+
+        <div class="medium-6 columns">
+          <input  type="text" name="estado" class="small-12.columns text-center" placeholder="Estado" required/>
+        </div>
+
+        <div class="medium-6 columns">
+          <input  type="text" name="telefono" class="small-12.columns text-center" placeholder="Telefono" required/>
+        </div>
+
+        <div class="medium-6 columns">
+          <input  type="text" name="fax" class="small-12.columns text-center" placeholder="Fax" required/>
+        </div>
+
+        <div class="medium-6 columns">
+        <input  type="email" name="e_mail" class="small-12.columns text-center" placeholder="e-mail" required/>
+        </div>
+
+        <div class="medium-6 columns">
+          <input  type="url" name="url" class="small-12.columns text-center" placeholder="Url" required/>
+        </div>
+
+        <div class="medium-12 columns panel callout">
+          <label> Tamaño de la Empresa</label>
+          <div class="row">
+            <div class="medium-6 columns">
+              <input type="radio" name="tam_empresa" value="1"class="small-12.columns text-center"><label for="1">Microempresa (1-30)</label>
+            </div>
+            <div class="medium-6 columns">
+              <input type="radio" name="tam_empresa" value="2"class="small-12.columns text-center"><label for="2">Pequeña  (31-100)</label>
+            </div>
+            <div class="medium-6 columns">
+              <input type="radio" name="tam_empresa" value="3"class="small-12.columns text-center"><label for="3">Mediana (101-500)</label>
+            </div>
+            <div class="medium-6 columns">
+               <input type="radio" name="tam_empresa" value="4"class="small-12.columns text-center"><label for="4">Grande (mas de 500)</label>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="medium-12 columns">
+        <label>Sector</label>
+           <select name="sector_economico">
+              <optgroup label="SECTOR PRIMARIO">
+              <option value="11" selected=""> Agroindustria </option>
+              <option value="12"> Pesquero </option>
+              <option value="13"> Minero </option>
+              <option value="14"> Otros </option>
+              </optgroup>
+              <optgroup label="SECTOR SECUNDARIO">
+              <option value="21"> Industrial </option>
+              <option value="22"> Construcción </option>
+              <option value="23"> Petrolero</option>
+              <option value="24"> Otros </option>
+              </optgroup>
+              <optgroup label="SECTOR TERCIARIO">
+              <option value="31"> Educativo </option>
+              <option value="32"> Turismo </option>
+              <option value="33"> Comercio </option>
+              <option value="34"> Servicios financieros </option>
+              <option value="35"> Otros </option>
+              </optgroup>
+            </select>
+        </div>
+
+        <div class="medium-12 columns panel callout">
+          <label> Área o Campo de Estudio </label>
+          <div class="row">
+            <div class="medium-6 columns">
+              <input type="radio" name="area_estudio" value="1"class="small-12.columns text-center"><label for="1">Poco</label>
+            </div>
+            <div class="medium-6 columns">
+              <input type="radio" name="area_estudio" value="2"class="small-12.columns text-center"><label for="2">Significativo</label>
+            </div>
+            <div class="medium-6 columns">
+              <input type="radio" name="area_estudio" value="3"class="small-12.columns text-center"><label for="3">Moderado</label>
+            </div>
+            <div class="medium-6 columns">
+               <input type="radio" name="area_estudio" value="4"class="small-12.columns text-center"><label for="4">Regular</label>
+            </div>
+            <div class="medium-6 columns">
+               <input type="radio" name="area_estudio" value="4"class="small-12.columns text-center"><label for="4">Mucho</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="medium-12 columns">
+          <label> Titulación </label>
+        <div class="row">
+            <div class="medium-6 columns">
+              <input type="radio" name="titulacion" value="1"class="small-12.columns text-center"><label for="1">Poco</label>
+            </div>
+            <div class="medium-6 columns">
+              <input type="radio" name="titulacion" value="2"class="small-12.columns text-center"><label for="2">Significativo</label>
+            </div>
+            <div class="medium-6 columns">
+              <input type="radio" name="titulacion" value="3"class="small-12.columns text-center"><label for="3">Moderado</label>
+            </div>
+            <div class="medium-6 columns">
+               <input type="radio" name="titulacion" value="4"class="small-12.columns text-center"><label for="4">Regular</label>
+            </div>
+            <div class="medium-6 columns">
+               <input type="radio" name="titulacion" value="4"class="small-12.columns text-center"><label for="5">Mucho</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="medium-12 columns panel callout">
+          <label> Experiencia Laboral/práctica (antes de egresar) </label>
+        <div class="row">
+            <div class="medium-6 columns">
+              <input type="radio" name="exp_lab" value="1"class="small-12.columns text-center"><label for="1">Poco</label>
+            </div>
+            <div class="medium-6 columns">
+              <input type="radio" name="exp_lab" value="2"class="small-12.columns text-center"><label for="2">Significativo</label>
+            </div>
+            <div class="medium-6 columns">
+              <input type="radio" name="exp_lab" value="3"class="small-12.columns text-center"><label for="3">Moderado</label>
+            </div>
+            <div class="medium-6 columns">
+               <input type="radio" name="exp_lab" value="4"class="small-12.columns text-center"><label for="4">Regular</label>
+            </div>
+            <div class="medium-6 columns">
+               <input type="radio" name="exp_lab" value="4"class="small-12.columns text-center"><label for="5">Mucho</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="medium-12 columns">
+          <label> Competencia Laboral: Habilidad para resolver problemas, capacidad de análisis, habilidad para el aprendizaje, creatividad, administración del tiempo, capacidad de negociación, habilidades manuales, trabajo en equipo, iniciativa, honestidad, persistencia, etc. </label>
+        <div class="row">
+            <div class="medium-6 columns">
+              <input type="radio" name="comp_lab" value="1"class="small-12.columns text-center"><label for="1">Poco</label>
+            </div>
+            <div class="medium-6 columns">
+              <input type="radio" name="comp_lab" value="2"class="small-12.columns text-center"><label for="2">Significativo</label>
+            </div>
+            <div class="medium-6 columns">
+              <input type="radio" name="comp_lab" value="3"class="small-12.columns text-center"><label for="3">Moderado</label>
+            </div>
+            <div class="medium-6 columns">
+               <input type="radio" name="comp_lab" value="4"class="small-12.columns text-center"><label for="4">Regular</label>
+            </div>
+            <div class="medium-6 columns">
+               <input type="radio" name="comp_lab" value="4"class="small-12.columns text-center"><label for="5">Mucho</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="medium-12 columns panel callout">
+          <label> Posicionamiento de la Institución de Egreso </label>
+        <div class="row">
+            <div class="medium-6 columns">
+              <input type="radio" name="posicion_inst" value="1"class="small-12.columns text-center"><label for="1">Poco</label>
+            </div>
+            <div class="medium-6 columns">
+              <input type="radio" name="posicion_inst" value="2"class="small-12.columns text-center"><label for="2">Significativo</label>
+            </div>
+            <div class="medium-6 columns">
+              <input type="radio" name="posicion_inst" value="3"class="small-12.columns text-center"><label for="3">Moderado</label>
+            </div>
+            <div class="medium-6 columns">
+               <input type="radio" name="posicion_inst" value="4"class="small-12.columns text-center"><label for="4">Regular</label>
+            </div>
+            <div class="medium-6 columns">
+               <input type="radio" name="posicion_inst" value="4"class="small-12.columns text-center"><label for="5">Mucho</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="medium-12 columns">
+          <label> Conocimiento de Idiomas Extranjeros </label>
+        <div class="row">
+            <div class="medium-6 columns">
+              <input type="radio" name="conocim_idiomas" value="1"class="small-12.columns text-center"><label for="1">Poco</label>
+            </div>
+            <div class="medium-6 columns">
+              <input type="radio" name="conocim_idiomas" value="2"class="small-12.columns text-center"><label for="2">Significativo</label>
+            </div>
+            <div class="medium-6 columns">
+              <input type="radio" name="conocim_idiomas" value="3"class="small-12.columns text-center"><label for="3">Moderado</label>
+            </div>
+            <div class="medium-6 columns">
+               <input type="radio" name="conocim_idiomas" value="4"class="small-12.columns text-center"><label for="4">Regular</label>
+            </div>
+            <div class="medium-6 columns">
+               <input type="radio" name="conocim_idiomas" value="4"class="small-12.columns text-center"><label for="5">Mucho</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="medium-12 columns panel callout">
+          <label> Recomendaciones/ referencias </label>
+        <div class="row">
+            <div class="medium-6 columns">
+              <input type="radio" name="recomend_actitud" value="1"class="small-12.columns text-center"><label for="1">Poco</label>
+            </div>
+            <div class="medium-6 columns">
+              <input type="radio" name="recomend_actitud" value="2"class="small-12.columns text-center"><label for="2">Significativo</label>
+            </div>
+            <div class="medium-6 columns">
+              <input type="radio" name="recomend_actitud" value="3"class="small-12.columns text-center"><label for="3">Moderado</label>
+            </div>
+            <div class="medium-6 columns">
+               <input type="radio" name="recomend_actitud" value="4"class="small-12.columns text-center"><label for="4">Regular</label>
+            </div>
+            <div class="medium-6 columns">
+               <input type="radio" name="recomend_actitud" value="4"class="small-12.columns text-center"><label for="5">Mucho</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="medium-12 columns">
+          <label> Personalidad/Actitudes </label>
+        <div class="row">
+            <div class="medium-6 columns">
+              <input type="radio" name="personalidad" value="1"class="small-12.columns text-center"><label for="1">Poco</label>
+            </div>
+            <div class="medium-6 columns">
+              <input type="radio" name="personalidad" value="2"class="small-12.columns text-center"><label for="2">Significativo</label>
+            </div>
+            <div class="medium-6 columns">
+              <input type="radio" name="personalidad" value="3"class="small-12.columns text-center"><label for="3">Moderado</label>
+            </div>
+            <div class="medium-6 columns">
+               <input type="radio" name="personalidad" value="4"class="small-12.columns text-center"><label for="4">Regular</label>
+            </div>
+            <div class="medium-6 columns">
+               <input type="radio" name="personalidad" value="4"class="small-12.columns text-center"><label for="5">Mucho</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="medium-12 columns panel callout">
+          <label> Capacidad de liderazgo </label>
+        <div class="row">
+            <div class="medium-6 columns">
+              <input type="radio" name="cap_liderazgo" value="1"class="small-12.columns text-center"><label for="1">Poco</label>
+            </div>
+            <div class="medium-6 columns">
+              <input type="radio" name="cap_liderazgo" value="2"class="small-12.columns text-center"><label for="2">Significativo</label>
+            </div>
+            <div class="medium-6 columns">
+              <input type="radio" name="cap_liderazgo" value="3"class="small-12.columns text-center"><label for="3">Moderado</label>
+            </div>
+            <div class="medium-6 columns">
+               <input type="radio" name="cap_liderazgo" value="4"class="small-12.columns text-center"><label for="4">Regular</label>
+            </div>
+            <div class="medium-6 columns">
+               <input type="radio" name="cap_liderazgo" value="4"class="small-12.columns text-center"><label for="5">Mucho</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="medium-12 columns">
+          <label> Otros </label>
+        <div class="row">
+            <div class="medium-6 columns">
+              <input type="radio" name="otros_asp" value="1"class="small-12.columns text-center"><label for="1">Poco</label>
+            </div>
+            <div class="medium-6 columns">
+              <input type="radio" name="otros_asp" value="2"class="small-12.columns text-center"><label for="2">Significativo</label>
+            </div>
+            <div class="medium-6 columns">
+              <input type="radio" name="otros_asp" value="3"class="small-12.columns text-center"><label for="3">Moderado</label>
+            </div>
+            <div class="medium-6 columns">
+               <input type="radio" name="otros_asp" value="4"class="small-12.columns text-center"><label for="4">Regular</label>
+            </div>
+            <div class="medium-6 columns">
+               <input type="radio" name="otros_asp" value="4"class="small-12.columns text-center"><label for="5">Mucho</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="medium-6 columns panel callout">
+        <input  type="text" name="nom_encargado" class="small-12.columns text-center" placeholder="Nombre del Encargado" required/>
+      </div>
+
+      <div class="medium-6 columns panel callout">
+        <input  type="text" name="titulo" class="small-12.columns text-center" placeholder="Titulo" required/>
+      </div>
+
+      <div class="medium-6 columns panel callout">
+        <input  type="text" name="puesto" class="small-12.columns text-center" placeholder="Puesto" required/>
+      </div>
+
+
+
+     </div> <!--Row principal -->
+
+      
+       
+        <!-- aqui empiezan boton de Enviar -->
+        <div class="row">
+            <div class="medium-6 medium-centered columns">
+                <input class="button round expand" type="submit" value="Enviar Datos">
+            </div>
+        </div>
+
+
+
+       </form>
+        
+    </article>
+</section>
+
+
+
+
+
+ <script src="js/vendor/jquery.js"></script>
+  <script src="js/foundation.min.js"></script>
+  <script src="datepicker/picker.js"></script>
+  <script src="datepicker/picker.date.js"></script>
+  <script>
+    $(document).foundation();
+    $('.datepicker').pickadate()
+  </script>   
+</body>
+</html>

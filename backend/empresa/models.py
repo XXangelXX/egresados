@@ -7,8 +7,8 @@ from perfil.models import DatosLaborales
 class Empresa(models.Model):
     
 
-    datoslaborales = models.ForeignKey(DatosLaborales)
-    num_control = models.CharField(max_length=9)
+    datoslaborales = models.ForeignKey(DatosLaborales, blank=True, null=True, on_delete=models.CASCADE)
+    num_control = models.CharField(max_length=9, blank=True)
     
     PUBLICO = "1"
     PRIVADO = "2"
@@ -202,8 +202,8 @@ class Empresa(models.Model):
 
 
 class Encargado (models.Model):
-    empresa = models.ForeignKey(Empresa, blank=True)
-    num_control = models.CharField(max_length=9)
+    empresa = models.ForeignKey(Empresa, blank=True, null=True, on_delete=models.CASCADE)
+    num_control = models.CharField(max_length=9, blank=True)
     
     nom_encargado = models.CharField(max_length=50)
     titulo = models.CharField(max_length=50,blank=True)

@@ -1,0 +1,30 @@
+{% extends "base/menu.html" %}
+{% load staticfiles %}
+{% block cssFormulario %}
+     <link rel="stylesheet" type="text/css" href="{% static "datepicker/themes/default.css" %}">
+     <link rel="stylesheet" type="text/css" href="{% static "datepicker/themes/default.date.css" %}">
+     <style type="text/css">
+     .picker__select--year, .picker__select--month{
+      height: auto;
+     }
+     .picker__button--today, .picker__button--close,.picker__button--clear{
+      background: #347FD4;
+     }
+     </style>
+{% endblock cssFormulario %}
+{% block chartjs %}
+    <script src="{% static "datepicker/picker.js" %}"></script>
+    <script src="{% static "datepicker/picker.date.js" %}"></script>
+    <script src="{% static "datepicker/translations/es_ES.js" %}"></script>
+{% endblock chartjs %}
+{% block graficajs %}
+<script >
+    $('.datepicker').pickadate({
+      format: 'dd/mm/yyyy',
+      selectMonths: true,
+      selectYears: true,
+      formatSubmit: 'yyyy/mm/dd',
+      selectYears: 60
+    });
+</script>    
+{% endblock graficajs %}

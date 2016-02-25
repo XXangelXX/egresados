@@ -1,0 +1,17 @@
+{% extends "base/menu.html" %}
+{% block title %}
+    Gracias por Terminar la Encuesta
+{% endblock title %}
+{% block contenido %}
+    <header class="row panel">
+        <div class="small-12 columns text-center">
+            <h1>Gracias por llenar la encuesta {{usuario.nombre}}</h1>
+            <h3>Para futuras correciones entra con tu num_control : {{usuario.num_control}}</h3>
+            <h3>Y con tu contraseña, si tienes problemas de entrar consulta tu asesor.</h3>
+            <p>
+                <a class="button round" href="/egresado/actualizar/">Regresar</a>
+                <a class="button round" href="/egresado/occ/">Realizar encuesta OCC</a>
+            </p>
+        </div>
+    </header>
+{% endblock contenido %}

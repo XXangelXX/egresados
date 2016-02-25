@@ -26,6 +26,7 @@
     <section class="row panel regular">
     <article class="small-12 columns" style="background: #fff;">
         <!-- Perfil Formulario -->
+        {{ formdatos.non_field_errors }}
        <form method="POST" action="./?siguiente={{siguiente}}">{% csrf_token %}
             <h2 class="text-center panel callout">Datos Laborales</h2>
 
@@ -35,6 +36,7 @@
           <label>1.-Medio de Obtencion de Trabajo</label>
           <div class="row">
           <div class="medium-4 columns">
+          {{ formdatos.medio_obt_trabajo.errors }}
             <input type="radio" name="medio_obt_trabajo" value="1"class="small-12.columns text-center" {% if usuario.medio_obt_trabajo == "1" %}checked {% endif %}><label for="1">Bolsa de Trabajo del Plantel</label>
           </div>
           <div class="medium-4 columns">
@@ -56,6 +58,7 @@
         <label>2.-Requerimientos de Contratacion</label>
         <div class="row">
         <div class="medium-4 columns">
+        {{ formdatos.req_contratacion.errors }}
           <input type="radio" name="req_contratacion" value="1"class="small-12.columns text-center" {% if usuario.req_contratacion == "1" %}checked {% endif %}><label for="1">Competencias Laborales</label>
         </div>
         <div class="medium-4 columns">
@@ -78,6 +81,7 @@
         <label>3.-Actitudes y habilidades socio-comunicativas</label>
         <div class="row">
         <div class="medium-4 columns">
+        {{ formdatos.actit_habil.errors }}
           <input type="radio" name="actit_habil" value="1"class="small-12.columns text-center" {% if usuario.actit_habil == "1" %}checked {% endif %}><label for="1">Principios Y Valores</label>
         </div>
         <div class="small-6 medium-4 columns">
@@ -93,6 +97,7 @@
           <label>4.-Idioma que utiliza en su trabajo</label>
           <div class="row">
           <div class="small-6 columns">
+          {{ formdatos.idioma_trab.errors }}
             <input type="radio" name="idioma_trab" value="1"class="small-12.columns text-center" {% if usuario.idioma_trab == "1" %}checked {% endif %}><label for="1">Ingles</label>
           </div>
           <div class="small-6 columns">
@@ -155,7 +160,23 @@
             </div>
         </div>
 
+        <div class="medium-12 columns">
+        <label>Nivel de Ingles (Escuchar)</label>
+            <div class="row">
+                <div class="small-9 columns">
+                  <div class="range-slider" data-slider data-options="start: 0; end: 100;step: 5;display_selector: #escuchar; {%if usuario.escuchar %}initial: {{usuario.escuchar}};{% else %}initial: 50; {%endif%}">
+                     <span class="range-slider-handle" role="slider" tabindex="0"></span>
+                     <span class="range-slider-active-segment"></span>
+                  </div>
+                </div>        
+                <div class="small-3 columns">
+                    <input type="number" name="escuchar" id="escuchar" min="0" max="100" step="5" {% if usuario.escuchar %}value="usuario.escuchar" {% else %}value="50"{% endif %} />
+                </div>
+            </div>
+        </div>
+
       <div class="medium-6 columns">
+      {{ formdatos.salario_min_diario.errors }}
         <input  type="number" {%if usuario.salario_min_diario%}value="{{usuario.salario_min_diario}}"{%endif%} name="salario_min_diario" class="small-12.columns text-center" placeholder="Salario Minimo Diario" required/>
       </div>
 
@@ -163,6 +184,7 @@
         <label>Antigüedad en el empleo</label>
         <div class="row">
         <div class="small-12 medium-6 columns">
+        {{ formdatos.ant_empleo.errors }}
           <input type="radio" name="ant_empleo" value="1"class="small-12.columns text-center" {% if usuario.ant_empleo == "1" %}checked {% endif %}><label for="1">Menos de un año</label>
         </div>
         <div class="small-6 medium-6 columns">
@@ -182,6 +204,7 @@
 
       <div class="medium-6 columns">
       <label>Año de Ingreso Laboral</label>
+      {{ formdatos.anio_ingr_laboral.errors }}
         <input  type="datetime" {%if usuario.anio_ingr_laboral%}value="{{usuario.anio_ingr_laboral}}"{%endif%} name="anio_ingr_laboral" class="datepicker small-12.columns text-center" placeholder="Año de Ingreso Laboral" required/> 
       </div>
 
@@ -189,6 +212,7 @@
         <label>Nivel Jerarquico</label>
         <div class="row">
         <div class="small-12 columns">
+        {{ formdatos.niv_jerarquico.errors }}
           <input type="radio" name="niv_jerarquico" value="1"class="small-12.columns text-center" {% if usuario.niv_jerarquico == "1" %}checked {% endif %}><label for="1">Tecnico</label>
         </div>
         <div class="small-12 columns">
@@ -226,6 +250,7 @@
         <label>Condición de Trabajo</label>
         <div class="row">
         <div class="small-6 columns">
+        {{ formdatos.cond_trab.errors }}
           <input type="radio" name="cond_trab" value="1"class="small-12.columns text-center" {% if usuario.cond_trab == "1" %}checked {% endif %}><label for="1">Base</label>
         </div>
         <div class="small-6 columns">
@@ -244,22 +269,26 @@
 
       <div class="medium-12 columns">
         <label>Le gustaría tomar cursos de actualización</label>
+        {{ formdatos.tomar_curso.errors }}
         <input type="radio" name="tomar_curso" value="1"class="small-12.columns text-center" {% if usuario.tomar_curso == "1" %}checked {% endif %}><label for="1">Si</label>
         <input type="radio" name="tomar_curso" value="2"class="small-12.columns text-center" {% if usuario.tomar_curso == "2" %}checked {% endif %}><label for="2">No</label>
       </div>
 
       <div class="medium-12 columns panel callout">
-        <input  type="text" {%if usuario.cuales_tc%}value="{{usuario.cuales_tc}}"{%endif%} name="cuales_tc" class="small-12.columns text-center" placeholder="Cuales" required/>
+      {{ formdatos.cuales_tc.errors }}
+        <input  type="text" {%if usuario.cuales_tc%}value="{{usuario.cuales_tc}}"{%endif%} name="cuales_tc" class="small-12.columns text-center" placeholder="Cuales"/>
       </div>
 
       <div class="medium-12 columns">
         <label>Le gustaría tomar algún Posgrado</label>
+        {{ formdatos.tomar_posgrado.errors }}
         <input type="radio" name="tomar_posgrado" value="1"class="small-12.columns text-center" {% if usuario.tomar_posgrado == "1" %}checked {% endif %}><label for="1">Si</label>
         <input type="radio" name="tomar_posgrado" value="2"class="small-12.columns text-center" {% if usuario.tomar_posgrado == "2" %}checked {% endif %}><label for="2">No</label>
       </div>
 
       <div class="medium-12 columns panel callout">
-        <input  type="text" {%if usuario.cuales_tp%}value="{{usuario.cuales_tp}}"{%endif%}name="cuales_tp" class="small-12.columns text-center" placeholder="Cual" required/>
+      {{ formdatos.cuales_tp.errors }}
+        <input  type="text" {%if usuario.cuales_tp%}value="{{usuario.cuales_tp}}"{%endif%}name="cuales_tp" class="small-12.columns text-center" placeholder="Cual" />
       </div>
 
       <div class="medium-12 columns">
@@ -269,24 +298,29 @@
 
       <div class="medium-12 columns panel callout">
         <label>Pertenece a organizaciones sociales</label>
-        <input type="radio" name="cuales_os" value="1"class="small-12.columns text-center"{% if usuario.cuales_os == "1" %}checked {% endif %}><label for="1">Si</label>
-        <input type="radio" name="cuales_os" value="2"class="small-12.columns text-center" {% if usuario.cuales_os == "2" %}checked {% endif %}><label for="2">No</label>
+        {{ formdatos.org_social.errors }}
+        <input type="radio" name="org_social" value="1"class="
+        small-12.columns text-center"{% if usuario.org_social == "1" %}checked {% endif %}><label for="1">Si</label>
+        <input type="radio" name="org_social" value="2"class="small-12.columns text-center" {% if usuario.org_social == "2" %}checked {% endif %}><label for="2">No</label>
       </div>
       <div class="medium-12 columns">
-        <input  type="text" {%if usuario.cuales_os%}value="{{usuario.cuales_os}}"{%endif%} name="cuales_os" class="small-12.columns text-center" placeholder="Cuales" required/>
+        <input  type="text" {%if usuario.cuales_os%}value="{{usuario.cuales_os}}"{%endif%} name="cuales_os" class="small-12.columns text-center" placeholder="Cuales" />
       </div>
 
       <div class="medium-12 columns panel callout">
         <label>Pertenece a organismos de profesionistas</label>
-        <input type="radio" name="org_social" value="1"class="small-12.columns text-center" {% if usuario.org_social == "1" %}checked {% endif %}><label for="1">Si</label>
-        <input type="radio" name="org_social" value="2"class="small-12.columns text-center" {% if usuario.org_social == "2" %}checked {% endif %}><label for="2">No</label>
+        {{ formdatos.org_prof.errors }}
+        <input type="radio" name="org_prof" value="1"class="small-12.columns text-center" {% if usuario.org_prof == "1" %}checked {% endif %}><label for="1">Si</label>
+        <input type="radio" name="org_prof" value="2"class="small-12.columns text-center" {% if usuario.org_prof == "2" %}checked {% endif %}><label for="2">No</label>
       </div>
       <div class="medium-12 columns">
-        <input  type="text" {%if usuario.cuales_os%}value="{{usuario.cuales_os}}"{%endif%} name="cuales_os" class="small-12.columns text-center" placeholder="Cuales" required/>
+      {{ formdatos.cuales_op.errors }}
+        <input  type="text" {%if usuario.cuales_op%}value="{{usuario.cuales_op}}"{%endif%} name="cuales_op" class="small-12.columns text-center" placeholder="Cuales" />
       </div>
 
       <div class="medium-12 columns panel callout">
         <label>Pertenece a la asociación de egresados</label>
+        {{ formdatos.asoc_egresados.errors }}
         <input type="radio" name="asoc_egresados" value="1"class="small-12.columns text-center" {% if usuario.asoc_egresados == "1" %}checked {% endif %}><label for="1">Si</label>
         <input type="radio" name="asoc_egresados" value="2"class="small-12.columns text-center" {% if usuario.asoc_egresados == "2" %}checked {% endif %}><label for="2">No</label>
       </div>
@@ -294,7 +328,8 @@
 
       <div class="medium-12 columns">
       <label>Comentarios</label>
-        <input  type="text" {% if datos.comentarios %}value = "{{datos.comentarios}}"{% endif %}name="comentarios" class="small-12.columns text-center" placeholder="Comentarios" required/> 
+      {{ formdatos.comentarios.errors }}
+        <input  type="text" {% if datos.comentarios %}value = "{{datos.comentarios}}"{% endif %}name="comentarios" class="small-12.columns text-center" placeholder="Comentarios" /> 
       </div>
      </div> <!--Row principal -->
 

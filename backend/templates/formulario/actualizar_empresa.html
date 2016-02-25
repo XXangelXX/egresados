@@ -15,40 +15,46 @@
     $('.datepicker').pickadate();
 </script>    
 {% endblock graficajs %}
-
 {% block contenido %}
     <section class="row panel regular">
     <article class="small-12 columns" style="background: #fff;">
         <!-- Perfil Formulario -->
-       <form method="POST" action="./?siguiente={{siguiente}}">{% csrf_token %}
+        {{ formempresa.non_field_errors }}
+       <form method="POST" action="./" novalidate>{% csrf_token %}
             <h2 class="text-center panel callout">Datos Empresa</h2>
 
            <!-- por cada bloque -->
       <div class="row">
         <div class="medium-12 columns panel callout">
           <label>1.-Tipo de Empresa</label>
+          {{ formempresa.tipo.errors }}
           <input type="radio" name="tipo" value="1"class="small-12.columns text-center" {% if usuario.tipo == "1" %}checked {% endif %}><label for="1">Publico</label>
           <input type="radio" name="tipo" value="2"class="small-12.columns text-center" {% if usuario.tipo == "2" %}checked {% endif %}><label for="2">Privado</label>
           <input type="radio" name="tipo" value="3"class="small-12.columns text-center" {% if usuario.tipo == "3" %}checked {% endif %}><label for="3">Social</label>
         </div>
 
         <div class="medium-6 columns">
+        {{ formempresa.giro_actividad.errors }}
           <input  type="text" {%if usuario.giro_actividad%}value="{{usuario.giro_actividad}}"{%endif%} name="giro_actividad" class="small-12.columns text-center" placeholder="Giro o Actividad" required/>
         </div>
 
         <div class="medium-6 columns panel callout">
+        {{ formempresa.razon_social.errors }}
           <input  type="text" {%if usuario.razon_social%}value="{{usuario.razon_social}}"{%endif%} name="razon_social" class="small-12.columns text-center" placeholder="Razon Social" required/>
         </div>
 
         <div class="medium-6 columns">
+        {{ formempresa.domicilio.errors }}
           <input  type="text" {%if usuario.domicilio%}value="{{usuario.domicilio}}"{%endif%} name="domicilio" class="small-12.columns text-center" placeholder="Domicilio" required/>
         </div>
 
         <div class="medium-6 columns panel callout">
+        {{ formempresa.cuidad.errors }}
           <input  type="text" {%if usuario.ciudad%}value="{{usuario.ciudad}}"{%endif%} name="ciudad" class="small-12.columns text-center" placeholder="ciudad" required/>
         </div>
 
         <div class="medium-6 columns">
+        {{ formempresa.municipio.errors }}
           <input  type="text" {%if usuario.municipio%}value="{{usuario.municipio}}"{%endif%} name="municipio" class="small-12.columns text-center" placeholder="Municipio" required/>
         </div>
 
@@ -90,25 +96,30 @@
         </div>
 
         <div class="medium-6 columns panel callout">
+        {{ formempresa.telefono.errors }}
           <input  type="text" {%if usuario.telefono%}value="{{usuario.telefono}}"{%endif%} name="telefono" class="small-12.columns text-center" placeholder="Telefono" required/>
         </div>
 
         <div class="medium-6 columns">
-          <input  type="text" {%if usuario.fax%}value="{{usuario.fax}}"{%endif%}name="fax" class="small-12.columns text-center" placeholder="Fax" required/>
+        {{ formempresa.tipo.errors }}
+          <input  type="text" {%if usuario.fax%}value="{{usuario.fax}}"{%endif%}name="fax" class="small-12.columns text-center" placeholder="Fax"/>
         </div>
 
         <div class="medium-6 columns panel callout">
+        {{ formempresa.e_mail.errors }}
         <input  type="email" {%if usuario.e_mail%}value="{{usuario.e_mail}}"{%endif%} name="e_mail" class="small-12.columns text-center" placeholder="e-mail" required/>
         </div>
 
         <div class="medium-6 columns">
-          <input  type="url" {%if usuario.url%}value="{{usuario.url}}"{%endif%} name="url" class="small-12.columns text-center" placeholder="Url" required/>
+        {{ formempresa.url.errors }}
+          <input  type="url" {%if usuario.url%}value="{{usuario.url}}"{%endif%} name="url" class="small-12.columns text-center" placeholder="Url"/>
         </div>
 
         <div class="medium-12 columns panel callout">
           <label> Tamaño de la Empresa</label>
           <div class="row">
             <div class="medium-6 columns">
+            {{ formempresa.tam_empresa.errors }}
               <input type="radio" name="tam_empresa" value="1"class="small-12.columns text-center" {% if usuario.tam_empresa == "1" %}checked {% endif %}><label for="1">Microempresa (1-30)</label>
             </div>
             <div class="medium-6 columns">
@@ -155,6 +166,7 @@
           <label> Área o Campo de Estudio </label>
           <div class="row">
             <div class="medium-6 columns">
+            {{ formempresa.area_estudio.errors }}
               <input type="radio" name="area_estudio" value="1"class="small-12.columns text-center" {% if usuario.area_estudio == "1" %}checked {% endif %}><label for="1">Poco</label>
             </div>
             <div class="medium-6 columns">
@@ -176,6 +188,7 @@
           <label> Titulación </label>
         <div class="row">
             <div class="medium-6 columns">
+            {{ formempresa.titulacion.errors }}
               <input type="radio" name="titulacion" value="1"class="small-12.columns text-center" {% if usuario.titulacion == "1" %}checked {% endif %}><label for="1">Poco</label>
             </div>
             <div class="medium-6 columns">
@@ -197,6 +210,7 @@
           <label> Experiencia Laboral/práctica (antes de egresar) </label>
         <div class="row">
             <div class="medium-6 columns">
+            {{ formempresa.exp_lab.errors }}
               <input type="radio" name="exp_lab" value="1"class="small-12.columns text-center" {% if usuario.exp_lab == "1" %}checked {% endif %}><label for="1">Poco</label>
             </div>
             <div class="medium-6 columns">
@@ -218,6 +232,7 @@
           <label> Competencia Laboral: Habilidad para resolver problemas, capacidad de análisis, habilidad para el aprendizaje, creatividad, administración del tiempo, capacidad de negociación, habilidades manuales, trabajo en equipo, iniciativa, honestidad, persistencia, etc. </label>
         <div class="row">
             <div class="medium-6 columns">
+            {{ formempresa.comp_lab.errors }}
               <input type="radio" name="comp_lab" value="1"class="small-12.columns text-center" {% if usuario.comp_lab == "1" %}checked {% endif %}><label for="1">Poco</label>
             </div>
             <div class="medium-6 columns">
@@ -239,6 +254,7 @@
           <label> Posicionamiento de la Institución de Egreso </label>
         <div class="row">
             <div class="medium-6 columns">
+            {{ formempresa.posicion_inst.errors }}
               <input type="radio" name="posicion_inst" value="1"class="small-12.columns text-center" {% if usuario.posicion_inst == "1" %}checked {% endif %}><label for="1">Poco</label>
             </div>
             <div class="medium-6 columns">
@@ -260,6 +276,7 @@
           <label> Conocimiento de Idiomas Extranjeros </label>
         <div class="row">
             <div class="medium-6 columns">
+            {{ formempresa.conocim_idiomas.errors }}
               <input type="radio" name="conocim_idiomas" value="1"class="small-12.columns text-center" {% if usuario.conocim_idiomas == "1" %}checked {% endif %}><label for="1">Poco</label>
             </div>
             <div class="medium-6 columns">
@@ -281,6 +298,7 @@
           <label> Recomendaciones/ referencias </label>
         <div class="row">
             <div class="medium-6 columns">
+            {{ formempresa.recomend_actitud.errors }}
               <input type="radio" name="recomend_actitud" value="1"class="small-12.columns text-center" {% if usuario.recomend_actitud == "1" %}checked {% endif %}><label for="1">Poco</label>
             </div>
             <div class="medium-6 columns">
@@ -302,6 +320,7 @@
           <label> Personalidad/Actitudes </label>
         <div class="row">
             <div class="medium-6 columns">
+            {{ formempresa.personalidad.errors }}
               <input type="radio" name="personalidad" value="1"class="small-12.columns text-center" {% if usuario.personalidad == "1" %}checked {% endif %}><label for="1">Poco</label>
             </div>
             <div class="medium-6 columns">
@@ -323,6 +342,7 @@
           <label> Capacidad de liderazgo </label>
         <div class="row">
             <div class="medium-6 columns">
+            {{ formempresa.cap_liderazgo.errors }}
               <input type="radio" name="cap_liderazgo" value="1"class="small-12.columns text-center" {% if usuario.cap_liderazgo == "1" %}checked {% endif %}><label for="1">Poco</label>
             </div>
             <div class="medium-6 columns">
@@ -344,6 +364,7 @@
           <label> Otros </label>
         <div class="row">
             <div class="medium-6 columns">
+            {{ formempresa.otros_asp.errors }}
               <input type="radio" name="otros_asp" value="1"class="small-12.columns text-center" {% if usuario.otros_asp == "1" %}checked {% endif %}><label for="1">Poco</label>
             </div>
             <div class="medium-6 columns">
@@ -365,14 +386,17 @@
     
 
         <div class="medium-6 columns panel callout">
+        {{ formencargado.nom_encargado.errors }}
         <input  type="text" {%if encargado.nom_encargado%}value="{{encargado.nom_encargado}}"{%endif%} name="nom_encargado" class="small-12.columns text-center" placeholder="Nombre del Encargado" required/>
       </div>
 
       <div class="medium-6 columns panel ">
+      {{ formencargado.titulo.errors }}
         <input  type="text" {%if encargado.titulo%}value="{{encargado.titulo}}"{%endif%} name="titulo" class="small-12.columns text-center" placeholder="Titulo" required/>
       </div>
 
       <div class="medium-6 columns panel callout">
+      {{ formencargado.puesto.errors }}
         <input  type="text" {%if encargado.puesto%}value="{{encargado.puesto}}"{%endif%}name="puesto" class="small-12.columns text-center" placeholder="Puesto" required/>
       </div>
 

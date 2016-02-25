@@ -5,7 +5,7 @@ from perfil.estados import ESTADO_OPTIONS
 
 # Create your models here.
 class Carreras (models.Model):
-    nombre_carrera = models.CharField(max_length=30)
+    nombre_carrera = models.CharField(max_length=50)
     def __unicode__(self):
         return self.nombre_carrera
 
@@ -13,7 +13,7 @@ class Carreras (models.Model):
 
 class PerfilEgresado(models.Model):
     carrera = models.ForeignKey(Carreras)
-    usuario =  models.ForeignKey(User)
+    usuario =  models.ForeignKey(User,blank=True, null=True, on_delete=models.CASCADE)
     f_registro = models.DateField(auto_now_add=True )
     f_modificacion = models.DateField(auto_now=True )
 
@@ -50,17 +50,17 @@ class PerfilEgresado(models.Model):
     e_civil = models.CharField(max_length=2,
                                       choices=EST_CIVIL_OPTIONS,
                                       default=SOLTERO)
-    estado = models.CharField(max_length=30, choices=ESTADO_OPTIONS)
-    ciudad = models.CharField(max_length=30)
+    estado = models.CharField(max_length=50, choices=ESTADO_OPTIONS)
+    ciudad = models.CharField(max_length=50)
     municipio = models.CharField(max_length=50)
-    domicilio = models.CharField(max_length=30)
+    domicilio = models.CharField(max_length=150)
     telefono = models.CharField(max_length=15)
-    especialidad = models.CharField(max_length=20)
+    especialidad = models.CharField(max_length=100)
     e_mail = models.EmailField(blank=True)
     mes_anio_egreso = models.DateField(blank=True)
     tel_casa = models.CharField(max_length=15)
     niv_ing = models.IntegerField()
-    otros_idms = models.CharField(max_length=100)
+    otros_idms = models.CharField(max_length=50)
     man_paq_comp = models.CharField(max_length=200)
 
     SIT = "1"
@@ -71,7 +71,7 @@ class PerfilEgresado(models.Model):
     )
     titulado = models.CharField(max_length=2,
                                       choices=TITULADO_OPTIONS,
-                                      default=SIT)
+                                      default=SIT, blank=True, null=True)
 
     TRABAJA = "1"
     ESTUDIA = "2"
@@ -248,9 +248,9 @@ class PerfilEgresado(models.Model):
 
 
 class DatosLaborales (models.Model):
-    egresado = models.ForeignKey(PerfilEgresado)
+    egresado = models.ForeignKey(PerfilEgresado, blank=True, null=True, on_delete=models.CASCADE)
 
-    num_control = models.CharField(max_length=9)
+    num_control = models.CharField(max_length=9, blank=True)
     
     BOLTRABPLAN = '1'
     CONTPER = '2'
@@ -389,10 +389,10 @@ class DatosLaborales (models.Model):
     )
     tomar_curso = models.CharField(max_length=2,
                                     default=SI_TC,
-                                    choices=TOMAR_CURSO_OPTIONS)
+                                    choices=TOMAR_CURSO_OPTIONS, blank=True)
 
 
-    cuales_tc = models.CharField(max_length=50)
+    cuales_tc = models.CharField(max_length=50, blank=True)
 
     SI_TP = "1"
     NO_TP= "2"
@@ -403,9 +403,9 @@ class DatosLaborales (models.Model):
     
     )
     tomar_posgrado = models.CharField(max_length=2,
-                                      choices=TOMAR_POSGRADO_OPTIONS)
+                                      choices=TOMAR_POSGRADO_OPTIONS, blank=True)
 
-    cual_tp = models.CharField(max_length=50)
+    cual_tp = models.CharField(max_length=50, blank=True)
 
 
 
@@ -421,7 +421,7 @@ class DatosLaborales (models.Model):
     org_social = models.CharField(max_length=2,
                                       choices=ORG_SOCIAL_OPTIONS)
 
-    cuales_os = models.CharField(max_length=50)
+    cuales_os = models.CharField(max_length=50, blank=True)
     
     SI_OP = "1"
     NO_OP = "2"
@@ -434,7 +434,7 @@ class DatosLaborales (models.Model):
     org_prof = models.CharField(max_length=2,
                                       choices=ORG_PROF_OPTIONS)
 
-    cuales_op = models.CharField(max_length=50)
+    cuales_op = models.CharField(max_length=50, blank=True)
 
     SI_AE = "1"
     NO_AE= "2"
@@ -445,11 +445,11 @@ class DatosLaborales (models.Model):
     
     )
     asoc_egresados = models.CharField(max_length=2,
-                                      choices=ASOC_EGRESADOS_OPTIONS)
+                                      choices=ASOC_EGRESADOS_OPTIONS, blank=True)
 
 
 
-    comentarios = models.CharField(max_length=300)
+    comentarios = models.CharField(max_length=300, blank=True)
     
     def __unicode__(self):
         return self.num_control
