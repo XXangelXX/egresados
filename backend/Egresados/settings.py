@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'Egresados.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'hola',
+        'NAME': 'hola2',
         'USER': 'angel',
         'PASSWORD': 'root',
         'HOST': 'localhost',

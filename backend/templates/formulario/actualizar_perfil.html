@@ -3,34 +3,34 @@
 {% block contenido %}
   <section class="row panel">
     <article class="small-12 columns" style="background: #fff;">
-    {{ formperfil.non_field_errors }}
+    {{ usuario.non_field_errors }}
     <form method="POST" action="./?siguiente={{siguiente}}">{% csrf_token %}
         <h2 class="text-center panel callout"> I.Perfil de Egresado</h2>
         <div class="row">
           <div class="medium-6 columns">
             <!-- aqui empiezan tus input -->
-            {{ formperfil.nombre.errors }}
-            <input  type="text" {%if usuario.nombre%}value="{{usuario.nombre}}"{%endif%} name="nombre" class="small-12.columns text-center" placeholder="Nombre" required/>
+            {{ usuario.nombre.errors }}
+            <input  type="text" {%if usuario.nombre.value%}value="{{usuario.nombre.value}}"{%endif%} name="nombre" class="small-12.columns text-center" placeholder="Nombre" required/>
           </div>
           <div class="medium-6 columns">
-              {{ formperfil.a_paterno.errors }}
-              <input  type="text" {%if usuario.a_paterno%}value="{{usuario.a_paterno}}"{%endif%} name="a_paterno" class="small-12.columns text-center" placeholder="Apellido Paterno" required/>
+              {{ usuario.a_paterno.errors }}
+              <input  type="text" {%if usuario.a_paterno.value%}value="{{usuario.a_paterno.value}}"{%endif%} name="a_paterno" class="small-12.columns text-center" placeholder="Apellido Paterno" required/>
             </div>
 
-            {{ formperfil.a_materno.errors }}
+            {{ usuario.a_materno.errors }}
             <div class="medium-6 columns">
-              <input  type="text" {%if usuario.a_materno%}value="{{usuario.a_materno}}"{%endif%} name="a_materno" class="small-12.columns text-center" placeholder="Apellido Materno" required/>
+              <input  type="text" {%if usuario.a_materno.value%}value="{{usuario.a_materno.value}}"{%endif%} name="a_materno" class="small-12.columns text-center" placeholder="Apellido Materno" required/>
             </div>
-            {{ formperfil.num_control.errors }}
+            {{ usuario.num_control.errors }}
             <div class="medium-6 columns">
-              <input  type="text" {%if usuario.num_control%}value="{{usuario.num_control}}"{%endif%} name="num_control" class="small-12.columns text-center" placeholder="Numero de Control" required/>
+              <input  type="text" {%if usuario.num_control.value%}value="{{usuario.num_control.value}}"{%endif%} name="num_control" class="small-12.columns text-center" placeholder="Numero de Control" required/>
              </div>
            </div>
              <div class="medium-6 columns">
              <label>Carrera
               <select name= "carrera">
               {%if usuario.carrera%} 
-              <option  value= "{{usuario.carrera.id}}" selected="selected">{{usuario.carrera}}
+              <option  value= "{{usuario.carrera.id.value}}" selected="selected">{{usuario.carrera.value}}
               </option>
               {%endif%}
               
@@ -51,38 +51,38 @@
             <div class="medium-6 columns">
             <!-- FECHA -->
             <label>Fecha de Nacimiento
-            {{ formperfil.f_nacimiento.errors }}
-            <input  type="datetime" {%if usuario.f_nacimiento%}value="{{usuario.f_nacimiento}}"{%endif%} name="f_nacimiento" class="datepicker small-12.columns text-center" placeholder="Fecha de Nacimiento" required/> 
+            {{ usuario.f_nacimiento.errors }}
+            <input  type="datetime" {%if usuario.f_nacimiento.value%}value="{{usuario.f_nacimiento.value}}"{%endif%} name="f_nacimiento" class="datepicker small-12.columns text-center" placeholder="Fecha de Nacimiento" required/> 
             </label>
             </div>
           
           <div class="row">
              <div class="medium-6 columns">
               <label>Sexo</label>
-              {{ formperfil.sexo.errors }}
-              <input type="radio" name="sexo" value="M" id="masculino" class="small-12.columns text-center" {% if usuario.sexo == "M" %}checked="checked" {% endif %}/><label for="masculino">Masculino</label>
-              <input type="radio" name="sexo" value="F" id="femenino" class="small-12.columns text-center" {% if usuario.sexo == "F" %}checked="checked" {% endif %}/><label for="femenino">Femenino</label>
+              {{ usuario.sexo.errors }}
+              <input type="radio" name="sexo" value="M" id="masculino" class="small-12.columns text-center" {% if usuario.sexo.value == "M" %}checked="checked" {% endif %}/><label for="masculino">Masculino</label>
+              <input type="radio" name="sexo" value="F" id="femenino" class="small-12.columns text-center" {% if usuario.sexo.value == "F" %}checked="checked" {% endif %}/><label for="femenino">Femenino</label>
             </div>
 
             <div class="medium-6 columns"> 
-               {{ formperfil.curp.errors }}
-              <input  type="text" {%if usuario.curp%}value="{{usuario.curp}}"{%endif%} name="curp" class="small-12.columns text-center" placeholder="Curp" required/>
+               {{ usuario.curp.errors }}
+              <input  type="text" {%if usuario.curp.value%}value="{{usuario.curp.value}}"{%endif%} name="curp" class="small-12.columns text-center" placeholder="Curp" required/>
             </div>
             
             <div class="medium-12 columns">
               <label>Estado Civil</label>
             <div class="medium-3 columns">
-            {{ formperfil.e_civil.errors }}
-              <input type="radio" name="e_civil" value="C" id="casado" class="small-12.columns text-center" {% if usuario.e_civil == "C" %}checked {% endif %}><label for="casado">Casado(a)</label>
+            {{ usuario.e_civil.errors }}
+              <input type="radio" name="e_civil" value="C" id="casado" class="small-12.columns text-center" {% if usuario.e_civil.value == "C" %}checked {% endif %}><label for="casado">Casado(a)</label>
             </div>
             <div class="medium-3 columns">
-              <input type="radio" name="e_civil" value="S" id="soltero" class="small-12.columns text-center" {% if usuario.e_civil == "S" %}checked {% endif %}><label for="soltero">Soltero(a)</label>
+              <input type="radio" name="e_civil" value="S" id="soltero" class="small-12.columns text-center" {% if usuario.e_civil.value == "S" %}checked {% endif %}><label for="soltero">Soltero(a)</label>
             </div>
             <div class="medium-4 columns">
-              <input type="radio" name="e_civil" value="D" id="divorciado" class="small-12.columns text-center" {% if usuario.e_civil == "D" %}checked {% endif %}><label for="divorciado">Divorciado(a)</label>
+              <input type="radio" name="e_civil" value="D" id="divorciado" class="small-12.columns text-center" {% if usuario.e_civil.value == "D" %}checked {% endif %}><label for="divorciado">Divorciado(a)</label>
             </div>
             <div class="medium-2 columns">
-              <input type="radio" name="e_civil" value="O" id="otro" class="small-12.columns text-center" {% if usuario.e_civil == "O" %}checked {% endif %}><label for="otro">Otro</label>
+              <input type="radio" name="e_civil" value="O" id="otro" class="small-12.columns text-center" {% if usuario.e_civil.value == "O" %}checked {% endif %}><label for="otro">Otro</label>
             </div>
             </div>
           </div>
@@ -91,7 +91,7 @@
              <div class="medium-6 columns">
                 <select name="estado">
                 {%if usuario.estado%} 
-                <option value="{{usuario.estado}}" selected="selected">{{usuario.estado}}
+                <option value="{{usuario.estado.value}}" selected="selected">{{usuario.estado.value}}
                 </option> {%endif%}
               <option value="Aguascalientes">Aguascalientes</option>
               <option value="Baja California">Baja California </option>
@@ -131,42 +131,42 @@
            </div>
 
             <div class="medium-6 columns">
-            {{ formperfil.municipio.errors }}
-            <input  type="text" {%if usuario.municipio%}value="{{usuario.municipio}}"{%endif%} name="municipio" class="small-12.columns text-center" placeholder="Municipio" required/>
+            {{ usuario.municipio.errors }}
+            <input  type="text" {%if usuario.municipio.value%}value="{{usuario.municipio.value}}"{%endif%} name="municipio" class="small-12.columns text-center" placeholder="Municipio" required/>
             </div>
 
             <div class="medium-6 columns">
-            {{ formperfil.cuidad.errors }}
-            <input  type="text" {%if usuario.ciudad%}value="{{usuario.ciudad}}"{%endif%} name="ciudad" class="small-12.columns text-center" placeholder="Ciudad" required/>
+            {{ usuario.cuidad.errors }}
+            <input  type="text" {%if usuario.ciudad.value%}value="{{usuario.ciudad.value}}"{%endif%} name="ciudad" class="small-12.columns text-center" placeholder="Ciudad" required/>
             </div>
 
             <div class="medium-6 columns">
-            {{ formperfil.domicilio.errors }}
-            <input  type="text" {%if usuario.domicilio%}value="{{usuario.domicilio}}"{%endif%} name="domicilio" class="small-12.columns text-center" placeholder="Domicilio" required/>
+            {{ usuario.domicilio.errors }}
+            <input  type="text" {%if usuario.domicilio.value%}value="{{usuario.domicilio.value}}"{%endif%} name="domicilio" class="small-12.columns text-center" placeholder="Domicilio" required/>
             </div>
 
             <div class="medium-6 columns">
-            {{ formperfil.telefono.errors }}
-            <input  type="tel" {%if usuario.telefono%}value="{{usuario.telefono}}"{%endif%} name="telefono" class="small-12.columns text-center" placeholder="Telefono" required/>
+            {{ usuario.telefono.errors }}
+            <input  type="tel" {%if usuario.telefono.value%}value="{{usuario.telefono.value}}"{%endif%} name="telefono" class="small-12.columns text-center" placeholder="Telefono" required/>
             </div>
 
             <div class="medium-6 columns">
-            {{ formperfil.especialidad.errors }}
-            <input  type="text" {%if usuario.especialidad%}value="{{usuario.especialidad}}"{%endif%} name="especialidad" class="small-12.columns text-center" placeholder="Especialidad" required/>
+            {{ usuario.especialidad.errors }}
+            <input  type="text" {%if usuario.especialidad.value%}value="{{usuario.especialidad.value}}"{%endif%} name="especialidad" class="small-12.columns text-center" placeholder="Especialidad" required/>
             </div>
 
             <div class="medium-6 columns">
-            {{ formperfil.e_mail.errors }}
-            <input  type="email" {%if usuario.e_mail%}value="{{usuario.e_mail}}"{%endif%} name="e_mail" class="small-12.columns text-center" placeholder="e-mail" required/>
+            {{ usuario.e_mail.errors }}
+            <input  type="email" {%if usuario.e_mail.value%}value="{{usuario.e_mail.value}}"{%endif%} name="e_mail" class="small-12.columns text-center" placeholder="e-mail" required/>
             </div>
 
             <div class="medium-6 columns">
-            {{ formperfil.mes_anio__egreso.errors }}
-            <input  type="datetime" {%if usuario.mes_anio_egreso%}value="{{usuario.mes_anio_egreso}}"{%endif%} name="mes_anio_egreso" class="datepicker small-12.columns text-center" placeholder="Mes y Año de Egreso" required/>
+            {{ usuario.mes_anio__egreso.errors }}
+            <input  type="datetime" {%if usuario.mes_anio_egreso.value%}value="{{usuario.mes_anio_egreso.value}}"{%endif%} name="mes_anio_egreso" class="datepicker small-12.columns text-center" placeholder="Mes y Año de Egreso" required/>
             </div>
             <div class="medium-6 columns">
-            {{ formperfil.tel_casa.errors }}
-        <input  type="tel" {%if usuario.tel_casa%}value="{{usuario.tel_casa}}"{%endif%} name="tel_casa" class="small-12.columns text-center" placeholder="Telefono Casa" required/>
+            {{ usuario.tel_casa.errors }}
+        <input  type="tel" {%if usuario.tel_casa.value%}value="{{usuario.tel_casa.value}}"{%endif%} name="tel_casa" class="small-12.columns text-center" placeholder="Telefono Casa" required/>
         </div>
 
         
@@ -174,25 +174,25 @@
         <label>Dominio del Lenguaje Extranjero Ingles( % )</label>
             <div class="row">
                 <div class="small-9 columns">
-                  <div class="range-slider" data-slider data-options="start: 0; end: 100;step: 5;display_selector: #niv_ing; {%if usuario.niv_ing%}initial: {{usuario.niv_ing}};{% else %}initial: 50; {%endif%}">
+                  <div class="range-slider" data-slider data-options="start: 0; end: 100;step: 5;display_selector: #niv_ing; {%if usuario.niv_ing.value%}initial: {{usuario.niv_ing.value}};{% else %}initial: 50; {%endif%}">
                      <span class="range-slider-handle" role="slider" tabindex="0"></span>
                      <span class="range-slider-active-segment"></span>
                   </div>
                 </div>        
                 <div class="small-3 columns">
-                    <input type="number" name="niv_ing" id="niv_ing" min="0" max="100" step="5" {% if usuario.niv_ing %}value="usuario.niv_ing" {% else %}value="50"{% endif %} />
+                    <input type="number" name="niv_ing" id="niv_ing" min="0" max="100" step="5" {% if usuario.niv_ing.value %}value="{{usuario.niv_ing.value}}" {% else %}value="50"{% endif %} />
                 </div>
             </div>
         </div>
 
             <div class="medium-6 columns">
-            {{ formperfil.otros_idms.errors }}
-            <input  type="text" {%if usuario.otros_idms%}value="{{usuario.otros_idms}}"{%endif%} name="otros_idms" class="small-12.columns text-center" placeholder="Otros Idiomas" required/>
+            {{ usuario.otros_idms.errors }}
+            <input  type="text" {%if usuario.otros_idms.value%}value="{{usuario.otros_idms.value}}"{%endif%} name="otros_idms" class="small-12.columns text-center" placeholder="Otros Idiomas" required/>
             </div>
             
             <div class="medium-6 columns">
-            {{ formperfil.man_paq_comp.errors }}
-            <input  type="text" {%if usuario.man_paq_comp%}value="{{usuario.man_paq_comp}}"{%endif%} name="man_paq_comp" class="small-12.columns text-center" placeholder="Manejo de Paquetes Computacionales" required/>
+            {{ usuario.man_paq_comp.errors }}
+            <input  type="text" {%if usuario.man_paq_comp.value%}value="{{usuario.man_paq_comp.value}}"{%endif%} name="man_paq_comp" class="small-12.columns text-center" placeholder="Manejo de Paquetes Computacionales" required/>
             </div>
 
             
@@ -208,7 +208,7 @@
             <div class="small-4 columns"> 
             
               <div class="switch round">
-                <input id="tituladoid" name="titulado" value="1" type="checkbox"{% if usuario.titulado == "1" %}checked="checked"{% endif %}>
+                <input id="tituladoid" name="titulado" value="1" type="checkbox"{% if usuario.titulado.value == "1" %}checked="checked"{% endif %}>
                 <label for="tituladoid"></label>
               </div>
              </div>
@@ -222,17 +222,17 @@
       <label>Ocupación</label>
       <div class="row">
         <div class="small-12 medium-4 columns">
-        {{ formperfil.ocupacion.errors }}
-          <input type="radio" name="ocupacion" value="1"class="small-12.columns" {% if usuario.ocupacion == "1" %}checked {% endif %}><label for="1">Trabaja</label>
+        {{ usuario.ocupacion.errors }}
+          <input type="radio" name="ocupacion" value="1"class="small-12.columns" {% if usuario.ocupacion.value == "1" %}checked {% endif %}><label for="1">Trabaja</label>
         </div>
         <div class="small-12 medium-4 columns">
-          <input type="radio" name="ocupacion" value="2"class="small-12.columns" {% if usuario.ocupacion == "2" %}checked {% endif %}><label for="2">Estudia</label>
+          <input type="radio" name="ocupacion" value="2"class="small-12.columns" {% if usuario.ocupacion.value == "2" %}checked {% endif %}><label for="2">Estudia</label>
         </div>
         <div class="small-12 medium-4 columns">
-          <input type="radio" name="ocupacion" value="3"class="small-12.columns" {% if usuario.ocupacion == "3" %}checked {% endif %}><label for="3">Trabaja y Estudia</label>
+          <input type="radio" name="ocupacion" value="3"class="small-12.columns" {% if usuario.ocupacion.value == "3" %}checked {% endif %}><label for="3">Trabaja y Estudia</label>
         </div>
         <div class="medium-12 columns">
-          <input type="radio" name="ocupacion" value="4"class="small-12.columns" {% if usuario.ocupacion == "4" %}checked {% endif %}><label for="4">Ni Trabaja Ni Estudia</label>
+          <input type="radio" name="ocupacion" value="4"class="small-12.columns" {% if usuario.ocupacion.value == "4" %}checked {% endif %}><label for="4">Ni Trabaja Ni Estudia</label>
          </div>
         </div>
       </div>
@@ -243,25 +243,25 @@
           <label>Estudio Actuales</label>
           <div class="row">
           <div class="small-12 columns">
-          {{ formperfil.estudios_act.errors }}
-            <input type="radio" name="estudios_act" value="1"class="small-12.columns text-center" {% if usuario.estudios_act == "1" %}checked {% endif %}><label for="1">Especialidad</label>
+          {{ usuario.estudios_act.errors }}
+            <input type="radio" name="estudios_act" value="1"class="small-12.columns text-center" {% if usuario.estudios_act.value == "1" %}checked {% endif %}><label for="1">Especialidad</label>
           </div>
           <div class="small-12 columns">
-            <input type="radio" name="estudios_act" value="2"class="small-12.columns text-center" {% if usuario.estudios_act == "2" %}checked {% endif %}><label for="2">Maestria</label>
+            <input type="radio" name="estudios_act" value="2"class="small-12.columns text-center" {% if usuario.estudios_act.value == "2" %}checked {% endif %}><label for="2">Maestria</label>
           </div>
           <div class="small-6 columns">
-            <input type="radio" name="estudios_act" value="3"class="small-12.columns text-center" {% if usuario.estudios_act == "3" %}checked {% endif %}><label for="3">Idiomas</label>
+            <input type="radio" name="estudios_act" value="3"class="small-12.columns text-center" {% if usuario.estudios_act.value == "3" %}checked {% endif %}><label for="3">Idiomas</label>
           </div>
           <div class="small-6 columns">
-            <input type="radio" name="estudios_act" value="4"class="small-12.columns text-center" {% if usuario.estudios_act == "4" %}checked {% endif %}><label for="4">Otro</label>
+            <input type="radio" name="estudios_act" value="4"class="small-12.columns text-center" {% if usuario.estudios_act.value == "4" %}checked {% endif %}><label for="4">Otro</label>
           </div>
           </div>
           </div>
           
 
           <div class="medium-6 columns panel callout">
-          {{ formperfil.esp_intitucion.errors }}
-            <input  type="text" {%if usuario.esp_intitucion%}value="{{usuario.esp_intitucion}}"{%endif%} name="esp_intitucion" class="small-12.columns text-center" placeholder="Especialidad e Institución" required/>
+          {{ usuario.esp_intitucion.errors }}
+            <input  type="text" {%if usuario.esp_intitucion.value%}value="{{usuario.esp_intitucion.value}}"{%endif%} name="esp_intitucion" class="small-12.columns text-center" placeholder="Especialidad e Institución" required/>
           </div>
 
           <div class="medium-12 columns" >
@@ -273,17 +273,17 @@
           <label>Tiempo para Obtener Tu Primer Empleo</label>
           <div class="row">
           <div class="medium-3 columns">
-          {{ formperfil.tiem_primer_emple.errors }}
-            <input type="radio" name="tiem_primer_emple" value="1"class="small-12.columns text-center" {% if usuario.tiem_primer_emple == "1" %}checked {% endif %}><label for="1">Antes de Egresar</label>
+          {{ usuario.tiem_primer_emple.errors }}
+            <input type="radio" name="tiem_primer_emple" value="1"class="small-12.columns text-center" {% if usuario.tiem_primer_emple.value == "1" %}checked {% endif %}><label for="1">Antes de Egresar</label>
           </div>
           <div class="medium-3 columns">
-            <input type="radio" name="tiem_primer_emple" value="2"class="small-12.columns text-center" {% if usuario.tiem_primer_emple == "2" %}checked {% endif %}><label for="2">Menos de seis meses</label>
+            <input type="radio" name="tiem_primer_emple" value="2"class="small-12.columns text-center" {% if usuario.tiem_primer_emple.value == "2" %}checked {% endif %}><label for="2">Menos de seis meses</label>
           </div>
           <div class="medium-3 columns">
-            <input type="radio" name="tiem_primer_emple" value="3"class="small-12.columns text-center" {% if usuario.tiem_primer_emple == "3" %}checked {% endif %}><label for="3">Entre seis meses y un año</label>
+            <input type="radio" name="tiem_primer_emple" value="3"class="small-12.columns text-center" {% if usuario.tiem_primer_emple.value == "3" %}checked {% endif %}><label for="3">Entre seis meses y un año</label>
           </div>
           <div class="medium-3 columns">
-            <input type="radio" name="tiem_primer_emple" value="4"class="small-12.columns text-center" {% if usuario.tiem_primer_emple == "4" %}checked {% endif %}><label for="4">Mas de un año</label>
+            <input type="radio" name="tiem_primer_emple" value="4"class="small-12.columns text-center" {% if usuario.tiem_primer_emple.value == "4" %}checked {% endif %}><label for="4">Mas de un año</label>
           </div>
           </div>
           </div>
@@ -291,33 +291,33 @@
                 <div class="medium-9 columns">
                 <label>Calidad de los Docentes</label>
               <div class="medium-4 columns">
-              {{ formperfil.calidad_docentes.errors }}
-                <input type="radio" name="calidad_docentes" value="1"class="small-9.columns text-center" {% if usuario.calidad_docentes == "1" %}checked {% endif %}><label for="1">Muy Buena</label>
+              {{ usuario.calidad_docentes.errors }}
+                <input type="radio" name="calidad_docentes" value="1"class="small-9.columns text-center" {% if usuario.calidad_docentes.value == "1" %}checked {% endif %}><label for="1">Muy Buena</label>
               </div>
               <div class="medium-4 columns">
-                <input type="radio" name="calidad_docentes" value="2"class="small-9.columns text-center" {% if usuario.calidad_docentes == "2" %}checked {% endif %}><label for="2">Buena</label>
+                <input type="radio" name="calidad_docentes" value="2"class="small-9.columns text-center" {% if usuario.calidad_docentes.value == "2" %}checked {% endif %}><label for="2">Buena</label>
               </div>
               <div class="medium-4 columns">
-                <input type="radio" name="calidad_docentes" value="3"class="small-12.columns text-center" {% if usuario.calidad_docentes == "3" %}checked {% endif %}><label for="3">Regular</label>
+                <input type="radio" name="calidad_docentes" value="3"class="small-12.columns text-center" {% if usuario.calidad_docentes.value == "3" %}checked {% endif %}><label for="3">Regular</label>
               </div>
               <div class="medium-12 columns">
-                <input type="radio" name="calidad_docentes" value="4"class="small-12.columns text-center" {% if usuario.calidad_docentes == "4" %}checked {% endif %}><label for="4">Mala</label>
+                <input type="radio" name="calidad_docentes" value="4"class="small-12.columns text-center" {% if usuario.calidad_docentes.value == "4" %}checked {% endif %}><label for="4">Mala</label>
               </div>
             </div>
             <div class="medium-12 columns panel callout">
             <label>Plan de Estudios</label>
           <div class="medium-4 columns">
-          {{ formperfil.plan_estudios.errors }}
-            <input type="radio" name="plan_estudios" value="1"class="small-12.columns text-center" {% if usuario.plan_estudios == "1" %}checked {% endif %}><label for="1">Muy Buena</label>
+          {{ usuario.plan_estudios.errors }}
+            <input type="radio" name="plan_estudios" value="1"class="small-12.columns text-center" {% if usuario.plan_estudios.value == "1" %}checked {% endif %}><label for="1">Muy Buena</label>
           </div>
           <div class="medium-4 columns">
-            <input type="radio" name="plan_estudios" value="2"class="small-12.columns text-center" {% if usuario.plan_estudios == "2" %}checked {% endif %}><label for="2">Buena</label>
+            <input type="radio" name="plan_estudios" value="2"class="small-12.columns text-center" {% if usuario.plan_estudios.value == "2" %}checked {% endif %}><label for="2">Buena</label>
           </div>
           <div class="medium-4 columns">
-            <input type="radio" name="plan_estudios" value="3"class="small-12.columns text-center" {% if usuario.plan_estudios == "3" %}checked {% endif %}><label for="3">Regular</label>
+            <input type="radio" name="plan_estudios" value="3"class="small-12.columns text-center" {% if usuario.plan_estudios.value == "3" %}checked {% endif %}><label for="3">Regular</label>
           </div>
           <div class="medium-12 columns">
-            <input type="radio" name="plan_estudios" value="4"class="small-12.columns text-center" {% if usuario.plan_estudios == "4" %}checked {% endif %}><label for="4">Mala</label>
+            <input type="radio" name="plan_estudios" value="4"class="small-12.columns text-center" {% if usuario.plan_estudios.value == "4" %}checked {% endif %}><label for="4">Mala</label>
           </div>
             </div>
             
@@ -325,17 +325,17 @@
             <div class="medium-12 columns">
             <label>Oportunidad de participar en proyectos de investigación y desarrollo</label>
           <div class="medium-4 columns">
-          {{ formperfil.oport_ppid.errors }}
-            <input type="radio" name="oport_ppid" value="1"class="small-12.columns text-center" {% if usuario.oport_ppid == "1" %}checked {% endif %}><label for="1">Muy Buena</label>
+          {{ usuario.oport_ppid.errors }}
+            <input type="radio" name="oport_ppid" value="1"class="small-12.columns text-center" {% if usuario.oport_ppid.value == "1" %}checked {% endif %}><label for="1">Muy Buena</label>
           </div>
           <div class="medium-4 columns">
-            <input type="radio" name="oport_ppid" value="2"class="small-12.columns text-center" {% if usuario.oport_ppid == "2" %}checked {% endif %}><label for="2">Buena</label>
+            <input type="radio" name="oport_ppid" value="2"class="small-12.columns text-center" {% if usuario.oport_ppid.value == "2" %}checked {% endif %}><label for="2">Buena</label>
           </div>
           <div class="medium-4 columns">
-            <input type="radio" name="oport_ppid" value="3"class="small-12.columns text-center" {% if usuario.oport_ppid == "3" %}checked {% endif %}><label for="3">Regular</label>
+            <input type="radio" name="oport_ppid" value="3"class="small-12.columns text-center" {% if usuario.oport_ppid.value == "3" %}checked {% endif %}><label for="3">Regular</label>
           </div>
           <div class="medium-12 columns">
-            <input type="radio" name="oport_ppid" value="4"class="small-12.columns text-center" {% if usuario.oport_ppid == "4" %}checked {% endif %}><label for="4">Mala</label>
+            <input type="radio" name="oport_ppid" value="4"class="small-12.columns text-center" {% if usuario.oport_ppid.value == "4" %}checked {% endif %}><label for="4">Mala</label>
           </div>
             </div>
             
@@ -343,17 +343,17 @@
             <div class="medium-12 columns panel callout">
             <label>Énfasis que se le prestaba a la investigación dentro del proceso de enseñanza</label>
           <div class="medium-4 columns">
-          {{ formperfil.enfasis.errors }}
-            <input type="radio" name="enfasis" value="1"class="small-12.columns text-center" {% if usuario.enfasis == "1" %}checked {% endif %}><label for="1">Muy Buena</label>
+          {{ usuario.enfasis.errors }}
+            <input type="radio" name="enfasis" value="1"class="small-12.columns text-center" {% if usuario.enfasis.value == "1" %}checked {% endif %}><label for="1">Muy Buena</label>
           </div>
           <div class="medium-4 columns">
-            <input type="radio" name="enfasis" value="2"class="small-12.columns text-center" {% if usuario.enfasis == "2" %}checked {% endif %}><label for="2">Buena</label>
+            <input type="radio" name="enfasis" value="2"class="small-12.columns text-center" {% if usuario.enfasis.value == "2" %}checked {% endif %}><label for="2">Buena</label>
           </div>
           <div class="medium-4 columns">
-            <input type="radio" name="enfasis" value="3"class="small-12.columns text-center" {% if usuario.enfasis == "3" %}checked {% endif %}><label for="3">Regular</label>
+            <input type="radio" name="enfasis" value="3"class="small-12.columns text-center" {% if usuario.enfasis.value == "3" %}checked {% endif %}><label for="3">Regular</label>
           </div>
           <div class="medium-12 columns">
-            <input type="radio" name="enfasis" value="4"class="small-12.columns text-center" {% if usuario.enfasis == "4" %}checked {% endif %}><label for="4">Mala</label>
+            <input type="radio" name="enfasis" value="4"class="small-12.columns text-center" {% if usuario.enfasis.value == "4" %}checked {% endif %}><label for="4">Mala</label>
           </div>
             </div>
            
@@ -361,33 +361,33 @@
             <div class="medium-12 columns">
             <label>Satisfacción con las condiciones de estudio (infraestructura)</label>
            <div class="medium-4 columns">
-           {{ formperfil.infracest.errors }}
-            <input type="radio" name="infracest" value="1"class="small-12.columns text-center" {% if usuario.infracest == "1" %}checked {% endif %}><label for="1">Muy Buena</label>
+           {{ usuario.infracest.errors }}
+            <input type="radio" name="infracest" value="1"class="small-12.columns text-center" {% if usuario.infracest.value == "1" %}checked {% endif %}><label for="1">Muy Buena</label>
           </div>
            <div class="medium-4 columns">
-            <input type="radio" name="infracest" value="2"class="small-12.columns text-center" {% if usuario.infracest == "2" %}checked {% endif %}><label for="2">Buena</label>
+            <input type="radio" name="infracest" value="2"class="small-12.columns text-center" {% if usuario.infracest.value == "2" %}checked {% endif %}><label for="2">Buena</label>
           </div>
            <div class="medium-4 columns">
-            <input type="radio" name="infracest" value="3"class="small-12.columns text-center" {% if usuario.infracest == "3" %}checked {% endif %}><label for="3">Regular</label>
+            <input type="radio" name="infracest" value="3"class="small-12.columns text-center" {% if usuario.infracest.value == "3" %}checked {% endif %}><label for="3">Regular</label>
           </div>
            <div class="medium-12 columns">
-            <input type="radio" name="infracest" value="4"class="small-12.columns text-center" {% if usuario.infracest == "4" %}checked {% endif %}><label for="4">Mala</label>
+            <input type="radio" name="infracest" value="4"class="small-12.columns text-center" {% if usuario.infracest.value == "4" %}checked {% endif %}><label for="4">Mala</label>
           </div>
           </div>
            <div class="medium-12 columns panel callout">
           <label>Experiencia obtenida a través de la residencia profesional</label>
          <div class="medium-4 columns">
-         {{ formperfil.exprecprof.errors }}
-          <input type="radio" name="exprecprof" value="1"class="small-12.columns text-center" {% if usuario.exprecprof == "1" %}checked {% endif %}><label for="1">Muy Buena</label>
+         {{ usuario.exprecprof.errors }}
+          <input type="radio" name="exprecprof" value="1"class="small-12.columns text-center" {% if usuario.exprecprof.value == "1" %}checked {% endif %}><label for="1">Muy Buena</label>
         </div>
          <div class="medium-4 columns">
-          <input type="radio" name="exprecprof" value="2"class="small-12.columns text-center" {% if usuario.exprecprof == "2" %}checked {% endif %}><label for="2">Buena</label>
+          <input type="radio" name="exprecprof" value="2"class="small-12.columns text-center" {% if usuario.exprecprof.value == "2" %}checked {% endif %}><label for="2">Buena</label>
         </div>
          <div class="medium-4 columns">
-          <input type="radio" name="exprecprof" value="3"class="small-12.columns text-center" {% if usuario.exprecprof == "3" %}checked {% endif %}><label for="3">Regular</label>
+          <input type="radio" name="exprecprof" value="3"class="small-12.columns text-center" {% if usuario.exprecprof.value == "3" %}checked {% endif %}><label for="3">Regular</label>
         </div>
          <div class="medium-12 columns">
-          <input type="radio" name="exprecprof" value="4"class="small-12.columns text-center" {% if usuario.exprecprof == "4" %}checked {% endif %}><label for="4">Mala</label>
+          <input type="radio" name="exprecprof" value="4"class="small-12.columns text-center" {% if usuario.exprecprof.value == "4" %}checked {% endif %}><label for="4">Mala</label>
         </div>
           </div>
           <div class="medium-12 columns">
@@ -396,36 +396,36 @@
           <div class="medium-12 columns">
             <label>Eficiencia para realizar las actividades laborales, en relación con su formación académica</label>
           <div class="medium-4 columns">
-          {{ formperfil.eficiencia_lab.errors }}
-            <input type="radio" name="eficiencia_lab" value="1"class="small-12.columns text-center" {% if usuario.eficiencia_lab == "1" %}checked {% endif %}><label for="1">Muy Eficiente</label>
+          {{ usuario.eficiencia_lab.errors }}
+            <input type="radio" name="eficiencia_lab" value="1"class="small-12.columns text-center" {% if usuario.eficiencia_lab.value == "1" %}checked {% endif %}><label for="1">Muy Eficiente</label>
           </div>
             <div class="medium-4 columns">
-            <input type="radio" name="eficiencia_lab" value="2"class="small-12.columns text-center" {% if usuario.eficiencia_lab == "2" %}checked {% endif %}><label for="2">Eficiente</label>
+            <input type="radio" name="eficiencia_lab" value="2"class="small-12.columns text-center" {% if usuario.eficiencia_lab.value == "2" %}checked {% endif %}><label for="2">Eficiente</label>
           </div>
           <div class="medium-4 columns">
-            <input type="radio" name="eficiencia_lab" value="3"class="small-12.columns text-center" {% if usuario.eficiencia_lab == "3" %}checked {% endif %}><label for="3">Poco Eficiente</label>
+            <input type="radio" name="eficiencia_lab" value="3"class="small-12.columns text-center" {% if usuario.eficiencia_lab.value == "3" %}checked {% endif %}><label for="3">Poco Eficiente</label>
           </div>
            <div class="medium-12 columns">
-            <input type="radio" name="eficiencia_lab" value="4"class="small-12.columns text-center" {% if usuario.eficiencia_lab == "4" %}checked {% endif %}><label for="4">Deficiente</label>
+            <input type="radio" name="eficiencia_lab" value="4"class="small-12.columns text-center" {% if usuario.eficiencia_lab.value == "4" %}checked {% endif %}><label for="4">Deficiente</label>
           </div>
             </div>
           <div class="medium-12 columns panel">
             <label>Cómo califica su formación académica con respecto a su desempeño laboral</label>
             <div class="medium-6 columns">
-            {{ formperfil.cal_formacion.errors }}
-              <input type="radio" name="cal_formacion" value="1"class="small-12.columns text-center" {% if usuario.cal_formacion == "1" %}checked {% endif %}><label for="1">Excelente</label>
+            {{ usuario.cal_formacion.errors }}
+              <input type="radio" name="cal_formacion" value="1"class="small-12.columns text-center" {% if usuario.cal_formacion.value == "1" %}checked {% endif %}><label for="1">Excelente</label>
             </div>
             <div class="medium-6 columns">
-              <input type="radio" name="cal_formacion" value="2"class="small-12.columns text-center" {% if usuario.cal_formacion == "2" %}checked {% endif %}><label for="2">Buena</label>
+              <input type="radio" name="cal_formacion" value="2"class="small-12.columns text-center" {% if usuario.cal_formacion.value == "2" %}checked {% endif %}><label for="2">Buena</label>
             </div>
             <div class="medium-6 columns">
-              <input type="radio" name="cal_formacion" value="3"class="small-12.columns text-center" {% if usuario.cal_formacion == "3" %}checked {% endif %}><label for="3">Regular</label>
+              <input type="radio" name="cal_formacion" value="3"class="small-12.columns text-center" {% if usuario.cal_formacion.value == "3" %}checked {% endif %}><label for="3">Regular</label>
             </div>
             <div class="medium-6 columns">
-              <input type="radio" name="cal_formacion" value="4"class="small-12.columns text-center" {% if usuario.cal_formacion == "4" %}checked {% endif %}><label for="4">Mala</label>
+              <input type="radio" name="cal_formacion" value="4"class="small-12.columns text-center" {% if usuario.cal_formacion.value == "4" %}checked {% endif %}><label for="4">Mala</label>
             </div>
             <div class="medium-12 columns">
-              <input type="radio" name="cal_formacion" value="5"class="small-12.columns text-center" {% if usuario.cal_formacion == "5" %}checked {% endif %}><label for="5">Pesimo</label>
+              <input type="radio" name="cal_formacion" value="5"class="small-12.columns text-center" {% if usuario.cal_formacion.value == "5" %}checked {% endif %}><label for="5">Pesimo</label>
             </div>
 
 
@@ -434,20 +434,20 @@
           <div class="medium-12 columns">
             <label>Utilidad de las residencias profesionales o prácticas profesionales para su desarrollo laboral y profesional</label>
             <div class="medium-6 columns">
-            {{ formperfil.util_residencia.errors }}
-            <input type="radio" name="util_residencia" value="1"class="small-12.columns text-center" {% if usuario.util_residencia == "1" %}checked {% endif %}><label for="1">Excelente</label>
+            {{ usuario.util_residencia.errors }}
+            <input type="radio" name="util_residencia" value="1"class="small-12.columns text-center" {% if usuario.util_residencia.value == "1" %}checked {% endif %}><label for="1">Excelente</label>
           </div>
           <div class="medium-6 columns">
-            <input type="radio" name="util_residencia" value="2"class="small-12.columns text-center" {% if usuario.util_residencia == "2" %}checked {% endif %}><label for="2">Buena</label>
+            <input type="radio" name="util_residencia" value="2"class="small-12.columns text-center" {% if usuario.util_residencia.value == "2" %}checked {% endif %}><label for="2">Buena</label>
           </div>
           <div class="medium-6 columns">
-            <input type="radio" name="util_residencia" value="3"class="small-12.columns text-center" {% if usuario.util_residencia == "3" %}checked {% endif %}><label for="3">Regular</label>
+            <input type="radio" name="util_residencia" value="3"class="small-12.columns text-center" {% if usuario.util_residencia.value == "3" %}checked {% endif %}><label for="3">Regular</label>
           </div>
           <div class="medium-6 columns">
-            <input type="radio" name="util_residencia" value="4"class="small-12.columns text-center" {% if usuario.util_residencia == "4" %}checked {% endif %}><label for="4">Mala</label>
+            <input type="radio" name="util_residencia" value="4"class="small-12.columns text-center" {% if usuario.util_residencia.value == "4" %}checked {% endif %}><label for="4">Mala</label>
           </div>
           <div class="medium-12 columns">
-             <input type="radio" name="util_residencia" value="5"class="small-12.columns text-center" {% if usuario.util_residencia == "5" %}checked {% endif %}><label for="5">Pesimo</label>
+             <input type="radio" name="util_residencia" value="5"class="small-12.columns text-center" {% if usuario.util_residencia.value == "5" %}checked {% endif %}><label for="5">Pesimo</label>
           </div>
           </div>
 

@@ -72,7 +72,7 @@ def actualizar_perfil(request):
             errors.append(fperfil.errors)
             print errors
             print("Datos Incorrectos")
-            return render (request, "formulario/actualizar_perfil.html", {"formperfil":fperfil})
+            return render (request, "formulario/actualizar_perfil.html", {"usuario":fperfil})
             #return Redirect("/egresado/perfil")
 
         if nuevo:
@@ -86,9 +86,11 @@ def actualizar_perfil(request):
     else:
         try:
             user = PerfilEgresado.objects.get(num_control=usuario.username)
-            return render (request, "formulario/actualizar_perfil.html", {"usuario":user})
+            fperfil=PerfilEgresadoForm( instance=user)
+            return render (request, "formulario/actualizar_perfil.html", {"usuario":fperfil})
         except:
-            return render (request, "formulario/actualizar_perfil.html", {})
+            fperfil = PerfilEgresadoForm(request.POST)
+            return render (request, "formulario/actualizar_perfil.html",{"usuario":fperfil})
     
 
 # /egresado/datoslaborales
@@ -118,7 +120,7 @@ def actualizar_datoslab(request):
             print errors
             print("Datos Incorrectos")
             #return Redirect("/egresado/perfil")
-            return render (request, "formulario/actualizar_datoslab.html", {"formdatos":fperfil})
+            return render (request, "formulario/actualizar_datoslab.html", {"usuario":fperfil})
 
         if nuevo:
             return Redirect("/egresado/empresa/")
@@ -131,9 +133,10 @@ def actualizar_datoslab(request):
     else:
         try:
             user = DatosLaborales.objects.get(num_control=usuario.username)
-            return render (request, "formulario/actualizar_datoslab.html", {"usuario":user})
+            fperfil=DatosLaboralesForm( instance=user)
+            return render (request, "formulario/actualizar_datoslab.html", {"usuario":fperfil})
         except:
-            return render (request, "formulario/actualizar_datoslab.html", {})
+            return render (request, "formulario/actualizar_datoslab.html", {"usuario":fperfil})
 
 # /egresado/empresa
 @login_required(login_url='/')
@@ -171,7 +174,7 @@ def actualizar_empresa(request):
             print errors
             print("Datos Incorrectos")
             #return Redirect("/egresado/perfil")
-            return render (request, "formulario/actualizar_empresa.html", {"formpresa":fperfil, "formencargado":fperfil2})
+            return render (request, "formulario/actualizar_empresa.html", {"usuario":fperfil, "usuario":fperfil2})
 
         if nuevo:
             return Redirect("/egresado/gracias/")
@@ -184,10 +187,12 @@ def actualizar_empresa(request):
     else:
         try:
             user = Empresa.objects.get(num_control=usuario.username)
+            fperfil=EmpresaForm( instance=user)
             encargado = Encargado.objects.get(num_control=usuario.username)
-            return render (request, "formulario/actualizar_empresa.html", {"usuario":user, "encargado":encargado})
+            fperfil2=EncargadoForm( instance=user)
+            return render (request, "formulario/actualizar_empresa.html", {"usuario":fperfil, "encargado":encargado})
         except:
-            return render (request, "formulario/actualizar_empresa.html", {})
+            return render (request, "formulario/actualizar_empresa.html", {"usuario":fperfil2, "encargado":encargado})
 
     
 def get_encargado(request):
