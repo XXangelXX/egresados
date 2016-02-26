@@ -189,8 +189,8 @@ def actualizar_empresa(request):
             user = Empresa.objects.get(num_control=usuario.username)
             fperfil=EmpresaForm( instance=user)
             encargado = Encargado.objects.get(num_control=usuario.username)
-            fperfil2=EncargadoForm( instance=user)
-            return render (request, "formulario/actualizar_empresa.html", {"usuario":fperfil, "encargado":encargado})
+            fperfil2=EncargadoForm( instance=encargado)
+            return render (request, "formulario/actualizar_empresa.html", {"usuario":fperfil, "encargado":fperfil2})
         except:
             return render (request, "formulario/actualizar_empresa.html", {"usuario":fperfil2, "encargado":encargado})
 

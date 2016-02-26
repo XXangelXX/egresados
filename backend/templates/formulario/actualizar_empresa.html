@@ -388,17 +388,17 @@
     
 
         <div class="medium-6 columns panel callout">
-        {{ usuario.nom_encargado.errors }}
+        {{ encargado.nom_encargado.errors }}
         <input  type="text" {%if encargado.nom_encargado.value%}value="{{encargado.nom_encargado.value}}"{%endif%} name="nom_encargado" class="small-12.columns text-center" placeholder="Nombre del Encargado" required/>
       </div>
 
       <div class="medium-6 columns panel ">
-      {{ usuario.titulo.errors }}
+      {{ encargado.titulo.errors }}
         <input  type="text" {%if encargado.titulo.value%}value="{{encargado.titulo.value}}"{%endif%} name="titulo" class="small-12.columns text-center" placeholder="Titulo" required/>
       </div>
 
       <div class="medium-6 columns panel callout">
-      {{ usuario.puesto.errors }}
+      {{ encargado.puesto.errors }}
         <input  type="text" {%if encargado.puesto.value%}value="{{encargado.puesto.value}}"{%endif%}name="puesto" class="small-12.columns text-center" placeholder="Puesto" required/>
       </div>
 
